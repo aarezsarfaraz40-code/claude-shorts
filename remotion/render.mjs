@@ -94,8 +94,19 @@ async function main() {
   const bundleTime = ((Date.now() - startBundle) / 1000).toFixed(1);
   console.log(JSON.stringify({ action: "bundle", status: "complete", time_sec: bundleTime }));
 
-  // Open shared browser instance
-  const browser = await openBrowser("chrome");
+  // Open shared browser instance.
+  // If REMOTION_BROWSER_EXECUTABLE is set (or a known local headless shell
+  // exists), use it instead of downloading Chrome from the internet.
+  const browserCandidates = [
+    process.env.REMOTION_BROWSER_EXECUTABLE,
+    "/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell",
+    "/opt/pw-browsers/headless_shell_as_downloaded/chrome-headless-shell",
+  ].filter(Boolean);
+  const browserExecutable = browserCandidates.find((p) => fs.existsSync(p)) || null;
+  if (browserExecutable) {
+    console.log(JSON.stringify({ action: "browser", executable: browserExecutable }));
+  }
+  const browser = await openBrowser("chrome", { browserExecutable });
 
   const results = [];
 
@@ -175,6 +186,7 @@ async function main() {
             id: "ShortVideo",
             inputProps,
             puppeteerInstance: browser,
+            browserExecutable,
           });
 
           await renderMedia({
@@ -185,6 +197,7 @@ async function main() {
             outputLocation: outputPath,
             inputProps,
             puppeteerInstance: browser,
+            browserExecutable,
           });
 
           const renderTime = ((Date.now() - startRender) / 1000).toFixed(1);

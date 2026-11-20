@@ -177,7 +177,7 @@ def snap_end(words, proposed_end, search_window=3.0, pad_ms=300):
     return proposed_end
 
 
-def snap_segment(words, silences, seg, video_duration):
+def snap_segment(words, silences, seg, video_duration, min_dur=5.0, max_dur=60.0):
     """Snap a single segment's boundaries.
 
     Returns adjusted (start, end) tuple.
@@ -185,9 +185,12 @@ def snap_segment(words, silences, seg, video_duration):
     proposed_start = seg["start"]
     proposed_end = seg["end"]
 
-    # Step 1: Snap to word boundaries
-    new_start = snap_start(words, proposed_start)
-    new_end = snap_end(words, proposed_end)
+    # Step 1: Snap to word boundaries (gameplay can have no speech at all)
+    if words:
+        new_start = snap_start(words, proposed_start)
+        new_end = snap_end(words, proposed_end)
+    else:
+        new_start, new_end = proposed_start, proposed_end
 
     # Step 2: If we have silence data, try to cut at silence points
     if silences:
@@ -205,11 +208,13 @@ def snap_segment(words, silences, seg, video_duration):
     new_start = max(0.0, new_start)
     new_end = min(video_duration, new_end)
 
-    # Ensure minimum duration (5s) and maximum (60s)
-    if new_end - new_start < 5.0:
-        new_end = min(new_start + 5.0, video_duration)
-    if new_end - new_start > 60.0:
-        new_end = new_start + 60.0
+    # Ensure minimum and maximum duration (defaults 5s / 60s)
+    if new_end - new_start < min_dur:
+        new_end = min(new_start + min_dur, video_duration)
+        if new_end - new_start < min_dur:
+            new_start = max(0.0, new_end - min_dur)
+    if new_end - new_start > max_dur:
+        new_end = new_start + max_dur
 
     return round(new_start, 3), round(new_end, 3)
 
@@ -222,14 +227,16 @@ def main():
     parser.add_argument("--output", required=True, help="Output snapped segments JSON")
     parser.add_argument("--no-silence", action="store_true",
                         help="Skip silence detection (word-boundary snapping only)")
+    parser.add_argument("--min-dur", type=float, default=5.0, help="Minimum clip length (s)")
+    parser.add_argument("--max-dur", type=float, default=60.0, help="Maximum clip length (s)")
 
     args = parser.parse_args()
 
     # Load data
     words = load_word_timeline(args.transcript)
     if not words:
-        print(json.dumps({"error": "No word-level timestamps found in transcript"}))
-        sys.exit(1)
+        print(json.dumps({"warning": "No speech found; keeping proposed times (duration limits still apply)"}),
+              file=sys.stderr)
 
     with open(args.segments) as f:
         segments_data = json.load(f)
@@ -253,7 +260,8 @@ def main():
         old_start = seg["start"]
         old_end = seg["end"]
 
-        new_start, new_end = snap_segment(words, silences, seg, video_duration)
+        new_start, new_end = snap_segment(words, silences, seg, video_duration,
+                                          min_dur=args.min_dur, max_dur=args.max_dur)
 
         seg["start"] = new_start
         seg["end"] = new_end

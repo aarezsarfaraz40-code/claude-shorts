@@ -35,6 +35,9 @@ if [ -d "$HOME/.video-skill" ]; then
         echo "[Python] Installing opencv-python..."
         "$VENV/bin/pip" install --quiet opencv-python
     fi
+
+    # PyAV 17+ breaks faster-whisper's audio decoding
+    "$VENV/bin/pip" install --quiet "av>=14,<17"
 else
     VENV="$HOME/.shorts-skill"
     if [ -d "$VENV" ]; then
@@ -47,19 +50,19 @@ else
     echo "[Python] Installing dependencies..."
     "$VENV/bin/pip" install --quiet --upgrade pip
 
-    # Check for NVIDIA GPU to decide PyTorch variant
+    # PyTorch is optional: faster-whisper runs on CTranslate2 and does not need it.
+    # Only install it when an NVIDIA GPU is present (used for CUDA detection).
     if command -v nvidia-smi &>/dev/null; then
-        echo "[Python] NVIDIA GPU detected — installing PyTorch with CUDA..."
+        echo "[Python] NVIDIA GPU detected — installing PyTorch with CUDA (optional)..."
         "$VENV/bin/pip" install --quiet torch torchvision torchaudio \
-            --index-url https://download.pytorch.org/whl/cu128
+            --index-url https://download.pytorch.org/whl/cu128 \
+            || echo "[Python] WARNING: PyTorch install failed — continuing (not required)"
     else
-        echo "[Python] No NVIDIA GPU — installing CPU-only PyTorch..."
-        "$VENV/bin/pip" install --quiet torch torchvision torchaudio \
-            --index-url https://download.pytorch.org/whl/cpu
+        echo "[Python] No NVIDIA GPU — skipping PyTorch (not required, CPU mode)"
     fi
 
-    echo "[Python] Installing faster-whisper, mediapipe, numpy, opencv-python..."
-    "$VENV/bin/pip" install --quiet faster-whisper mediapipe numpy opencv-python
+    echo "[Python] Installing faster-whisper, mediapipe, numpy, opencv..."
+    "$VENV/bin/pip" install --quiet -r "$SCRIPT_DIR/requirements.txt"
 fi
 
 echo "[Python] Venv ready: $VENV"
@@ -98,6 +101,11 @@ fi
 
 if ! command -v jq &>/dev/null; then
     MISSING+=("jq")
+fi
+
+# MediaPipe (new versions) needs EGL/GLES libraries even on CPU
+if ! ldconfig -p 2>/dev/null | grep -q "libEGL.so.1"; then
+    MISSING+=("libegl1" "libgles2")
 fi
 
 if [ ${#MISSING[@]} -gt 0 ]; then

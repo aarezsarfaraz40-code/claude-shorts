@@ -49,7 +49,7 @@ export const Root: React.FC = () => {
           assetBase: "",
           trailer: "",
           voiceover: "",
-          tag: "GTA 6 NEWS",
+          tag: "",
           logo: "",
           logoText: "LOGO",
           source: { w: 1280, h: 720, top: 92, bottom: 628 },

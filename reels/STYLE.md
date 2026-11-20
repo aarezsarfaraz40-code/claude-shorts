@@ -34,18 +34,22 @@ simple Roman Urdu, ask at most ONE simple question at a time.
   polls, stamps, big numbers, flash + zoom-punch cuts. Keep the purple/pink/
   orange Vice City theme.
 - Logo: `reels/brand/logo.jpg` (copy to `reels/assets/logo.jpg`), top-left
-  inside safe zone + big on the end card.
-- Tag pill: "GTA 6 NEWS".
+  corner (inside safe zone) + big on the end card.
+- NO tag pill next to the logo (`"tag": ""`).
 - End card (last ~5 s): "FOLLOW GTA HIGHEST" + "DAILY GTA 6 NEWS 🔔".
 
 ## Audio mix
 - Voiceover at -14 LUFS (normalized file, volume 1).
 - Background music: GTA San Andreas theme (`reels/assets/music_sa.wav`),
-  `"music": {"file": "music_sa.wav", "volume": 0.13}` (~14 dB under the
-  voice, fades in/out automatically). ⚠️ Rockstar-owned song: may get a
+  **cropped to start at the beat**:
+  `"music": {"file": "music_sa.wav", "volume": 0.13, "startAt": 6.35}`
+  (~14 dB under the voice, fades out at the end). ⚠️ Rockstar-owned song: may get a
   YouTube copyright claim (revenue goes to Rockstar) — owner accepted.
-- SFX: whoosh on every cut (0.28), ding when a counter lands (0.35), boom on
-  badges/stamps (0.45).
+- SFX: always run `python3 reels/sfx_auto.py reels/specs/rNN.json` after the
+  overlays are final. It places whoosh (cuts), pop (headlines, poll), riser +
+  ticks + ding (counters), impact (badges, VS stamp, big numbers), glitch
+  (stamps), ticks (bars/timeline), riser + bell (end card). All SFX are
+  peak-normalized and kept **quiet** (volumes 0.06-0.16).
 
 ## Render + deliver
 ```bash

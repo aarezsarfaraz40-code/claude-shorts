@@ -35,7 +35,7 @@ export const GtaReelSchema = z.object({
   assetBase: z.string(),
   trailer: z.string(),
   voiceover: z.string(),
-  tag: z.string().default("GTA 6 NEWS"),
+  tag: z.string().default(""),
   logo: z.string().default(""),
   logoText: z.string().default("LOGO"),
   // Source frame: full size + the picture area inside the letterbox
@@ -190,10 +190,10 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
       <div
         style={{
           position: "absolute",
-          left: SAFE.left,
-          top: SAFE.top + 10,
-          width: 196,
-          height: 109,
+          left: 40,
+          top: 50,
+          width: 210,
+          height: 117,
           borderRadius: 16,
           overflow: "hidden",
           border: `4px solid ${C.white}`,
@@ -210,7 +210,7 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
       >
         {logo ? <Img src={logo} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : logoText}
       </div>
-      <div
+      {tag ? <div
         style={{
           position: "absolute",
           left: SAFE.left + 214,
@@ -230,7 +230,7 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
       >
         <span style={{ width: 14, height: 14, borderRadius: 7, background: C.white, opacity: blink }} />
         {tag}
-      </div>
+      </div> : null}
     </>
   );
 };
@@ -754,7 +754,7 @@ export const GtaReel: React.FC<GtaReelProps> = (props) => {
           startFrom={musicStart}
           volume={(f) =>
             (music.volume ?? 0.15) *
-            interpolate(f, [0, 15, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+            interpolate(f, [0, 4, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
           }
         />
       ) : null}

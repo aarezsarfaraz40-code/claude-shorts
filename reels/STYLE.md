@@ -101,3 +101,10 @@ owner with the video:
   (`assets/actors/<slug>.jpg`) + name. Use properly licensed photos (e.g.
   Wikimedia Commons, needs upload.wikimedia.org allowed) or photos the owner
   sends. Never use an unverified photo.
+
+## Footage sources
+- Owner records gameplay clips per `reels/CLIPS_NEEDED.md` (file names
+  `rNN_XX_name.mp4`). Use them so every line shows the matching scene.
+- Official Rockstar trailers are OK in short pieces.
+- NEVER rip other creators' YouTube videos (copyright strikes + YouTube
+  "reused content" demonetization). Only with the creator's permission + credit.

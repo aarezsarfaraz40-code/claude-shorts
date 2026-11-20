@@ -4,6 +4,10 @@ Channel: **GTA HIGHEST** (gaming news, GTA 6). Owner is non-technical — talk i
 simple Roman Urdu, ask at most ONE simple question at a time.
 
 ## Content
+- GTA 6 is OUT (launched 19 Nov 2026). Scripts must be about the released
+  game: features, gameplay, confirmed characters/cast, discoveries, reviews.
+  Research fresh sources (WebSearch) before every new batch. The trailer is
+  ONLY footage for clips — never base a script on trailer details.
 - Scripts: `reels/SCRIPTS.md` (10 scripts). Follow each script's beats, hooks,
   graphics and on-screen text. Facts marked ⚠️ must show an on-screen stamp
   ("ESTIMATE", "FAN THEORY", "NOT CONFIRMED").

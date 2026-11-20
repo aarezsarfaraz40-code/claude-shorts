@@ -40,3 +40,16 @@ Thumbs.db
 # Temporary / intermediate files
 *.wav
 *.tmp
+
+# Your videos and finished clips (kept out of git)
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+
+# Local code backup zip
+claude-shorts-code.zip
+
+# Reel assets (trailer, voiceovers, work files) stay local
+reels/assets/
+reels/work/

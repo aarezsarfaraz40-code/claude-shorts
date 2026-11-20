@@ -5,6 +5,7 @@ Supports three reframing strategies based on content type:
 - talking-head: Face-tracked center crop (follows the speaker's face)
 - screen: Cursor-tracked pan with moderate zoom (follows mouse cursor)
 - podcast: Center crop or dominant-speaker tracking
+- gameplay: Fixed center crop (keeps the game character centered)
 
 Usage:
     python3 compute_reframe.py --clips-dir /tmp/claude-shorts/clips/ \
@@ -57,13 +58,12 @@ def get_video_info(path):
 def compute_face_track(clip_path, src_w, src_h, num_samples=5):
     """Track face positions across sampled frames using MediaPipe."""
     import cv2
-    import mediapipe as mp
     import tempfile
+    from face_utils import FaceDetector
 
     _, _, _, duration = get_video_info(clip_path)
 
-    mp_face = mp.solutions.face_detection
-    detector = mp_face.FaceDetection(model_selection=1, min_detection_confidence=0.5)
+    detector = FaceDetector(min_confidence=0.5)
 
     face_positions = []
     timestamps = [duration * (i + 0.5) / num_samples for i in range(num_samples)]
@@ -85,16 +85,12 @@ def compute_face_track(clip_path, src_w, src_h, num_samples=5):
         if img is None:
             continue
 
-        rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        results = detector.process(rgb)
+        detections = detector.detect(img)
 
-        if results.detections:
-            best = max(results.detections,
-                       key=lambda d: d.location_data.relative_bounding_box.width *
-                                     d.location_data.relative_bounding_box.height)
-            bbox = best.location_data.relative_bounding_box
-            cx = bbox.xmin + bbox.width / 2
-            cy = bbox.ymin + bbox.height / 2
+        if detections:
+            bbox = max(detections, key=lambda d: d["w"] * d["h"])
+            cx = bbox["x"] + bbox["w"] / 2
+            cy = bbox["y"] + bbox["h"] / 2
             face_positions.append({
                 "t": round(ts, 2),
                 "x_center": round(cx, 4),
@@ -327,7 +323,7 @@ def main():
     parser = argparse.ArgumentParser(description="Compute reframe coordinates")
     parser.add_argument("--clips-dir", required=True, help="Directory with clip files")
     parser.add_argument("--content-type", required=True,
-                        choices=["talking-head", "screen", "podcast"],
+                        choices=["talking-head", "screen", "podcast", "gameplay"],
                         help="Content type for reframing strategy")
     parser.add_argument("--output", required=True, help="Output JSON file")
     parser.add_argument("--zoom", type=float, default=0.55,
@@ -354,7 +350,15 @@ def main():
         clip_name = os.path.basename(clip_path)
         src_w, src_h, fps, duration = get_video_info(clip_path)
 
-        if args.content_type == "talking-head":
+        if args.content_type == "gameplay":
+            # Third-person games keep the playable character in the middle of
+            # the screen, so a fixed center 9:16 crop keeps Jason/Lucia
+            # centered. Never face-track here: it would lock onto a facecam.
+            crop = compute_crop_center(src_w, src_h)
+            strategy = "center-character"
+            crop_keyframes = []
+            face_positions = []
+        elif args.content_type == "talking-head":
             face_positions = compute_face_track(clip_path, src_w, src_h)
             crop = compute_crop_face_track(src_w, src_h, face_positions)
             strategy = "face-track"
@@ -393,7 +397,7 @@ def main():
             "source_resolution": f"{src_w}x{src_h}",
             "crop": crop,
             "output_resolution": "1080x1920",
-            "face_positions": face_positions if args.content_type != "screen" else [],
+            "face_positions": face_positions if args.content_type not in ("screen", "gameplay") else [],
             "duration": round(duration, 2),
         }
 

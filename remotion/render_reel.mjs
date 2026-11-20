@@ -35,10 +35,10 @@ const server = http.createServer((req, res) => {
   if (range) {
     const [a, b] = range.replace("bytes=", "").split("-");
     const start = parseInt(a, 10), end = b ? parseInt(b, 10) : size - 1;
-    res.writeHead(206, { "Content-Range": `bytes ${start}-${end}/${size}`, "Accept-Ranges": "bytes", "Content-Length": end - start + 1, "Content-Type": type });
+    res.writeHead(206, { "Access-Control-Allow-Origin": "*", "Content-Range": `bytes ${start}-${end}/${size}`, "Accept-Ranges": "bytes", "Content-Length": end - start + 1, "Content-Type": type });
     return fs.createReadStream(fp, { start, end }).pipe(res);
   }
-  res.writeHead(200, { "Content-Length": size, "Content-Type": type, "Accept-Ranges": "bytes" });
+  res.writeHead(200, { "Access-Control-Allow-Origin": "*", "Content-Length": size, "Content-Type": type, "Accept-Ranges": "bytes" });
   fs.createReadStream(fp).pipe(res);
 });
 await new Promise((r) => server.listen(0, "127.0.0.1", r));

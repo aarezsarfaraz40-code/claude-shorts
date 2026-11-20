@@ -27,6 +27,7 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { useCaptionPages } from "../hooks/useCaptionPages";
+import { ChannelEnd, FocusBox, Grid4, InfoCard, Logo3D, NumBadge, Wipe } from "./ReelFx";
 
 // ------------------------------------------------------------------ schema
 
@@ -55,6 +56,7 @@ export const GtaReelSchema = z.object({
   overlays: z.array(z.any()),
   captions: z.array(z.object({ text: z.string(), startMs: z.number(), endMs: z.number() })),
   sfx: z.array(z.object({ at: z.number(), file: z.string(), volume: z.number().optional() })).default([]),
+  keywords: z.object({ yellow: z.array(z.string()).default([]), pink: z.array(z.string()).default([]) }).optional(),
   music: z.object({ file: z.string(), volume: z.number().default(0.15), startAt: z.number().default(0) }).optional(),
 });
 export type GtaReelProps = z.infer<typeof GtaReelSchema>;
@@ -142,7 +144,7 @@ const ClipShot: React.FC<{
         src={src}
         startFrom={Math.round(srcStart * fps)}
         muted
-        style={{ position: "absolute", left, top, width: vw, height: vh, maxWidth: "none" }}
+        style={{ position: "absolute", left, top, width: vw, height: vh, maxWidth: "none", filter: "brightness(1.08) contrast(1.06) saturate(1.18)" }}
       />
       <AbsoluteFill style={{ background: "#fff", opacity: flash }} />
     </AbsoluteFill>
@@ -171,10 +173,10 @@ const FullVideo: React.FC<{ props: GtaReelProps }> = ({ props }) => {
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,4,20,.82) 0%, rgba(10,4,20,.35) 22%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 62%, rgba(10,4,20,.45) 76%, rgba(10,4,20,.85) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 16%, rgba(0,0,0,0) 70%, rgba(0,0,0,.25) 88%, rgba(0,0,0,.4) 100%)",
         }}
       />
-      <AbsoluteFill style={{ background: `linear-gradient(160deg, ${C.purple}22, transparent 40%, ${C.pink}22)` }} />
+
     </AbsoluteFill>
   );
 };
@@ -248,11 +250,16 @@ const ProgressBar: React.FC<{ total: number }> = ({ total }) => {
 };
 
 // Captions: each word appears exactly when it is spoken (word by word)
-const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captions }) => {
+// Reference style: 1-3 words per page, heavy white text with soft shadow,
+// key words in yellow (names, numbers) or pink (emotion/emphasis).
+const AUTO_YELLOW = /^(GTA|VI|6|JASON|LUCIA|ROCKSTAR|LEONIDA|VICE|CITY|[0-9$][0-9.,$%BMK-]*)$/;
+const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"]; keywords?: GtaReelProps["keywords"] }> = ({ captions, keywords }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (frame / fps) * 1000;
-  const pages = useCaptionPages(captions, 900);
+  const pages = useCaptionPages(captions, 450);
+  const yel = new Set((keywords?.yellow ?? []).map((w) => w.toUpperCase()));
+  const pnk = new Set((keywords?.pink ?? []).map((w) => w.toUpperCase()));
   const page = pages.find((p) => ms >= p.startMs && ms < p.startMs + p.durationMs);
   if (!page) return null;
   // Auto-fit: never wider than the safe zone, max 2 lines.
@@ -260,22 +267,22 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
   const words = page.tokens.map((t) => t.text.trim());
   const longest = Math.max(1, ...words.map((w) => w.length));
   const chars = words.join(" ").length;
-  const capSize = Math.floor(Math.min(62, boxW / (longest * 0.78), (2 * boxW) / (chars * 0.74 + 2)));
+  const capSize = Math.floor(Math.min(76, boxW / (longest * 0.78), (2 * boxW) / (chars * 0.74 + 2)));
   return (
     <div
       style={{
         position: "absolute",
         left: SAFE.left,
         right: W - SAFE.right,
-        top: 1240,
-        height: 175,
+        top: 1225,
+        height: 190,
         overflow: "visible",
         textAlign: "center",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
         alignContent: "center",
-        gap: "2px 30px",
+        gap: "0px 22px",
       }}
     >
       {page.tokens.map((tk, i) => {
@@ -283,15 +290,17 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
         const active = ms >= tk.fromMs && ms < tk.toMs;
         const local = frame - Math.floor((tk.fromMs / 1000) * fps);
         const s = spring({ frame: local, fps, config: { damping: 9, stiffness: 260, mass: 0.6 } });
+        const key = tk.text.trim().toUpperCase().replace(/[^A-Z0-9$.,%'-]/g, "").replace(/[.,]+$/, "");
+        const color = pnk.has(key) ? C.pink : yel.has(key) || AUTO_YELLOW.test(key) ? "#FFD400" : C.white;
         return (
           <span
             key={i}
             style={{
               display: "inline-block",
               visibility: shown ? "visible" : "hidden",
-              color: active ? C.yellow : C.white,
-              transform: `translateY(${(1 - s) * 30}px) scale(${0.5 + 0.5 * s})`,
-              textShadow: outline(4),
+              color,
+              transform: `translateY(${(1 - s) * 24}px) scale(${(0.6 + 0.4 * s) * (active ? 1.04 : 1)})`,
+              textShadow: "0 5px 16px rgba(0,0,0,.8), 0 0 3px rgba(0,0,0,.95), 2px 2px 0 rgba(0,0,0,.6)",
               ...T(Math.max(40, capSize)),
             }}
           >
@@ -311,7 +320,8 @@ type OV = { type: string; from: number; to: number; [k: string]: any };
 // (Drawn full-screen by ScrimLayer in the main component, outside the
 // scaled graphics area, so inside graphics this renders nothing.)
 const Scrim: React.FC<{ opacity: number; strength?: number }> = () => null;
-const SCRIM_TYPES: Record<string, number> = { counter: 0.55, versus: 0.55, bars: 0.65, timeline: 0.65, poll: 0.55 };
+const SCRIM_TYPES: Record<string, number> = { counter: 0.35, versus: 0.4, bars: 0.5, timeline: 0.5, poll: 0.4 };
+const CANVAS_TYPES = new Set(["grid", "focus", "numbadge"]);
 const ScrimLayer: React.FC<{ dur: number; strength: number }> = ({ dur, strength }) => {
   const { opacity } = usePop(dur);
   return <AbsoluteFill style={{ background: `rgba(10,4,20,${strength})`, opacity }} />;
@@ -712,6 +722,13 @@ const Overlay: React.FC<{ o: OV; props: GtaReelProps }> = ({ o, props }) => {
     case "bignumber": return <BigNumber o={o} dur={dur} />;
     case "text": return <TextLine o={o} dur={dur} />;
     case "endcard": return <EndCard o={o} logo={props.logo ? props.assetBase + props.logo : ""} logoText={props.logoText} />;
+    case "logo3d": return <Logo3D o={o} dur={dur} src={props.assetBase + o.src} />;
+    case "card": return <InfoCard o={o} dur={dur} src={props.assetBase + o.src} />;
+    case "grid": return <Grid4 o={o} dur={dur} trailer={props.assetBase + props.trailer} source={props.source} />;
+    case "focus": return <FocusBox o={o} dur={dur} />;
+    case "numbadge": return <NumBadge o={o} dur={dur} />;
+    case "wipe": return <Wipe dur={dur} />;
+    case "channel": return <ChannelEnd o={o} logo={props.assetBase + props.logo} trailer={props.assetBase + props.trailer} source={props.source} />;
     default: return null;
   }
 };
@@ -721,12 +738,16 @@ const Overlay: React.FC<{ o: OV; props: GtaReelProps }> = ({ o, props }) => {
 export const GtaReel: React.FC<GtaReelProps> = (props) => {
   const { fps, durationInFrames } = useVideoConfig();
   const overlays = props.overlays as OV[];
-  const ends = overlays.filter((o) => o.type === "endcard");
+  const ends = overlays.filter((o) => o.type === "endcard" || o.type === "channel");
   const endStart = ends.length ? Math.min(...ends.map((e) => e.from)) : Infinity;
   const captions = props.captions.filter((c) => c.startMs / 1000 < endStart);
   // Draw scrim-type graphics first so hooks stay on top
   const order = (o: OV) => (o.type === "text" || o.type === "stamp" ? 1 : 0);
-  const graphics = overlays.filter((o) => o.type !== "endcard" && o.type !== "hook").sort((a, b) => order(a) - order(b));
+  const graphics = overlays
+    .filter((o) => !["endcard", "channel", "hook", "wipe"].includes(o.type) && !CANVAS_TYPES.has(o.type))
+    .sort((a, b) => order(a) - order(b));
+  const canvas = overlays.filter((o) => CANVAS_TYPES.has(o.type));
+  const wipes = overlays.filter((o) => o.type === "wipe");
   const hooks = overlays.filter((o) => o.type === "hook");
   const scrims = overlays.filter((o) => SCRIM_TYPES[o.type] != null && o.scrim !== false);
   const music = props.music;
@@ -738,6 +759,11 @@ export const GtaReel: React.FC<GtaReelProps> = (props) => {
       {scrims.map((o, i) => (
         <Sequence key={`sc${i}`} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
           <ScrimLayer dur={S(o.to - o.from, fps)} strength={SCRIM_TYPES[o.type]} />
+        </Sequence>
+      ))}
+      {canvas.map((o, i) => (
+        <Sequence key={`cv${i}`} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
+          <Overlay o={o} props={props} />
         </Sequence>
       ))}
       {/* center graphics, scaled into the safe zone */}
@@ -753,7 +779,12 @@ export const GtaReel: React.FC<GtaReelProps> = (props) => {
           <Overlay o={o} props={props} />
         </Sequence>
       ))}
-      <ReelCaptions captions={captions} />
+      {wipes.map((o, i) => (
+        <Sequence key={`w${i}`} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
+          <Overlay o={o} props={props} />
+        </Sequence>
+      ))}
+      <ReelCaptions captions={captions} keywords={props.keywords} />
       <TopBar tag={props.tag} logo={props.logo ? props.assetBase + props.logo : ""} logoText={props.logoText} />
       {ends.map((o, i) => (
         <Sequence key={`e${i}`} from={S(o.from, fps)}>

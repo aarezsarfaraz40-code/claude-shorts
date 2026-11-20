@@ -1,5 +1,5 @@
 {
- "durationInSeconds": 38.5,
+ "durationInSeconds": 40.5,
  "trailer": "trailer.mp4",
  "voiceover": "vo/r03.wav",
  "tag": "",
@@ -10,229 +10,240 @@
   "volume": 0.13,
   "startAt": 6.35
  },
+ "keywords": {
+  "yellow": [
+   "6-STAR",
+   "WANTED",
+   "HEAT",
+   "CCTV",
+   "MINIMAP",
+   "STARS",
+   "FACE",
+   "CAR",
+   "OUTFIT",
+   "WEAPON",
+   "PARTNER",
+   "ALARM"
+  ],
+  "pink": [
+   "SCARY",
+   "SMARTER",
+   "HUNTING",
+   "FLASHING",
+   "EVER",
+   "ENTIRE"
+  ]
+ },
  "clips": [
   {
    "from": 0,
-   "to": 2.0,
-   "src": 117.6
+   "to": 2.6,
+   "src": 6.2,
+   "focusX": 0.524,
+   "focusTo": 0.524
   },
   {
-   "from": 2.0,
-   "to": 3.7,
-   "src": 108.0
+   "from": 2.6,
+   "to": 4.0,
+   "src": 108.0,
+   "focusX": 0.451,
+   "focusTo": 0.579
   },
   {
-   "from": 3.7,
+   "from": 4.0,
    "to": 5.7,
-   "src": 148.2
+   "src": 142.2,
+   "focusX": 0.448,
+   "focusTo": 0.448
   },
   {
    "from": 5.7,
-   "to": 7.8,
-   "src": 126.2
+   "to": 8.0,
+   "src": 9.5,
+   "focusX": 0.621,
+   "focusTo": 0.621
   },
   {
-   "from": 7.8,
+   "from": 8.0,
    "to": 10.1,
-   "src": 76.0
+   "src": 76.0,
+   "focusX": 0.607,
+   "focusTo": 0.607
   },
   {
    "from": 10.1,
    "to": 12.0,
-   "src": 118.3
+   "src": 118.3,
+   "focusX": 0.501,
+   "focusTo": 0.412
   },
   {
    "from": 12.0,
    "to": 13.6,
-   "src": 121.3
+   "src": 39.0,
+   "focusX": 0.556,
+   "focusTo": 0.556
   },
   {
    "from": 13.6,
-   "to": 15.3,
-   "src": 27.0
-  },
-  {
-   "from": 15.3,
-   "to": 16.6,
-   "src": 149.0
-  },
-  {
-   "from": 16.6,
    "to": 17.8,
-   "src": 94.6
+   "src": 27.0,
+   "focusX": 0.711,
+   "focusTo": 0.711
   },
   {
    "from": 17.8,
    "to": 19.2,
-   "src": 129.6
+   "src": 111.1,
+   "focusX": 0.623,
+   "focusTo": 0.623
   },
   {
    "from": 19.2,
    "to": 21.2,
-   "src": 76.5
+   "src": 76.5,
+   "focusX": 0.641,
+   "focusTo": 0.741
   },
   {
    "from": 21.2,
    "to": 24.2,
-   "src": 111.1
+   "src": 63.0,
+   "focusX": 0.409,
+   "focusTo": 0.409
   },
   {
    "from": 24.2,
    "to": 27.4,
-   "src": 144.0
+   "src": 140.5,
+   "focusX": 0.45,
+   "focusTo": 0.45,
+   "lockFocus": true
   },
   {
    "from": 27.4,
    "to": 29.4,
-   "src": 142.2
+   "src": 142.2,
+   "focusX": 0.467,
+   "focusTo": 0.467
   },
   {
    "from": 29.4,
-   "to": 33.1,
-   "src": 108.5
+   "to": 33.2,
+   "src": 117.4,
+   "focusX": 0.534,
+   "focusTo": 0.534
   },
   {
-   "from": 33.1,
-   "to": 38.5,
-   "src": 66.2,
-   "focusX": 0.7,
-   "focusTo": 0.7,
-   "lockFocus": true
+   "from": 33.2,
+   "to": 40.5,
+   "src": 141.0,
+   "focusX": 0.444,
+   "focusTo": 0.573
   }
  ],
  "overlays": [
   {
-   "type": "hook",
+   "type": "logo3d",
    "from": 0,
-   "to": 5.6,
-   "lines": [
-    "6-STAR WANTED",
-    "IS BACK 🚨"
-   ],
-   "highlight": [
-    "6-STAR"
-   ]
+   "to": 2.6,
+   "src": "brand/gtavi.png",
+   "width": 900,
+   "y": 380
   },
   {
    "type": "counter",
-   "from": 0.4,
+   "from": 2.6,
    "to": 5.6,
    "start": 0,
    "end": 6,
-   "land": 2.1,
+   "land": 3.2,
    "suffix": "★",
    "label": "WANTED LEVEL"
   },
   {
-   "type": "hook",
-   "from": 5.7,
-   "to": 10.0,
-   "lines": [
-    "CRIMES NEED",
-    "A WITNESS 👀"
-   ],
-   "highlight": [
-    "WITNESS"
-   ]
+   "type": "wipe",
+   "from": 5.45,
+   "to": 5.95
   },
   {
-   "type": "badge",
-   "from": 8.0,
-   "to": 9.0,
-   "title": "REPORTED IF",
-   "value": "SEEN",
-   "color": "#E3262A"
+   "type": "focus",
+   "from": 6.0,
+   "to": 8.0,
+   "x": 250,
+   "y": 560,
+   "w": 580,
+   "h": 620,
+   "label": "WITNESS 👀"
   },
   {
    "type": "badge",
    "from": 9.05,
    "to": 10.0,
-   "title": "OR IF",
+   "title": "OR AN",
    "value": "ALARM",
-   "color": "#5B2CC9",
-   "rotate": 4
-  },
-  {
-   "type": "hook",
-   "from": 10.1,
-   "to": 13.5,
-   "lines": [
-    "THE NEW",
-    "HEAT SYSTEM 🔥"
-   ],
-   "highlight": [
-    "HEAT"
-   ]
+   "color": "#E3262A"
   },
   {
    "type": "bignumber",
-   "from": 11.0,
+   "from": 10.6,
    "to": 13.5,
-   "text": "HEAT",
-   "x": 170,
-   "y": 640
+   "text": "HEAT 🔥",
+   "x": 110,
+   "y": 620
   },
   {
-   "type": "hook",
-   "from": 13.6,
-   "to": 21.1,
-   "lines": [
-    "THEY REMEMBER",
-    "EVERYTHING"
-   ],
-   "highlight": [
-    "EVERYTHING"
-   ]
+   "type": "wipe",
+   "from": 13.35,
+   "to": 13.85
   },
   {
-   "type": "timeline",
+   "type": "grid",
    "from": 13.6,
-   "to": 21.1,
-   "title": "POLICE REMEMBER:",
+   "to": 17.8,
    "items": [
     {
-     "label": "FACE",
-     "state": "ok",
-     "at": 14.5
+     "src": 27.3,
+     "n": 1,
+     "at": 14.5,
+     "focusX": 0.6
     },
     {
-     "label": "CAR",
-     "state": "ok",
-     "at": 15.3
+     "src": 149.0,
+     "n": 2,
+     "at": 15.3,
+     "focusX": 0.7
     },
     {
-     "label": "OUTFIT",
-     "state": "ok",
+     "src": 94.6,
+     "n": 3,
      "at": 15.96
     },
     {
-     "label": "WEAPON",
-     "state": "ok",
+     "src": 129.6,
+     "n": 4,
      "at": 16.68
-    },
-    {
-     "label": "PARTNER",
-     "state": "ok",
-     "at": 17.84
-    },
-    {
-     "label": "CCTV",
-     "state": "ok",
-     "at": 19.3
     }
    ]
   },
   {
-   "type": "hook",
-   "from": 21.2,
-   "to": 24.1,
-   "lines": [
-    "HEAT STAYS",
-    "AFTER THE STARS"
-   ],
-   "highlight": [
-    "STAYS"
-   ]
+   "type": "card",
+   "from": 17.8,
+   "to": 19.2,
+   "src": "chars/lucia.jpg",
+   "name": "PARTNER",
+   "sub": "Lucia counts too",
+   "width": 700
+  },
+  {
+   "type": "focus",
+   "from": 19.3,
+   "to": 21.1,
+   "x": 220,
+   "y": 520,
+   "w": 640,
+   "h": 620,
+   "label": "CCTV 📹"
   },
   {
    "type": "stamp",
@@ -245,36 +256,12 @@
    "rotate": -8
   },
   {
-   "type": "hook",
-   "from": 24.2,
-   "to": 27.3,
-   "lines": [
-    "FLASHING STARS =",
-    "OUT OF SIGHT"
-   ],
-   "highlight": [
-    "FLASHING"
-   ]
-  },
-  {
    "type": "badge",
    "from": 25.0,
    "to": 27.3,
    "title": "LINE OF SIGHT",
    "value": "LOST",
    "color": "#E3262A"
-  },
-  {
-   "type": "hook",
-   "from": 27.4,
-   "to": 29.3,
-   "lines": [
-    "NO COPS ON",
-    "THE MINIMAP"
-   ],
-   "highlight": [
-    "MINIMAP"
-   ]
   },
   {
    "type": "stamp",
@@ -287,33 +274,30 @@
    "rotate": -6
   },
   {
-   "type": "hook",
-   "from": 29.4,
-   "to": 33.0,
-   "lines": [
-    "6 STARS ="
-   ],
-   "highlight": [
-    "6"
-   ]
+   "type": "wipe",
+   "from": 29.2,
+   "to": 29.7
   },
   {
    "type": "counter",
-   "from": 29.4,
-   "to": 33.0,
+   "from": 29.5,
+   "to": 33.1,
    "start": 0,
    "end": 6,
-   "land": 30.0,
+   "land": 30.1,
    "suffix": "★",
    "label": "WHOLE MAP HUNTS YOU",
    "color": "#FF3B3B"
   },
   {
-   "type": "endcard",
-   "from": 33.1,
-   "to": 38.5,
-   "line1": "FOLLOW GTA HIGHEST",
-   "line2": "DAILY GTA 6 NEWS 🔔"
+   "type": "channel",
+   "from": 33.2,
+   "to": 40.5,
+   "channel": "GTA HIGHEST",
+   "sub": "Daily GTA 6 news & updates",
+   "teaser": "MORE GTA 6 UPDATES",
+   "teaserSrc": 140.7,
+   "line1": "FOLLOW FOR MORE"
   }
  ],
  "captions": [
@@ -848,5 +832,221 @@
    "endMs": 35160
   }
  ],
- "sfx": []
+ "sfx": [
+  {
+   "at": 0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 0,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 2.2,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 2.6,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 2.8,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 2.92,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 3.04,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 3.2,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 4.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 5.45,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 5.7,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 6.0,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 9.05,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 10.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 10.6,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 12.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 13.35,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 13.6,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 14.5,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 15.3,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 15.96,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 16.68,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 17.8,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 17.8,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 19.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 19.3,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 21.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 22.4,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 24.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 25.0,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 27.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 27.6,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 29.1,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 29.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 29.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 29.7,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.82,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.94,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.1,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 32.6,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.9,
+   "file": "sfx/bell.wav",
+   "volume": 0.16
+  }
+ ]
 }

@@ -76,3 +76,28 @@ owner with the video:
 - Tags: ~20-25 comma-separated keywords (under 500 characters), always include
   gta 6, gta vi, gta 6 news, grand theft auto 6, rockstar games, gta highest
 - Instagram/TikTok caption + hashtags
+
+## Reference style (owner's reference: @roddy_game, `reels/reference/ref1.mp4`)
+- Clean, BRIGHT full-screen gameplay — no heavy dark overlays or color tint.
+  Prefer daylight/bright trailer shots; avoid dark/night shots unless needed.
+- Captions: 1-3 words per page, heavy white Montserrat with a soft shadow,
+  key words **yellow** (names, numbers, game terms) or **pink** (emotion,
+  emphasis) via the spec's `"keywords": {"yellow": [...], "pink": [...]}`.
+- No headline "hook" text blocks by default — use graphics instead.
+- Graphics library (see `remotion/src/reel/ReelFx.tsx`): `logo3d` (3D logo flip,
+  float + glare), `card` (3D character/actor card + name plate), `grid` (2x2
+  live clips, numbered gold badges, red ✕ via `xAt`, item `at` = spoken time),
+  `focus` (gold corner brackets + label), `numbadge`, `wipe` (pink/purple
+  transition), `channel` (search bar types GTA HIGHEST → channel card →
+  Subscribe tap → teaser clip). Plus counters, badges, stamps, bars.
+- Opening: GTA VI 3D logo (`brand/gtavi.png`) over a bright shot.
+- Ending: `channel` end card (last ~7 s).
+
+## Mentions (MANDATORY)
+- Voiceover says **"Rockstar"** → show `logo3d` with `brand/rockstar.png`.
+- A **character** is named → show a `card` with their still from the trailer
+  (`assets/chars/<name>.jpg`: jason, lucia, brian ...). Verify who is who first.
+- An **actor** is named → show a `card` with the actor's photo
+  (`assets/actors/<slug>.jpg`) + name. Use properly licensed photos (e.g.
+  Wikimedia Commons, needs upload.wikimedia.org allowed) or photos the owner
+  sends. Never use an unverified photo.

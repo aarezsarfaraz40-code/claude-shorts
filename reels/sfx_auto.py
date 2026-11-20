@@ -73,7 +73,20 @@ def main():
                 add(t0 + (6 + i * 6) / 30, "pop")
         elif ty == "bignumber":
             add(t0, "impact")
-        elif ty == "endcard":
+        elif ty in ("logo3d", "card"):
+            add(t0, "impact")
+        elif ty == "grid":
+            for i, it in enumerate(o.get("items", [])):
+                add(it.get("at", t0 + i * 0.13), "pop")
+                if it.get("xAt") is not None:
+                    add(it["xAt"], "glitch")
+        elif ty == "focus":
+            add(t0, "tick")
+        elif ty == "numbadge":
+            add(t0, "pop")
+        elif ty == "wipe":
+            add(t0, "whoosh")
+        elif ty in ("endcard", "channel"):
             add(t0 - 0.6, "riser")
             add(t0 + 0.7, "bell")
 

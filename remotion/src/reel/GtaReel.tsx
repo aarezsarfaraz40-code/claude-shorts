@@ -498,7 +498,7 @@ const Bars: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const items: any[] = o.items;
   const min = o.min ?? 0;
   const max = o.max ?? Math.max(...items.map((i) => i.value));
-  const barH = Math.min(120, 760 / items.length - 20);
+  const barH = Math.min(150, 760 / items.length - 20);
   return (
     <>
       <Scrim opacity={opacity} strength={0.65} />
@@ -511,7 +511,7 @@ const Bars: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
           const shown = it.value * Math.min(1, g);
           return (
             <div key={i} style={{ display: "flex", alignItems: "center", marginBottom: 20, height: barH, opacity: Math.min(1, g * 3) }}>
-              <div style={{ width: 300, color: C.white, textShadow: outline(3), ...T(38) }}>{it.label}</div>
+              <div style={{ width: 330, color: C.white, textShadow: outline(4), ...T(o.labelSize ?? 52, { lineHeight: 1 }) }}>{it.label}</div>
               <div style={{ flex: 1, height: "100%" }}>
                 <div
                   style={{
@@ -526,7 +526,7 @@ const Bars: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
                     paddingRight: 16,
                   }}
                 >
-                  <span style={{ color: C.white, textShadow: outline(4), ...T(barH * 0.55, { fontStyle: "italic" }) }}>
+                  <span style={{ color: C.white, textShadow: outline(5), whiteSpace: "nowrap", ...T(Math.min(90, barH * 0.75), { fontStyle: "italic" }) }}>
                     {(it.prefix ?? "") + fmt(shown, it.decimals ?? 0, true) + (it.suffix ?? "")}
                     {it.crown && g > 0.95 ? " 👑" : ""}
                   </span>

@@ -9,6 +9,7 @@ simple Roman Urdu, ask at most ONE simple question at a time.
   ("ESTIMATE", "FAN THEORY", "NOT CONFIRMED").
 - Language: **English** voiceover + English on-screen text.
 - Length: **~40 seconds** (35-45 s). Voiceover ~95-105 words.
+- The voiceover ALWAYS ends with: **"Follow GTA Highest for more updates."**
 - Source footage: GTA VI Trailer 2 (`reels/assets/trailer.mp4`), short
   2-4 s shots only. Every shot must show a character/action (check the focus
   sheet; swap shots that show empty rooms, black frames, or the Rockstar logo).
@@ -58,3 +59,14 @@ node remotion/render_reel.mjs --spec reels/specs/rNN.json \
 ```
 Check a frame strip (safe zone box drawn) before sending. Send the finished
 MP4 to the owner as a download card. Commit specs/code to the branch.
+
+## SEO pack (for EVERY reel)
+Write `reels/seo/rNN.md` (template: `reels/seo/r01.md`) and give it to the
+owner with the video:
+- YouTube Shorts title (< 70 chars, keyword first, emoji, `#Shorts`) + 2 backup titles
+- Description: hook line, 2-3 keyword-rich sentences with facts, question CTA,
+  "Follow GTA HIGHEST for daily GTA 6 news", sources, Rockstar footage credit,
+  8-10 hashtags (#GTA6 #GTAVI #GTA6News #Shorts first)
+- Tags: ~20-25 comma-separated keywords (under 500 characters), always include
+  gta 6, gta vi, gta 6 news, grand theft auto 6, rockstar games, gta highest
+- Instagram/TikTok caption + hashtags

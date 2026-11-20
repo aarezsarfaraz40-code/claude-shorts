@@ -55,6 +55,7 @@ export const GtaReelSchema = z.object({
   overlays: z.array(z.any()),
   captions: z.array(z.object({ text: z.string(), startMs: z.number(), endMs: z.number() })),
   sfx: z.array(z.object({ at: z.number(), file: z.string(), volume: z.number().optional() })).default([]),
+  music: z.object({ file: z.string(), volume: z.number().default(0.15), startAt: z.number().default(0) }).optional(),
 });
 export type GtaReelProps = z.infer<typeof GtaReelSchema>;
 
@@ -73,7 +74,14 @@ const C = {
 const FONT = "'MontserratV', 'Montserrat', sans-serif";
 const W = 1080;
 const H = 1920;
-const ZONE = { x: 40, y: 470, size: 1000 }; // where center graphics sit
+const ZONE = { x: 40, y: 470, size: 1000 }; // design space for center graphics
+// Platform safe zone (YouTube Shorts / Reels / TikTok UI never covers this):
+// 60px left, 180px right (like/comment buttons), 250px top, 480px bottom.
+const SAFE = { left: 60, right: 900, top: 250, bottom: 1440 };
+const SAFE_CX = (SAFE.left + SAFE.right) / 2;
+// Center graphics are drawn in the 1000x1000 ZONE, then scaled into the safe zone
+const GK = 0.62;
+const GZ = { x: SAFE_CX - (ZONE.size * GK) / 2, y: 620 };
 const S = (s: number, fps: number) => Math.round(s * fps);
 
 const fontCSS = `
@@ -175,50 +183,53 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = spring({ frame, fps, config: { damping: 12 } });
+  const t = spring({ frame: frame - 6, fps, config: { damping: 12 } });
   const blink = Math.floor(frame / 15) % 2 === 0 ? 1 : 0.3;
   return (
     <>
       <div
         style={{
           position: "absolute",
-          left: 50,
-          top: 70,
-          transform: `translateX(${(1 - s) * -400}px)`,
-          display: "flex",
-          alignItems: "center",
-          gap: 14,
-          background: C.red,
-          padding: "14px 28px",
-          borderRadius: 999,
-          color: C.white,
-          boxShadow: "0 8px 30px rgba(0,0,0,.4)",
-          ...T(36, { letterSpacing: 2 }),
-        }}
-      >
-        <span style={{ width: 18, height: 18, borderRadius: 9, background: C.white, opacity: blink }} />
-        {tag}
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          right: 50,
-          top: 50,
-          width: 130,
-          height: 130,
-          borderRadius: 65,
+          left: SAFE.left,
+          top: SAFE.top + 10,
+          width: 196,
+          height: 109,
+          borderRadius: 16,
           overflow: "hidden",
-          transform: `scale(${s}) rotate(${(1 - s) * 180}deg)`,
-          border: `5px solid ${C.white}`,
+          border: `4px solid ${C.white}`,
           background: `linear-gradient(135deg, ${C.purple}, ${C.pink})`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           color: C.white,
           boxShadow: "0 8px 30px rgba(0,0,0,.5)",
-          ...T(28),
+          transform: `scale(${s})`,
+          transformOrigin: "left top",
+          ...T(26),
         }}
       >
         {logo ? <Img src={logo} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : logoText}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: SAFE.left + 214,
+          top: SAFE.top + 40,
+          transform: `translateX(${(1 - t) * -300}px)`,
+          opacity: Math.min(1, t * 2),
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          background: C.red,
+          padding: "10px 20px",
+          borderRadius: 999,
+          color: C.white,
+          boxShadow: "0 8px 30px rgba(0,0,0,.4)",
+          ...T(28, { letterSpacing: 1 }),
+        }}
+      >
+        <span style={{ width: 14, height: 14, borderRadius: 7, background: C.white, opacity: blink }} />
+        {tag}
       </div>
     </>
   );
@@ -246,15 +257,15 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
     <div
       style={{
         position: "absolute",
-        left: 50,
-        right: 50,
-        top: 1520,
-        height: 280,
+        left: SAFE.left,
+        right: W - SAFE.right,
+        top: 1255,
+        height: 180,
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
         alignContent: "center",
-        gap: "4px 36px",
+        gap: "2px 30px",
       }}
     >
       {page.tokens.map((tk, i) => {
@@ -269,9 +280,9 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
               display: "inline-block",
               visibility: shown ? "visible" : "hidden",
               color: active ? C.yellow : C.white,
-              transform: `translateY(${(1 - s) * 30}px) scale(${(0.5 + 0.5 * s) * (active ? 1.05 : 1)})`,
-              textShadow: outline(5),
-              ...T(84),
+              transform: `translateY(${(1 - s) * 30}px) scale(${0.5 + 0.5 * s})`,
+              textShadow: outline(4),
+              ...T(62),
             }}
           >
             {tk.text.trim()}
@@ -287,9 +298,14 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
 type OV = { type: string; from: number; to: number; [k: string]: any };
 
 // Full-screen dim so graphics read clearly over the video
-const Scrim: React.FC<{ opacity: number; strength?: number }> = ({ opacity, strength = 0.55 }) => (
-  <AbsoluteFill style={{ background: `rgba(10,4,20,${strength})`, opacity }} />
-);
+// (Drawn full-screen by ScrimLayer in the main component, outside the
+// scaled graphics area, so inside graphics this renders nothing.)
+const Scrim: React.FC<{ opacity: number; strength?: number }> = () => null;
+const SCRIM_TYPES: Record<string, number> = { counter: 0.55, versus: 0.55, bars: 0.65, timeline: 0.65, poll: 0.55 };
+const ScrimLayer: React.FC<{ dur: number; strength: number }> = ({ dur, strength }) => {
+  const { opacity } = usePop(dur);
+  return <AbsoluteFill style={{ background: `rgba(10,4,20,${strength})`, opacity }} />;
+};
 
 // Hook headline: words land one by one (slide up + scale + unblur).
 // `highlight` words get a tilted yellow box with black text.
@@ -300,9 +316,9 @@ const Hook: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const stagger = o.stagger ?? 4;
   let idx = 0;
   return (
-    <div style={{ position: "absolute", left: 40, right: 40, top: o.top ?? 200, textAlign: "center", opacity: out }}>
+    <div style={{ position: "absolute", left: SAFE.left, right: W - SAFE.right, top: o.top ?? 395, textAlign: "center", opacity: out }}>
       {lines.map((line, li) => (
-        <div key={li} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px 22px", marginBottom: 10 }}>
+        <div key={li} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "6px 16px", marginBottom: 6 }}>
           {line.split(" ").map((w, wi) => {
             const k = idx++;
             const f = frame - k * stagger;
@@ -319,11 +335,11 @@ const Hook: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
                   transform: `translateY(${(1 - s) * 70}px) scale(${0.4 + 0.6 * s}) ${isHl ? "rotate(-3deg)" : ""}`,
                   color: isHl ? "#000" : C.white,
                   background: isHl ? C.yellow : "transparent",
-                  padding: isHl ? "2px 18px" : 0,
+                  padding: isHl ? "2px 14px" : 0,
                   borderRadius: isHl ? 12 : 0,
                   boxShadow: isHl ? `0 10px 30px rgba(0,0,0,.5)` : "none",
-                  textShadow: isHl ? "none" : outline(5),
-                  ...T(o.size ?? 96),
+                  textShadow: isHl ? "none" : outline(4),
+                  ...T(Math.round((o.size ?? 96) * 0.75)),
                 }}
               >
                 {w}
@@ -627,7 +643,7 @@ const TextLine: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, opacity } = usePop(dur);
   const s = spring({ frame, fps, config: { damping: 12 } });
   return (
-    <div style={{ position: "absolute", left: 40, right: 40, top: o.y ?? 1400, textAlign: "center", opacity, transform: `translateY(${(1 - s) * 80}px)` }}>
+    <div style={{ position: "absolute", left: 40, right: 40, top: o.y ?? 1360, textAlign: "center", opacity, transform: `translateY(${(1 - s) * 80}px)` }}>
       <span style={{ color: o.color ?? C.white, background: o.bg ?? "rgba(0,0,0,.65)", padding: "10px 26px", borderRadius: 16, lineHeight: 1.5, ...T(o.size ?? 52, { fontWeight: 800, textTransform: o.upper === false ? "none" : "uppercase", letterSpacing: 0 }) }}>
         {o.text}
       </span>
@@ -641,23 +657,27 @@ const EndCard: React.FC<{ o: OV; logo: string; logoText: string }> = ({ o, logo,
   const s = spring({ frame, fps, config: { damping: 10 } });
   const pulse = 1 + Math.sin(frame / 4) * 0.04;
   const words: string[] = String(o.line1).split(" ");
+  const shine = interpolate(frame, [10, 34], [-200, 1000], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
-    <AbsoluteFill style={{ background: `rgba(11,6,20,${0.82 * Math.min(1, s)})`, alignItems: "center", justifyContent: "center" }}>
-      <div style={{ width: 300, height: 300, borderRadius: 150, overflow: "hidden", border: `10px solid ${C.white}`, background: `linear-gradient(135deg, ${C.purple}, ${C.pink})`, display: "flex", alignItems: "center", justifyContent: "center", color: C.white, transform: `scale(${s}) rotate(${(1 - s) * 360}deg)`, boxShadow: `0 0 80px ${C.pink}`, ...T(64) }}>
-        {logo ? <Img src={logo} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : logoText}
-      </div>
-      <div style={{ marginTop: 60, display: "flex", gap: 22, flexWrap: "wrap", justifyContent: "center", padding: "0 40px" }}>
-        {words.map((w, i) => {
-          const ws = spring({ frame: frame - 6 - i * 4, fps, config: { damping: 11, stiffness: 220 } });
-          return (
-            <span key={i} style={{ display: "inline-block", color: C.white, textShadow: outline(6), opacity: Math.min(1, ws * 2), transform: `translateY(${(1 - ws) * 60}px) scale(${0.5 + 0.5 * ws})`, ...T(100) }}>
-              {w}
-            </span>
-          );
-        })}
-      </div>
-      <div style={{ marginTop: 30, color: "#000", background: C.yellow, padding: "18px 50px", borderRadius: 999, transform: `scale(${pulse * spring({ frame: frame - 18, fps, config: { damping: 10 } })})`, ...T(56) }}>
-        {o.line2}
+    <AbsoluteFill style={{ background: `rgba(11,6,20,${0.85 * Math.min(1, s)})` }}>
+      <div style={{ position: "absolute", left: SAFE.left, width: SAFE.right - SAFE.left, top: 420, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ position: "relative", width: 760, height: 424, borderRadius: 28, overflow: "hidden", border: `6px solid ${C.white}`, background: `linear-gradient(135deg, ${C.purple}, ${C.pink})`, display: "flex", alignItems: "center", justifyContent: "center", color: C.white, transform: `scale(${s}) rotate(${(1 - s) * -8}deg)`, boxShadow: `0 0 80px ${C.pink}`, ...T(64) }}>
+          {logo ? <Img src={logo} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : logoText}
+          <div style={{ position: "absolute", top: 0, left: shine, width: 140, height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent)", transform: "skewX(-20deg)" }} />
+        </div>
+        <div style={{ marginTop: 50, display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center" }}>
+          {words.map((w, i) => {
+            const ws = spring({ frame: frame - 8 - i * 4, fps, config: { damping: 11, stiffness: 220 } });
+            return (
+              <span key={i} style={{ display: "inline-block", color: C.white, textShadow: outline(5), opacity: Math.min(1, ws * 2), transform: `translateY(${(1 - ws) * 60}px) scale(${0.5 + 0.5 * ws})`, ...T(74) }}>
+                {w}
+              </span>
+            );
+          })}
+        </div>
+        <div style={{ marginTop: 26, color: "#000", background: C.yellow, padding: "14px 40px", borderRadius: 999, transform: `scale(${pulse * spring({ frame: frame - 20, fps, config: { damping: 10 } })})`, ...T(44) }}>
+          {o.line2}
+        </div>
       </div>
     </AbsoluteFill>
   );
@@ -691,14 +711,31 @@ export const GtaReel: React.FC<GtaReelProps> = (props) => {
   const endStart = ends.length ? Math.min(...ends.map((e) => e.from)) : Infinity;
   const captions = props.captions.filter((c) => c.startMs / 1000 < endStart);
   // Draw scrim-type graphics first so hooks stay on top
-  const order = (o: OV) => (o.type === "hook" ? 2 : o.type === "text" || o.type === "stamp" ? 1 : 0);
-  const sorted = overlays.filter((o) => o.type !== "endcard").sort((a, b) => order(a) - order(b));
+  const order = (o: OV) => (o.type === "text" || o.type === "stamp" ? 1 : 0);
+  const graphics = overlays.filter((o) => o.type !== "endcard" && o.type !== "hook").sort((a, b) => order(a) - order(b));
+  const hooks = overlays.filter((o) => o.type === "hook");
+  const scrims = overlays.filter((o) => SCRIM_TYPES[o.type] != null && o.scrim !== false);
+  const music = props.music;
+  const musicStart = music ? Math.round((music.startAt ?? 0) * fps) : 0;
   return (
     <AbsoluteFill style={{ backgroundColor: C.dark }}>
       <style dangerouslySetInnerHTML={{ __html: fontCSS }} />
       <FullVideo props={props} />
-      {sorted.map((o, i) => (
-        <Sequence key={i} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
+      {scrims.map((o, i) => (
+        <Sequence key={`sc${i}`} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
+          <ScrimLayer dur={S(o.to - o.from, fps)} strength={SCRIM_TYPES[o.type]} />
+        </Sequence>
+      ))}
+      {/* center graphics, scaled into the safe zone */}
+      <AbsoluteFill style={{ transformOrigin: "0 0", transform: `translate(${GZ.x - ZONE.x * GK}px, ${GZ.y - ZONE.y * GK}px) scale(${GK})` }}>
+        {graphics.map((o, i) => (
+          <Sequence key={i} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
+            <Overlay o={o} props={props} />
+          </Sequence>
+        ))}
+      </AbsoluteFill>
+      {hooks.map((o, i) => (
+        <Sequence key={`h${i}`} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
           <Overlay o={o} props={props} />
         </Sequence>
       ))}
@@ -711,6 +748,16 @@ export const GtaReel: React.FC<GtaReelProps> = (props) => {
       ))}
       <ProgressBar total={durationInFrames} />
       <Audio src={props.assetBase + props.voiceover} />
+      {music ? (
+        <Audio
+          src={props.assetBase + music.file}
+          startFrom={musicStart}
+          volume={(f) =>
+            (music.volume ?? 0.15) *
+            interpolate(f, [0, 15, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+          }
+        />
+      ) : null}
       {props.sfx.map((s, i) => (
         <Sequence key={`s${i}`} from={S(s.at, fps)}>
           <Audio src={props.assetBase + s.file} volume={s.volume ?? 0.5} />

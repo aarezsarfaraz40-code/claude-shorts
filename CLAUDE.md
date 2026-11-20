@@ -43,3 +43,9 @@ Pipeline stores intermediate files in `$SHORTS_TMP` (defaults to `/tmp/claude-sh
 - Python 3.10+ with faster-whisper, mediapipe, numpy, opencv-python
 - Node.js 18+ with remotion, @remotion/captions, zod
 - NVIDIA GPU recommended (NVENC encoding, CUDA transcription)
+
+## GTA HIGHEST reels
+
+For GTA 6 news reels (channel "GTA HIGHEST"), ALWAYS follow `reels/STYLE.md`
+(voice, Montserrat word-by-word text, safe zone, logo, music, ~40 s length).
+Scripts are in `reels/SCRIPTS.md`, one JSON spec per reel in `reels/specs/`.

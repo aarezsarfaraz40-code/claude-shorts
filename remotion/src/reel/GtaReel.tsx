@@ -2,11 +2,14 @@
  * GtaReel — data-driven 1080x1920 news/fact reel with motion graphics.
  *
  * Everything is driven by a JSON "spec" (see reels/specs/*.json):
- *   clips     — trailer shots shown in the center card (seconds)
+ *   clips     — trailer shots, full-screen 9:16 (center/cover crop, `focusX`
+ *               picks which part of the wide frame stays in view)
  *   overlays  — animated graphics: hook, counter, versus, badge, bars,
  *               timeline, poll, stamp, bignumber, text, endcard
- *   captions  — word-level voiceover captions
+ *   captions  — word-level voiceover captions (revealed word by word)
  *   sfx       — sound effects at given times
+ *
+ * All text uses Montserrat (variable font, weight 900).
  */
 import React from "react";
 import {
@@ -18,11 +21,11 @@ import {
   Sequence,
   interpolate,
   spring,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { fontFaceCSS } from "../styles/fonts";
 import { useCaptionPages } from "../hooks/useCaptionPages";
 
 // ------------------------------------------------------------------ schema
@@ -45,6 +48,7 @@ export const GtaReelSchema = z.object({
       to: z.number(),
       src: z.number(),
       focusX: z.number().optional(),
+      focusTo: z.number().optional(),
       zoom: z.enum(["in", "out"]).optional(),
     })
   ),
@@ -66,136 +70,80 @@ const C = {
   white: "#FFFFFF",
   dark: "#0B0614",
 };
-const FONT = "'Montserrat', sans-serif";
-const DISPLAY = "'Bangers', 'Montserrat', sans-serif";
-const CARD = { x: 40, y: 470, size: 1000 };
+const FONT = "'MontserratV', 'Montserrat', sans-serif";
+const W = 1080;
+const H = 1920;
+const ZONE = { x: 40, y: 470, size: 1000 }; // where center graphics sit
 const S = (s: number, fps: number) => Math.round(s * fps);
 
-const outline = (px: number, color = "#000") =>
-  `${px}px ${px}px 0 ${color}, -${px}px -${px}px 0 ${color}, ${px}px -${px}px 0 ${color}, -${px}px ${px}px 0 ${color}, 0 ${px * 2}px ${px * 4}px rgba(0,0,0,.6)`;
+const fontCSS = `
+@font-face { font-family: 'MontserratV'; src: url('${staticFile("fonts/Montserrat-Variable.ttf")}') format('truetype'); font-weight: 100 900; font-style: normal; font-display: block; }
+@font-face { font-family: 'MontserratV'; src: url('${staticFile("fonts/Montserrat-Italic-Variable.ttf")}') format('truetype'); font-weight: 100 900; font-style: italic; font-display: block; }
+`;
 
-// Pop-in / pop-out envelope for an overlay living between [0, dur] frames
+const outline = (px: number, color = "#000") =>
+  `${px}px ${px}px 0 ${color}, -${px}px -${px}px 0 ${color}, ${px}px -${px}px 0 ${color}, -${px}px ${px}px 0 ${color}, 0 ${px * 2}px ${px * 5}px rgba(0,0,0,.7)`;
+
+const T = (size: number, extra: React.CSSProperties = {}): React.CSSProperties => ({
+  fontFamily: FONT,
+  fontWeight: 900,
+  fontSize: size,
+  lineHeight: 1.05,
+  textTransform: "uppercase",
+  letterSpacing: -1,
+  ...extra,
+});
+
+// Pop-in / fade-out envelope for an overlay living between [0, dur] frames
 const usePop = (dur: number, stiffness = 180) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const inn = spring({ frame, fps, config: { damping: 11, stiffness, mass: 0.8 } });
-  const out = interpolate(frame, [dur - 6, dur], [1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const out = interpolate(frame, [dur - 6, dur], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return { frame, fps, inn, out, scale: inn * (0.6 + 0.4 * out), opacity: Math.min(1, inn * 1.5) * out };
 };
 
-// ------------------------------------------------------------------ background
-
-const Background: React.FC = () => {
-  const frame = useCurrentFrame();
-  const t = frame / 30;
-  const hue = Math.sin(t * 0.4) * 20;
-  return (
-    <AbsoluteFill
-      style={{
-        background: `linear-gradient(${160 + hue}deg, #1a0533 0%, #3b0a4f 35%, #a3195b 70%, #ff7a3c 100%)`,
-      }}
-    >
-      {/* moving diagonal stripes */}
-      <AbsoluteFill
-        style={{
-          opacity: 0.12,
-          backgroundImage:
-            "repeating-linear-gradient(115deg, #fff 0 4px, transparent 4px 60px)",
-          backgroundPosition: `${(frame * 2) % 600}px 0`,
-        }}
-      />
-      {/* floating glow orbs */}
-      {[0, 1, 2, 3, 4].map((i) => {
-        const x = 540 + Math.sin(t * (0.3 + i * 0.07) + i * 2) * 420;
-        const y = 960 + Math.cos(t * (0.25 + i * 0.05) + i) * 820;
-        const r = 160 + i * 40;
-        return (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              left: x - r,
-              top: y - r,
-              width: r * 2,
-              height: r * 2,
-              borderRadius: "50%",
-              background: i % 2 ? C.pink : C.orange,
-              opacity: 0.18,
-              filter: "blur(60px)",
-            }}
-          />
-        );
-      })}
-    </AbsoluteFill>
-  );
-};
-
-// ------------------------------------------------------------------ video card
+// ------------------------------------------------------------------ full-screen video
 
 const ClipShot: React.FC<{
   src: string;
   srcStart: number;
   dur: number;
   focusX: number;
+  focusTo: number;
   zoom: "in" | "out";
   source: GtaReelProps["source"];
-}> = ({ src, srcStart, dur, focusX, zoom, source }) => {
+}> = ({ src, srcStart, dur, focusX, focusTo, zoom, source }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const picH = source.bottom - source.top;
-  const base = CARD.size / picH; // fill card height with the picture area
-  const kb = interpolate(frame, [0, dur], zoom === "in" ? [1.0, 1.12] : [1.12, 1.0], {
-    extrapolateRight: "clamp",
-  });
-  // Entry "punch" + flash
-  const punch = interpolate(frame, [0, 5], [1.18, 1], {
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
-  const scale = base * kb * punch;
+  const kb = interpolate(frame, [0, dur], zoom === "in" ? [1.0, 1.1] : [1.1, 1.0], { extrapolateRight: "clamp" });
+  const punch = interpolate(frame, [0, 6], [1.15, 1], { extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const scale = (H / picH) * kb * punch; // cover: picture height fills the screen
   const vw = source.w * scale;
   const vh = source.h * scale;
-  const cx = focusX * source.w * scale;
-  const left = CARD.size / 2 - cx;
-  const top = CARD.size / 2 - ((source.top + picH / 2) * scale);
-  const clampedLeft = Math.min(0, Math.max(CARD.size - vw, left));
-  const flash = interpolate(frame, [0, 4], [0.7, 0], { extrapolateRight: "clamp" });
+  const fx = interpolate(frame, [0, dur], [focusX, focusTo], { extrapolateRight: "clamp", easing: Easing.inOut(Easing.quad) });
+  const left = Math.min(0, Math.max(W - vw, W / 2 - fx * source.w * scale));
+  const top = H / 2 - (source.top + picH / 2) * scale;
+  const flash = interpolate(frame, [0, 4], [0.65, 0], { extrapolateRight: "clamp" });
   return (
     <AbsoluteFill>
       <OffthreadVideo
         src={src}
         startFrom={Math.round(srcStart * fps)}
         muted
-        style={{ position: "absolute", left: clampedLeft, top, width: vw, height: vh, maxWidth: "none" }}
+        style={{ position: "absolute", left, top, width: vw, height: vh, maxWidth: "none" }}
       />
       <AbsoluteFill style={{ background: "#fff", opacity: flash }} />
     </AbsoluteFill>
   );
 };
 
-const VideoCard: React.FC<{ props: GtaReelProps }> = ({ props }) => {
-  const frame = useCurrentFrame();
+const FullVideo: React.FC<{ props: GtaReelProps }> = ({ props }) => {
   const { fps } = useVideoConfig();
-  const enter = spring({ frame, fps, config: { damping: 14, stiffness: 120 } });
   const src = props.assetBase + props.trailer;
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: CARD.x,
-        top: CARD.y,
-        width: CARD.size,
-        height: CARD.size,
-        borderRadius: 44,
-        overflow: "hidden",
-        transform: `scale(${0.85 + 0.15 * enter})`,
-        boxShadow: `0 0 0 6px ${C.white}, 0 0 60px 10px ${C.pink}aa, 0 30px 80px rgba(0,0,0,.6)`,
-        background: "#000",
-      }}
-    >
+    <AbsoluteFill style={{ background: "#000" }}>
       {props.clips.map((c, i) => (
         <Sequence key={i} from={S(c.from, fps)} durationInFrames={Math.max(1, S(c.to - c.from, fps))}>
           <ClipShot
@@ -203,16 +151,21 @@ const VideoCard: React.FC<{ props: GtaReelProps }> = ({ props }) => {
             srcStart={c.src}
             dur={S(c.to - c.from, fps)}
             focusX={c.focusX ?? 0.5}
+            focusTo={c.focusTo ?? c.focusX ?? 0.5}
             zoom={c.zoom ?? (i % 2 ? "out" : "in")}
             source={props.source}
           />
         </Sequence>
       ))}
-      {/* subtle vignette */}
+      {/* readability gradients (top for hooks, bottom for captions) + brand tint */}
       <AbsoluteFill
-        style={{ background: "radial-gradient(circle, transparent 55%, rgba(0,0,0,.45) 100%)" }}
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,4,20,.82) 0%, rgba(10,4,20,.35) 22%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 62%, rgba(10,4,20,.45) 76%, rgba(10,4,20,.85) 100%)",
+        }}
       />
-    </div>
+      <AbsoluteFill style={{ background: `linear-gradient(160deg, ${C.purple}22, transparent 40%, ${C.pink}22)` }} />
+    </AbsoluteFill>
   );
 };
 
@@ -237,12 +190,9 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
           background: C.red,
           padding: "14px 28px",
           borderRadius: 999,
-          fontFamily: FONT,
-          fontWeight: 800,
-          fontSize: 38,
           color: C.white,
-          letterSpacing: 2,
           boxShadow: "0 8px 30px rgba(0,0,0,.4)",
+          ...T(36, { letterSpacing: 2 }),
         }}
       >
         <span style={{ width: 18, height: 18, borderRadius: 9, background: C.white, opacity: blink }} />
@@ -263,11 +213,9 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: FONT,
-          fontWeight: 800,
-          fontSize: 30,
           color: C.white,
           boxShadow: "0 8px 30px rgba(0,0,0,.5)",
+          ...T(28),
         }}
       >
         {logo ? <Img src={logo} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : logoText}
@@ -280,51 +228,50 @@ const ProgressBar: React.FC<{ total: number }> = ({ total }) => {
   const frame = useCurrentFrame();
   const p = Math.min(1, frame / total);
   return (
-    <div style={{ position: "absolute", left: 0, bottom: 0, width: 1080, height: 14, background: "rgba(255,255,255,.2)" }}>
+    <div style={{ position: "absolute", left: 0, bottom: 0, width: W, height: 14, background: "rgba(255,255,255,.2)" }}>
       <div style={{ width: `${p * 100}%`, height: "100%", background: `linear-gradient(90deg, ${C.yellow}, ${C.pink})` }} />
     </div>
   );
 };
 
+// Captions: each word appears exactly when it is spoken (word by word)
 const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captions }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (frame / fps) * 1000;
-  const pages = useCaptionPages(captions, 700);
+  const pages = useCaptionPages(captions, 900);
   const page = pages.find((p) => ms >= p.startMs && ms < p.startMs + p.durationMs);
   if (!page) return null;
-  const local = frame - Math.floor((page.startMs / 1000) * fps);
-  const s = spring({ frame: local, fps, config: { damping: 10, stiffness: 220, mass: 0.7 } });
   return (
     <div
       style={{
         position: "absolute",
-        left: 40,
-        right: 40,
-        top: 1530,
-        height: 260,
+        left: 50,
+        right: 50,
+        top: 1520,
+        height: 280,
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
         alignContent: "center",
-        gap: "8px 30px",
-        transform: `scale(${0.7 + 0.3 * s}) translateY(${(1 - s) * 40}px)`,
+        gap: "4px 36px",
       }}
     >
       {page.tokens.map((tk, i) => {
+        const shown = ms >= tk.fromMs - 30;
         const active = ms >= tk.fromMs && ms < tk.toMs;
+        const local = frame - Math.floor((tk.fromMs / 1000) * fps);
+        const s = spring({ frame: local, fps, config: { damping: 9, stiffness: 260, mass: 0.6 } });
         return (
           <span
             key={i}
             style={{
-              fontFamily: FONT,
-              fontWeight: 800,
-              fontSize: 82,
-              textTransform: "uppercase",
-              color: active ? C.yellow : C.white,
-              transform: active ? "scale(1.12) rotate(-2deg)" : "none",
               display: "inline-block",
+              visibility: shown ? "visible" : "hidden",
+              color: active ? C.yellow : C.white,
+              transform: `translateY(${(1 - s) * 30}px) scale(${(0.5 + 0.5 * s) * (active ? 1.05 : 1)})`,
               textShadow: outline(5),
+              ...T(84),
             }}
           >
             {tk.text.trim()}
@@ -339,56 +286,44 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
 
 type OV = { type: string; from: number; to: number; [k: string]: any };
 
-const Scrim: React.FC<{ opacity: number }> = ({ opacity }) => (
-  <div
-    style={{
-      position: "absolute",
-      left: CARD.x,
-      top: CARD.y,
-      width: CARD.size,
-      height: CARD.size,
-      borderRadius: 44,
-      background: "rgba(10,4,20,.62)",
-      opacity,
-    }}
-  />
+// Full-screen dim so graphics read clearly over the video
+const Scrim: React.FC<{ opacity: number; strength?: number }> = ({ opacity, strength = 0.55 }) => (
+  <AbsoluteFill style={{ background: `rgba(10,4,20,${strength})`, opacity }} />
 );
 
-// Words appear one by one with a bounce; `highlight` words go yellow
+// Hook headline: words land one by one (slide up + scale + unblur).
+// `highlight` words get a tilted yellow box with black text.
 const Hook: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, out } = usePop(dur);
   const lines: string[] = o.lines;
   const hl: string[] = (o.highlight ?? []).map((w: string) => w.toUpperCase());
+  const stagger = o.stagger ?? 4;
   let idx = 0;
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: 40,
-        right: 40,
-        top: o.top ?? 190,
-        textAlign: "center",
-        opacity: out,
-      }}
-    >
+    <div style={{ position: "absolute", left: 40, right: 40, top: o.top ?? 200, textAlign: "center", opacity: out }}>
       {lines.map((line, li) => (
-        <div key={li} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 20px" }}>
+        <div key={li} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px 22px", marginBottom: 10 }}>
           {line.split(" ").map((w, wi) => {
             const k = idx++;
-            const s = spring({ frame: frame - k * 3, fps, config: { damping: 9, stiffness: 200 } });
-            const isHl = hl.includes(w.toUpperCase().replace(/[^A-Z0-9$]/g, ""));
+            const f = frame - k * stagger;
+            const s = spring({ frame: f, fps, config: { damping: 12, stiffness: 220, mass: 0.7 } });
+            const blur = interpolate(f, [0, 6], [12, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+            const isHl = hl.includes(w.toUpperCase().replace(/[^A-Z0-9$%]/g, ""));
             return (
               <span
                 key={wi}
                 style={{
                   display: "inline-block",
-                  fontFamily: DISPLAY,
-                  fontSize: o.size ?? 104,
-                  lineHeight: 1.05,
-                  color: isHl ? C.yellow : C.white,
-                  transform: `scale(${s}) translateY(${(1 - s) * 60}px) rotate(${(1 - s) * -12}deg)`,
-                  textShadow: outline(6),
-                  letterSpacing: 2,
+                  opacity: Math.min(1, s * 2),
+                  filter: `blur(${blur}px)`,
+                  transform: `translateY(${(1 - s) * 70}px) scale(${0.4 + 0.6 * s}) ${isHl ? "rotate(-3deg)" : ""}`,
+                  color: isHl ? "#000" : C.white,
+                  background: isHl ? C.yellow : "transparent",
+                  padding: isHl ? "2px 18px" : 0,
+                  borderRadius: isHl ? 12 : 0,
+                  boxShadow: isHl ? `0 10px 30px rgba(0,0,0,.5)` : "none",
+                  textShadow: isHl ? "none" : outline(5),
+                  ...T(o.size ?? 96),
                 }}
               >
                 {w}
@@ -408,15 +343,11 @@ const fmt = (v: number, decimals: number, sep: boolean) => {
   return a.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (b ? "." + b : "");
 };
 
-// Big number counting up, lands with a shake + burst
+// Big number counting up, lands with a shake + burst ring
 const Counter: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, scale, opacity } = usePop(dur);
   const landF = S((o.land ?? o.from + 1.2) - o.from, fps);
-  const p = interpolate(frame, [4, landF], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
+  const p = interpolate(frame, [4, landF], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   const v = o.start + (o.end - o.start) * p;
   const after = frame - landF;
   const shake = after >= 0 && after < 8 ? Math.sin(after * 2.5) * (8 - after) * 1.5 : 0;
@@ -424,14 +355,14 @@ const Counter: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const color = o.color ?? C.yellow;
   return (
     <>
-      <Scrim opacity={opacity * (o.scrim === false ? 0 : 1)} />
+      {o.scrim === false ? null : <Scrim opacity={opacity} />}
       <div
         style={{
           position: "absolute",
-          left: CARD.x,
-          top: CARD.y + (o.offsetY ?? 0),
-          width: CARD.size,
-          height: CARD.size,
+          left: ZONE.x,
+          top: ZONE.y + (o.offsetY ?? 0),
+          width: ZONE.size,
+          height: ZONE.size,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -440,30 +371,13 @@ const Counter: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
           transform: `scale(${scale}) translateX(${shake}px)`,
         }}
       >
-        {/* burst ring */}
+        <div style={{ position: "absolute", width: 300 + burst * 700, height: 300 + burst * 700, borderRadius: "50%", border: `10px solid ${color}`, opacity: after >= 0 ? 1 - burst : 0 }} />
         <div
           style={{
-            position: "absolute",
-            width: 300 + burst * 700,
-            height: 300 + burst * 700,
-            borderRadius: "50%",
-            border: `10px solid ${color}`,
-            opacity: after >= 0 ? 1 - burst : 0,
-          }}
-        />
-        {o.top_label ? (
-          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 52, color: C.white, textShadow: outline(4), marginBottom: 10 }}>
-            {o.top_label}
-          </div>
-        ) : null}
-        <div
-          style={{
-            fontFamily: DISPLAY,
-            fontSize: o.size ?? 300,
-            lineHeight: 1,
             color,
-            textShadow: outline(10),
+            textShadow: outline(9),
             transform: `scale(${after >= 0 && after < 10 ? 1 + (10 - after) * 0.02 : 1})`,
+            ...T(o.size ?? 280, { fontStyle: "italic", letterSpacing: -6, lineHeight: 1 }),
           }}
         >
           {o.prefix ?? ""}
@@ -474,14 +388,12 @@ const Counter: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
           <div
             style={{
               marginTop: 18,
-              fontFamily: FONT,
-              fontWeight: 800,
-              fontSize: 54,
               color: C.white,
               background: C.pink,
-              padding: "10px 30px",
+              padding: "12px 32px",
               borderRadius: 16,
               transform: `rotate(-2deg) scale(${spring({ frame: frame - 8, fps, config: { damping: 10 } })})`,
+              ...T(52),
             }}
           >
             {o.label}
@@ -501,7 +413,7 @@ const Versus: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const card = (side: any, x: number, color: string) => (
     <div
       style={{
-        width: 420,
+        width: 430,
         padding: "34px 20px",
         borderRadius: 30,
         background: `linear-gradient(160deg, ${color}, #1a0533)`,
@@ -511,9 +423,9 @@ const Versus: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
         boxShadow: "0 20px 50px rgba(0,0,0,.5)",
       }}
     >
-      <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 40, color: C.white, lineHeight: 1.1 }}>{side.title}</div>
-      <div style={{ fontFamily: DISPLAY, fontSize: 190, color: C.yellow, lineHeight: 1, textShadow: outline(6) }}>{side.value}</div>
-      <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 34, color: "#ffd9ea" }}>{side.sub}</div>
+      <div style={{ color: C.white, ...T(40) }}>{side.title}</div>
+      <div style={{ color: C.yellow, textShadow: outline(6), ...T(180, { fontStyle: "italic", lineHeight: 1 }) }}>{side.value}</div>
+      <div style={{ color: "#ffd9ea", ...T(34) }}>{side.sub}</div>
     </div>
   );
   const stampF = o.stampAt != null ? S(o.stampAt - o.from, fps) : null;
@@ -521,49 +433,23 @@ const Versus: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   return (
     <>
       <Scrim opacity={opacity} />
-      <div
-        style={{
-          position: "absolute",
-          left: CARD.x,
-          top: CARD.y,
-          width: CARD.size,
-          height: CARD.size,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 40,
-          opacity,
-        }}
-      >
+      <div style={{ position: "absolute", left: ZONE.x, top: ZONE.y, width: ZONE.size, height: ZONE.size, display: "flex", alignItems: "center", justifyContent: "center", gap: 40, opacity }}>
         {card(o.left, (1 - l) * -700, C.pink)}
         {card(o.right, (1 - r) * 700, C.purple)}
-        <div
-          style={{
-            position: "absolute",
-            fontFamily: DISPLAY,
-            fontSize: 120,
-            color: C.white,
-            textShadow: outline(7, C.red),
-            transform: `scale(${vs}) rotate(${(1 - vs) * 90}deg)`,
-          }}
-        >
-          VS
-        </div>
+        <div style={{ position: "absolute", color: C.white, textShadow: outline(7, C.red), transform: `scale(${vs}) rotate(${(1 - vs) * 90}deg)`, ...T(110, { fontStyle: "italic" }) }}>VS</div>
         {stampF != null && frame >= stampF ? (
           <div
             style={{
               position: "absolute",
               bottom: 120,
-              fontFamily: FONT,
-              fontWeight: 800,
-              fontSize: 64,
               color: C.red,
               border: `8px solid ${C.red}`,
               padding: "6px 30px",
               borderRadius: 14,
-              background: "rgba(255,255,255,.92)",
+              background: "rgba(255,255,255,.94)",
               transform: `rotate(-10deg) scale(${2.4 - 1.4 * st})`,
               opacity: Math.min(1, st * 2),
+              ...T(62),
             }}
           >
             {o.stampText}
@@ -580,41 +466,11 @@ const Badge: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const s = spring({ frame, fps, config: { damping: 8, stiffness: 260, mass: 0.9 } });
   const shine = interpolate(frame, [6, 26], [-300, 900], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: o.x ?? 190,
-        top: o.y ?? 640,
-        width: 700,
-        opacity,
-        transform: `scale(${2.2 - 1.2 * s}) rotate(${o.rotate ?? -4}deg)`,
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          borderRadius: 36,
-          background: o.color ?? C.red,
-          border: `8px solid ${C.white}`,
-          padding: "26px 0",
-          textAlign: "center",
-          boxShadow: "0 25px 60px rgba(0,0,0,.6)",
-        }}
-      >
-        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 70, color: C.white, letterSpacing: 4 }}>{o.title}</div>
-        <div style={{ fontFamily: DISPLAY, fontSize: 210, lineHeight: 0.95, color: C.yellow, textShadow: outline(7) }}>{o.value}</div>
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: shine,
-            width: 120,
-            height: "100%",
-            background: "linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent)",
-            transform: "skewX(-20deg)",
-          }}
-        />
+    <div style={{ position: "absolute", left: o.x ?? 190, top: o.y ?? 700, width: 700, opacity, transform: `scale(${2.2 - 1.2 * s}) rotate(${o.rotate ?? -4}deg)` }}>
+      <div style={{ position: "relative", overflow: "hidden", borderRadius: 36, background: o.color ?? C.red, border: `8px solid ${C.white}`, padding: "26px 0", textAlign: "center", boxShadow: "0 25px 60px rgba(0,0,0,.6)" }}>
+        <div style={{ color: C.white, ...T(68, { letterSpacing: 4 }) }}>{o.title}</div>
+        <div style={{ color: C.yellow, textShadow: outline(7), ...T(200, { fontStyle: "italic", lineHeight: 0.95 }) }}>{o.value}</div>
+        <div style={{ position: "absolute", top: 0, left: shine, width: 120, height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent)", transform: "skewX(-20deg)" }} />
       </div>
     </div>
   );
@@ -629,33 +485,24 @@ const Bars: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const barH = Math.min(120, 760 / items.length - 20);
   return (
     <>
-      <Scrim opacity={opacity} />
-      <div style={{ position: "absolute", left: CARD.x + 40, top: CARD.y + 40, width: CARD.size - 80, opacity }}>
-        {o.title ? (
-          <div style={{ fontFamily: DISPLAY, fontSize: 84, color: C.white, textAlign: "center", textShadow: outline(5), marginBottom: 30 }}>
-            {o.title}
-          </div>
-        ) : null}
+      <Scrim opacity={opacity} strength={0.65} />
+      <div style={{ position: "absolute", left: ZONE.x + 30, top: ZONE.y + 30, width: ZONE.size - 60, opacity }}>
+        {o.title ? <div style={{ color: C.white, textAlign: "center", textShadow: outline(5), marginBottom: 30, ...T(76) }}>{o.title}</div> : null}
         {items.map((it, i) => {
           const startF = S((it.at ?? o.from + i * 0.4) - o.from, fps);
           const g = spring({ frame: frame - startF, fps, config: { damping: 16, stiffness: 90 } });
           const frac = Math.max(0.04, (it.value - min) / (max - min));
           const shown = it.value * Math.min(1, g);
-          const color = it.highlight ? C.yellow : it.color ?? C.pink;
           return (
             <div key={i} style={{ display: "flex", alignItems: "center", marginBottom: 20, height: barH, opacity: Math.min(1, g * 3) }}>
-              <div style={{ width: 280, fontFamily: FONT, fontWeight: 800, fontSize: 40, color: C.white, textShadow: outline(3) }}>
-                {it.label}
-              </div>
-              <div style={{ flex: 1, height: "100%", position: "relative" }}>
+              <div style={{ width: 300, color: C.white, textShadow: outline(3), ...T(38) }}>{it.label}</div>
+              <div style={{ flex: 1, height: "100%" }}>
                 <div
                   style={{
                     width: `${frac * 100 * Math.min(1, g)}%`,
                     height: "100%",
                     borderRadius: 18,
-                    background: it.highlight
-                      ? `linear-gradient(90deg, ${C.orange}, ${C.yellow})`
-                      : `linear-gradient(90deg, ${C.purple}, ${color})`,
+                    background: it.highlight ? `linear-gradient(90deg, ${C.orange}, ${C.yellow})` : `linear-gradient(90deg, ${C.purple}, ${it.color ?? C.pink})`,
                     boxShadow: it.highlight ? `0 0 40px ${C.yellow}` : "none",
                     display: "flex",
                     alignItems: "center",
@@ -663,7 +510,7 @@ const Bars: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
                     paddingRight: 16,
                   }}
                 >
-                  <span style={{ fontFamily: DISPLAY, fontSize: barH * 0.7, color: C.white, textShadow: outline(4) }}>
+                  <span style={{ color: C.white, textShadow: outline(4), ...T(barH * 0.55, { fontStyle: "italic" }) }}>
                     {(it.prefix ?? "") + fmt(shown, it.decimals ?? 0, true) + (it.suffix ?? "")}
                     {it.crown && g > 0.95 ? " 👑" : ""}
                   </span>
@@ -677,37 +524,31 @@ const Bars: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   );
 };
 
-// Horizontal timeline; items appear at `at`; state "fail" cracks/greys out
+// Vertical timeline; items appear at `at`; state "fail" crosses out
 const Timeline: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, opacity } = usePop(dur);
   const items: any[] = o.items;
-  const lineP = interpolate(frame, [0, S(dur / fps * 0.7, fps)], [0, 1], { extrapolateRight: "clamp" });
+  const lineP = interpolate(frame, [0, Math.max(1, dur * 0.7)], [0, 1], { extrapolateRight: "clamp" });
   return (
     <>
-      <Scrim opacity={opacity} />
-      <div style={{ position: "absolute", left: CARD.x, top: CARD.y, width: CARD.size, height: CARD.size, opacity }}>
-        {o.title ? (
-          <div style={{ position: "absolute", top: 70, width: "100%", textAlign: "center", fontFamily: DISPLAY, fontSize: 84, color: C.white, textShadow: outline(5) }}>
-            {o.title}
-          </div>
-        ) : null}
+      <Scrim opacity={opacity} strength={0.65} />
+      <div style={{ position: "absolute", left: ZONE.x, top: ZONE.y, width: ZONE.size, height: ZONE.size, opacity }}>
+        {o.title ? <div style={{ position: "absolute", top: 40, width: "100%", textAlign: "center", color: C.white, textShadow: outline(5), ...T(76) }}>{o.title}</div> : null}
         <div style={{ position: "absolute", left: 120, top: 220, width: 12, height: 680 * lineP, background: C.white, borderRadius: 6 }} />
         {items.map((it, i) => {
           const f = S((it.at ?? o.from + i) - o.from, fps);
           const s = spring({ frame: frame - f, fps, config: { damping: 11 } });
           const failF = it.failAt != null ? S(it.failAt - o.from, fps) : null;
           const failed = it.state === "fail" && (failF == null || frame >= failF);
-          const y = 230 + i * (640 / Math.max(1, items.length - 1 || 1));
+          const y = 230 + i * (640 / Math.max(1, items.length - 1));
           return (
             <div key={i} style={{ position: "absolute", left: 80, top: y - 40, display: "flex", alignItems: "center", gap: 40, transform: `translateX(${(1 - s) * 600}px)`, opacity: Math.min(1, s * 2) }}>
-              <div style={{ width: 92, height: 92, borderRadius: 46, background: failed ? C.red : it.state === "ok" ? C.green : C.yellow, border: `6px solid ${C.white}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 50, fontFamily: FONT, fontWeight: 800, color: "#000" }}>
+              <div style={{ width: 92, height: 92, borderRadius: 46, background: failed ? C.red : it.state === "ok" ? C.green : C.yellow, border: `6px solid ${C.white}`, display: "flex", alignItems: "center", justifyContent: "center", color: "#000", ...T(48) }}>
                 {failed ? "✕" : it.state === "ok" ? "✓" : "•"}
               </div>
               <div>
-                <div style={{ fontFamily: DISPLAY, fontSize: 92, lineHeight: 1, color: failed ? "#bbb" : C.white, textDecoration: failed ? "line-through" : "none", textDecorationColor: C.red, textDecorationThickness: 8, textShadow: outline(5) }}>
-                  {it.label}
-                </div>
-                {it.sub ? <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 38, color: failed ? C.red : C.yellow }}>{it.sub}</div> : null}
+                <div style={{ color: failed ? "#bbb" : C.white, textDecoration: failed ? "line-through" : "none", textDecorationColor: C.red, textDecorationThickness: 8, textShadow: outline(5), ...T(80, { fontStyle: "italic" }) }}>{it.label}</div>
+                {it.sub ? <div style={{ color: failed ? C.red : C.yellow, ...T(36) }}>{it.sub}</div> : null}
               </div>
             </div>
           );
@@ -717,17 +558,15 @@ const Timeline: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   );
 };
 
-// Poll with options that pop in and fake vote bars filling
+// Poll; options pop in. `pct` only if you have real numbers.
 const Poll: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, opacity } = usePop(dur);
   const opts: any[] = o.options;
   return (
     <>
       <Scrim opacity={opacity} />
-      <div style={{ position: "absolute", left: CARD.x + 60, top: CARD.y + 120, width: CARD.size - 120, opacity }}>
-        <div style={{ fontFamily: DISPLAY, fontSize: 96, color: C.white, textAlign: "center", textShadow: outline(6), marginBottom: 50 }}>
-          {o.question}
-        </div>
+      <div style={{ position: "absolute", left: ZONE.x + 60, top: ZONE.y + 140, width: ZONE.size - 120, opacity }}>
+        <div style={{ color: C.white, textAlign: "center", textShadow: outline(6), marginBottom: 50, ...T(84) }}>{o.question}</div>
         {opts.map((op, i) => {
           const s = spring({ frame: frame - 6 - i * 6, fps, config: { damping: 10 } });
           const hasPct = typeof op.pct === "number";
@@ -735,7 +574,7 @@ const Poll: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
           return (
             <div key={i} style={{ position: "relative", height: 130, marginBottom: 30, borderRadius: 65, overflow: "hidden", border: `6px solid ${C.white}`, background: "rgba(255,255,255,.15)", transform: `scale(${s})` }}>
               <div style={{ position: "absolute", inset: 0, width: `${fill}%`, background: i === 0 ? C.green : C.red, opacity: 0.85 }} />
-              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 44px", fontFamily: FONT, fontWeight: 800, fontSize: 60, color: C.white, textShadow: outline(4) }}>
+              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 44px", color: C.white, textShadow: outline(4), ...T(58) }}>
                 <span>{op.label}</span>
                 <span>{hasPct ? `${Math.round(fill)}%` : op.emoji ?? ""}</span>
               </div>
@@ -756,17 +595,15 @@ const Stamp: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
       style={{
         position: "absolute",
         left: o.x ?? 560,
-        top: o.y ?? 1330,
-        fontFamily: FONT,
-        fontWeight: 800,
-        fontSize: o.size ?? 46,
+        top: o.y ?? 1360,
         color: o.color ?? C.red,
         border: `6px solid ${o.color ?? C.red}`,
         padding: "4px 22px",
         borderRadius: 12,
-        background: "rgba(255,255,255,.92)",
+        background: "rgba(255,255,255,.94)",
         transform: `rotate(${o.rotate ?? -8}deg) scale(${2.2 - 1.2 * s})`,
         opacity: Math.min(1, s * 2) * opacity,
+        ...T(o.size ?? 44),
       }}
     >
       {o.text}
@@ -779,73 +616,47 @@ const BigNumber: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, opacity } = usePop(dur);
   const s = spring({ frame, fps, config: { damping: 7, stiffness: 220 } });
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: o.x ?? 60,
-        top: o.y ?? 420,
-        fontFamily: DISPLAY,
-        fontSize: 260,
-        color: C.yellow,
-        textShadow: outline(10, C.pink),
-        transform: `scale(${s}) rotate(${(1 - s) * 40 - 8}deg)`,
-        opacity,
-      }}
-    >
+    <div style={{ position: "absolute", left: o.x ?? 60, top: o.y ?? 470, color: C.yellow, textShadow: outline(10, C.pink), transform: `scale(${s}) rotate(${(1 - s) * 40 - 8}deg)`, opacity, ...T(300, { fontStyle: "italic" }) }}>
       {o.text}
     </div>
   );
 };
 
-// Plain animated text line (slide + fade), for labels on top of the card
+// Small label (e.g. source line); slides up
 const TextLine: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const { frame, fps, opacity } = usePop(dur);
   const s = spring({ frame, fps, config: { damping: 12 } });
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: 40,
-        right: 40,
-        top: o.y ?? 1350,
-        textAlign: "center",
-        opacity,
-        transform: `translateY(${(1 - s) * 80}px)`,
-      }}
-    >
-      <span
-        style={{
-          fontFamily: FONT,
-          fontWeight: 800,
-          fontSize: o.size ?? 56,
-          color: o.color ?? C.white,
-          background: o.bg ?? "rgba(0,0,0,.65)",
-          padding: "10px 26px",
-          borderRadius: 16,
-          boxDecorationBreak: "clone",
-          WebkitBoxDecorationBreak: "clone",
-          lineHeight: 1.5,
-        }}
-      >
+    <div style={{ position: "absolute", left: 40, right: 40, top: o.y ?? 1400, textAlign: "center", opacity, transform: `translateY(${(1 - s) * 80}px)` }}>
+      <span style={{ color: o.color ?? C.white, background: o.bg ?? "rgba(0,0,0,.65)", padding: "10px 26px", borderRadius: 16, lineHeight: 1.5, ...T(o.size ?? 52, { fontWeight: 800, textTransform: o.upper === false ? "none" : "uppercase", letterSpacing: 0 }) }}>
         {o.text}
       </span>
     </div>
   );
 };
 
-const EndCard: React.FC<{ o: OV; dur: number; logo: string; logoText: string }> = ({ o, dur, logo, logoText }) => {
-  const { frame, fps } = usePop(dur + 100);
+const EndCard: React.FC<{ o: OV; logo: string; logoText: string }> = ({ o, logo, logoText }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const s = spring({ frame, fps, config: { damping: 10 } });
   const pulse = 1 + Math.sin(frame / 4) * 0.04;
+  const words: string[] = String(o.line1).split(" ");
   return (
-    <AbsoluteFill style={{ background: `rgba(11,6,20,${0.85 * Math.min(1, s)})`, alignItems: "center", justifyContent: "center" }}>
-      <div style={{ width: 300, height: 300, borderRadius: 150, overflow: "hidden", border: `10px solid ${C.white}`, background: `linear-gradient(135deg, ${C.purple}, ${C.pink})`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontWeight: 800, fontSize: 70, color: C.white, transform: `scale(${s}) rotate(${(1 - s) * 360}deg)`, boxShadow: `0 0 80px ${C.pink}` }}>
+    <AbsoluteFill style={{ background: `rgba(11,6,20,${0.82 * Math.min(1, s)})`, alignItems: "center", justifyContent: "center" }}>
+      <div style={{ width: 300, height: 300, borderRadius: 150, overflow: "hidden", border: `10px solid ${C.white}`, background: `linear-gradient(135deg, ${C.purple}, ${C.pink})`, display: "flex", alignItems: "center", justifyContent: "center", color: C.white, transform: `scale(${s}) rotate(${(1 - s) * 360}deg)`, boxShadow: `0 0 80px ${C.pink}`, ...T(64) }}>
         {logo ? <Img src={logo} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : logoText}
       </div>
-      <div style={{ marginTop: 60, fontFamily: DISPLAY, fontSize: 110, color: C.white, textShadow: outline(7), textAlign: "center", transform: `translateY(${(1 - s) * 200}px)` }}>
-        {o.line1}
+      <div style={{ marginTop: 60, display: "flex", gap: 22, flexWrap: "wrap", justifyContent: "center", padding: "0 40px" }}>
+        {words.map((w, i) => {
+          const ws = spring({ frame: frame - 6 - i * 4, fps, config: { damping: 11, stiffness: 220 } });
+          return (
+            <span key={i} style={{ display: "inline-block", color: C.white, textShadow: outline(6), opacity: Math.min(1, ws * 2), transform: `translateY(${(1 - ws) * 60}px) scale(${0.5 + 0.5 * ws})`, ...T(100) }}>
+              {w}
+            </span>
+          );
+        })}
       </div>
-      <div style={{ marginTop: 30, fontFamily: FONT, fontWeight: 800, fontSize: 58, color: "#000", background: C.yellow, padding: "18px 50px", borderRadius: 999, transform: `scale(${pulse * s})` }}>
+      <div style={{ marginTop: 30, color: "#000", background: C.yellow, padding: "18px 50px", borderRadius: 999, transform: `scale(${pulse * spring({ frame: frame - 18, fps, config: { damping: 10 } })})`, ...T(56) }}>
         {o.line2}
       </div>
     </AbsoluteFill>
@@ -866,7 +677,7 @@ const Overlay: React.FC<{ o: OV; props: GtaReelProps }> = ({ o, props }) => {
     case "stamp": return <Stamp o={o} dur={dur} />;
     case "bignumber": return <BigNumber o={o} dur={dur} />;
     case "text": return <TextLine o={o} dur={dur} />;
-    case "endcard": return <EndCard o={o} dur={dur} logo={props.logo ? props.assetBase + props.logo : ""} logoText={props.logoText} />;
+    case "endcard": return <EndCard o={o} logo={props.logo ? props.assetBase + props.logo : ""} logoText={props.logoText} />;
     default: return null;
   }
 };
@@ -879,18 +690,18 @@ export const GtaReel: React.FC<GtaReelProps> = (props) => {
   const ends = overlays.filter((o) => o.type === "endcard");
   const endStart = ends.length ? Math.min(...ends.map((e) => e.from)) : Infinity;
   const captions = props.captions.filter((c) => c.startMs / 1000 < endStart);
+  // Draw scrim-type graphics first so hooks stay on top
+  const order = (o: OV) => (o.type === "hook" ? 2 : o.type === "text" || o.type === "stamp" ? 1 : 0);
+  const sorted = overlays.filter((o) => o.type !== "endcard").sort((a, b) => order(a) - order(b));
   return (
     <AbsoluteFill style={{ backgroundColor: C.dark }}>
-      <style dangerouslySetInnerHTML={{ __html: fontFaceCSS }} />
-      <Background />
-      <VideoCard props={props} />
-      {overlays
-        .filter((o) => o.type !== "endcard")
-        .map((o, i) => (
-          <Sequence key={i} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
-            <Overlay o={o} props={props} />
-          </Sequence>
-        ))}
+      <style dangerouslySetInnerHTML={{ __html: fontCSS }} />
+      <FullVideo props={props} />
+      {sorted.map((o, i) => (
+        <Sequence key={i} from={S(o.from, fps)} durationInFrames={Math.max(1, S(o.to - o.from, fps))}>
+          <Overlay o={o} props={props} />
+        </Sequence>
+      ))}
       <ReelCaptions captions={captions} />
       <TopBar tag={props.tag} logo={props.logo ? props.assetBase + props.logo : ""} logoText={props.logoText} />
       {ends.map((o, i) => (

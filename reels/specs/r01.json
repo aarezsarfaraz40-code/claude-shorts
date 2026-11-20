@@ -9,70 +9,116 @@
   {
    "from": 0,
    "to": 4.0,
-   "src": 6.0
+   "src": 6.0,
+   "focusX": 0.519,
+   "focusTo": 0.519
   },
   {
    "from": 4.0,
    "to": 6.0,
-   "src": 21.0
+   "src": 21.0,
+   "focusX": 0.429,
+   "focusTo": 0.429
   },
   {
    "from": 6.0,
    "to": 8.6,
    "src": 27.0,
-   "focusX": 0.6
+   "focusX": 0.713,
+   "focusTo": 0.713
   },
   {
    "from": 8.6,
+   "to": 10.4,
+   "src": 117.3,
+   "focusX": 0.623,
+   "focusTo": 0.508
+  },
+  {
+   "from": 10.4,
    "to": 12.1,
-   "src": 117.0
+   "src": 103.0,
+   "focusX": 0.644,
+   "focusTo": 0.401
   },
   {
    "from": 12.1,
+   "to": 14.6,
+   "src": 39.0,
+   "focusX": 0.4,
+   "focusTo": 0.4,
+   "lockFocus": true
+  },
+  {
+   "from": 14.6,
    "to": 17.1,
-   "src": 39.0
+   "src": 63.0,
+   "focusX": 0.408,
+   "focusTo": 0.408
   },
   {
    "from": 17.1,
    "to": 20.0,
-   "src": 9.0
+   "src": 9.0,
+   "focusX": 0.504,
+   "focusTo": 0.63
   },
   {
    "from": 20.0,
    "to": 22.1,
-   "src": 136.0
+   "src": 125.1,
+   "focusX": 0.484,
+   "focusTo": 0.576
   },
   {
    "from": 22.1,
    "to": 24.3,
-   "src": 140.5
+   "src": 140.9,
+   "focusX": 0.5,
+   "focusTo": 0.5,
+   "lockFocus": true
   },
   {
    "from": 24.3,
    "to": 26.5,
-   "src": 142.0,
-   "focusX": 0.45
+   "src": 142.2,
+   "focusX": 0.455,
+   "focusTo": 0.391
   },
   {
    "from": 26.5,
-   "to": 29.3,
-   "src": 111.0,
-   "focusX": 0.45
+   "to": 28.3,
+   "src": 111.1,
+   "focusX": 0.607,
+   "focusTo": 0.721
   },
   {
-   "from": 29.3,
+   "from": 28.3,
+   "to": 30.2,
+   "src": 88.0,
+   "focusX": 0.401,
+   "focusTo": 0.554
+  },
+  {
+   "from": 30.2,
    "to": 32.2,
-   "src": 66.0
+   "src": 66.2,
+   "focusX": 0.651,
+   "focusTo": 0.651
   },
   {
    "from": 32.2,
    "to": 34.3,
-   "src": 151.0
+   "src": 134.2,
+   "focusX": 0.409,
+   "focusTo": 0.409
   },
   {
    "from": 34.3,
    "to": 40,
-   "src": 6.0
+   "src": 140.7,
+   "focusX": 0.385,
+   "focusTo": 0.385
   }
  ],
  "overlays": [
@@ -775,71 +821,6 @@
  ],
  "sfx": [
   {
-   "at": 0,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 4.0,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 6.0,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 8.6,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 12.1,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 17.1,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 20.0,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 22.1,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 24.3,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 26.5,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 29.3,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 32.2,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
-   "at": 34.3,
-   "file": "sfx/whoosh.wav",
-   "volume": 0.3
-  },
-  {
    "at": 7.42,
    "file": "sfx/ding.wav",
    "volume": 0.35
@@ -868,6 +849,86 @@
    "at": 24.3,
    "file": "sfx/boom.wav",
    "volume": 0.45
+  },
+  {
+   "at": 0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 4.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 6.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 8.6,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 10.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 12.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 14.6,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 17.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 20.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 22.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 24.3,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 26.5,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 28.3,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 30.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 32.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
+  },
+  {
+   "at": 34.3,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.28
   }
  ]
 }

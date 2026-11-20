@@ -46,3 +46,6 @@ input/*
 !input/.gitkeep
 output/*
 !output/.gitkeep
+
+# Local code backup zip
+claude-shorts-code.zip

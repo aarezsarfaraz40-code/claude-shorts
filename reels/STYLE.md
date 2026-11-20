@@ -32,14 +32,16 @@ simple Roman Urdu, ask at most ONE simple question at a time.
   LOOK at the focus sheet and fix bad shots.
 - **All text in Montserrat 900**, revealed **word by word** (hooks, captions,
   end card). Highlight words = black text on a tilted yellow box.
-- **Everything inside the safe zone**: x 60–900, y 250–1440 (nothing under
-  the platform's buttons/caption area). Template already enforces this —
-  don't add custom positions outside it.
+- Export 1080x1920 (9:16) — the YouTube Shorts standard. Tall 20:9 phones
+  crop ~108px off EACH side, so the safe zone is symmetric.
+- **Everything inside the safe zone**: x 150–930, y 260–1420, all text
+  **centered on x=540**. Headlines and captions auto-shrink to fit — never
+  outside the zone. Check with the crop simulation (crop=864:1920:108:0).
 - Motion graphics: counters, versus cards, badges, bar charts, timelines,
   polls, stamps, big numbers, flash + zoom-punch cuts. Keep the purple/pink/
   orange Vice City theme.
 - Logo: `reels/brand/logo.jpg` (copy to `reels/assets/logo.jpg`), top-left
-  corner (inside safe zone) + big on the end card.
+  at x=150, y=90 (survives the side crop) + big on the end card.
 - NO tag pill next to the logo (`"tag": ""`).
 - End card (last ~5 s): "FOLLOW GTA HIGHEST" + "DAILY GTA 6 NEWS 🔔".
 

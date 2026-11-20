@@ -77,7 +77,9 @@ const H = 1920;
 const ZONE = { x: 40, y: 470, size: 1000 }; // design space for center graphics
 // Platform safe zone (YouTube Shorts / Reels / TikTok UI never covers this):
 // 60px left, 180px right (like/comment buttons), 250px top, 480px bottom.
-const SAFE = { left: 60, right: 900, top: 250, bottom: 1440 };
+// Symmetric, so text is centered on screen AND survives the side crop that
+// YouTube/IG apply on tall (20:9) phones (~108px per side).
+const SAFE = { left: 150, right: 930, top: 260, bottom: 1420 };
 const SAFE_CX = (SAFE.left + SAFE.right) / 2;
 // Center graphics are drawn in the 1000x1000 ZONE, then scaled into the safe zone
 const GK = 0.62;
@@ -190,8 +192,8 @@ const TopBar: React.FC<{ tag: string; logo: string; logoText: string }> = ({ tag
       <div
         style={{
           position: "absolute",
-          left: 40,
-          top: 50,
+          left: SAFE.left,
+          top: 90,
           width: 210,
           height: 117,
           borderRadius: 16,
@@ -253,14 +255,22 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
   const pages = useCaptionPages(captions, 900);
   const page = pages.find((p) => ms >= p.startMs && ms < p.startMs + p.durationMs);
   if (!page) return null;
+  // Auto-fit: never wider than the safe zone, max 2 lines.
+  const boxW = SAFE.right - SAFE.left;
+  const words = page.tokens.map((t) => t.text.trim());
+  const longest = Math.max(1, ...words.map((w) => w.length));
+  const chars = words.join(" ").length;
+  const capSize = Math.floor(Math.min(62, boxW / (longest * 0.78), (2 * boxW) / (chars * 0.74 + 2)));
   return (
     <div
       style={{
         position: "absolute",
         left: SAFE.left,
         right: W - SAFE.right,
-        top: 1255,
-        height: 180,
+        top: 1240,
+        height: 175,
+        overflow: "visible",
+        textAlign: "center",
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
@@ -282,7 +292,7 @@ const ReelCaptions: React.FC<{ captions: GtaReelProps["captions"] }> = ({ captio
               color: active ? C.yellow : C.white,
               transform: `translateY(${(1 - s) * 30}px) scale(${0.5 + 0.5 * s})`,
               textShadow: outline(4),
-              ...T(62),
+              ...T(Math.max(40, capSize)),
             }}
           >
             {tk.text.trim()}
@@ -314,6 +324,10 @@ const Hook: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
   const lines: string[] = o.lines;
   const hl: string[] = (o.highlight ?? []).map((w: string) => w.toUpperCase());
   const stagger = o.stagger ?? 4;
+  // Auto-fit: the longest line must fit inside the safe zone width
+  const boxW = SAFE.right - SAFE.left;
+  const longestLine = Math.max(1, ...lines.map((l) => l.length));
+  const hookSize = Math.floor(Math.min((o.size ?? 96) * 0.75, boxW / (longestLine * 0.8 + 1)));
   let idx = 0;
   return (
     <div style={{ position: "absolute", left: SAFE.left, right: W - SAFE.right, top: o.top ?? 395, textAlign: "center", opacity: out }}>
@@ -339,7 +353,7 @@ const Hook: React.FC<{ o: OV; dur: number }> = ({ o, dur }) => {
                   borderRadius: isHl ? 12 : 0,
                   boxShadow: isHl ? `0 10px 30px rgba(0,0,0,.5)` : "none",
                   textShadow: isHl ? "none" : outline(4),
-                  ...T(Math.round((o.size ?? 96) * 0.75)),
+                  ...T(hookSize),
                 }}
               >
                 {w}

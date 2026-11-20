@@ -49,3 +49,7 @@ output/*
 
 # Local code backup zip
 claude-shorts-code.zip
+
+# Reel assets (trailer, voiceovers, work files) stay local
+reels/assets/
+reels/work/

@@ -32,3 +32,14 @@ Breakdown (THIS is the target look):
 Implementation notes (Remotion): install `@remotion/motion-blur` (same
 version as remotion) for CameraMotionBlur/Trail; build morphs by animating
 one element's size/radius/position/color across scenes instead of cutting.
+
+## Smoothness checklist (learned from "Gift Smart" v1 → v2)
+- Render at **60 fps**.
+- Never hard-switch scenes: hand over only when both frames look identical
+  (same color/shape/position). Start the next layer BEFORE the old one unmounts.
+- Camera never freezes: during holds keep a slow push (≈+10-15%), drift,
+  slight rotation/hover.
+- In-out easing for moves; zoom-throughs ease out at the end so the last
+  sliver of background doesn't vanish in one frame.
+- Run the frame-difference test (no single-frame jump > ~35, no still run
+  > 0.33 s) before sending.

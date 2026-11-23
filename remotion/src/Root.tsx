@@ -4,6 +4,7 @@ import { ShortVideoPropsSchema } from "./types";
 import { GtaReel, GtaReelSchema } from "./reel/GtaReel";
 import { BazaarPromo, BAZAAR_DURATION } from "./promo/BazaarPromo";
 import { BazaarGifts, GIFTS_DURATION } from "./promo/BazaarGifts";
+import { BazaarGifts2, GIFTS2_DURATION, GIFTS2_FPS } from "./promo/BazaarGifts2";
 
 export const Root: React.FC = () => {
   return (
@@ -67,6 +68,7 @@ export const Root: React.FC = () => {
           height: 1920,
         })}
       />
+      <Composition id="BazaarGifts2" component={BazaarGifts2} width={1080} height={1920} fps={GIFTS2_FPS} durationInFrames={GIFTS2_DURATION * GIFTS2_FPS} />
       <Composition id="BazaarGifts" component={BazaarGifts} width={1080} height={1920} fps={30} durationInFrames={GIFTS_DURATION * 30} />
       <Composition id="BazaarPromo" component={BazaarPromo} width={1080} height={1920} fps={30} durationInFrames={BAZAAR_DURATION * 30} />
     </>

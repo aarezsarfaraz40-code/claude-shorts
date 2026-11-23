@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Synthesize an original, royalty-free background track (Apple-style minimal pop).
-Usage: python3 make_music.py out.wav [seconds]"""
+Usage: python3 make_music.py out.wav [seconds] [bpm] [drums_from_bar]"""
 import sys, numpy as np, wave
 SR = 48000
 dur = float(sys.argv[2]) if len(sys.argv) > 2 else 45
-bpm = 100
+bpm = float(sys.argv[3]) if len(sys.argv) > 3 else 100
 beat = 60 / bpm
 N = int(SR * dur)
 L = np.zeros(N); R = np.zeros(N)
@@ -57,7 +57,7 @@ while t < dur:
     t += length; ci += 1
 
 # drums start after the intro (bar 2), stop 2 beats before the end
-start = 2 * bar
+start = (float(sys.argv[4]) if len(sys.argv) > 4 else 2) * bar
 k = 0
 while start + k * beat < dur - 2 * beat:
     bt = start + k * beat

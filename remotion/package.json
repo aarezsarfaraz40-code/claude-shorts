@@ -10,6 +10,7 @@
     "@remotion/bundler": "^4.0.422",
     "@remotion/captions": "^4.0.422",
     "@remotion/cli": "^4.0.422",
+    "@remotion/motion-blur": "^4.0.423",
     "@remotion/renderer": "^4.0.422",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

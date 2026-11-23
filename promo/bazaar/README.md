@@ -7,3 +7,8 @@
 - Brand: green #173D2E, cream #F5F1E6, gold #BF9F62; fonts Inter + Noto Nastaliq Urdu
 - Facts from the website: Cash on Delivery, delivery across Pakistan in 3-7 days,
   easy 7-day returns, 24/7 AI support, order confirmed by call/message.
+
+## Promo 2 — "Gift Smart" (Apple/olafmotion style, no voiceover)
+- Composition: `remotion/src/promo/BazaarGifts.tsx` (1080x1920, 17 s, 120 BPM)
+- Render: `node remotion/render_comp.mjs --comp BazaarGifts --out output/bazaar_gifts_promo.mp4`
+- Uses `@remotion/motion-blur` (CameraMotionBlur, 6 samples), original music `music2.wav`

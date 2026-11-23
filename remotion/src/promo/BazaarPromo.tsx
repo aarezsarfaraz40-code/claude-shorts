@@ -88,30 +88,31 @@ const Backdrop: React.FC = () => {
 // ------------------------------------------------------------ scene 1: logo intro
 const LogoIntro: React.FC = () => {
   const frame = useCurrentFrame();
-  const circle = interpolate(frame, [0, 22], [0, 1], { ...clamp, easing: ease });
-  const shrink = interpolate(frame, [f(3.2), f(4.6)], [1, 0], { ...clamp, easing: ease });
-  const logo = useSpring(14, { damping: 13, stiffness: 110, mass: 1 });
-  const line = interpolate(frame, [28, 52], [0, 1], { ...clamp, easing: ease });
+  // Full green screen the whole time (no half-disc state), then the whole
+  // layer fades/zooms away into the cream scene in one clean move.
+  const circle = interpolate(frame, [0, 20], [0, 1], { ...clamp, easing: ease });
+  const exit = interpolate(frame, [v(1.6), v(2.15)], [0, 1], { ...clamp, easing: ease });
+  const logo = useSpring(12, { damping: 13, stiffness: 110, mass: 1 });
+  const line = interpolate(frame, [26, 50], [0, 1], { ...clamp, easing: ease });
   const words = "BAZAAR RETAIL".split("");
-  const tag = interpolate(frame, [60, 78], [0, 1], { ...clamp, easing: ease });
-  const out = interpolate(frame, [v(1.7), v(2.1)], [1, 0], clamp);
+  const tag = interpolate(frame, [58, 76], [0, 1], { ...clamp, easing: ease });
+  const shine = interpolate(frame, [40, 70], [-300, 900], clamp);
   return (
-    <AbsoluteFill style={{ opacity: out }}>
-      {/* green disc expanding then receding */}
-      <div style={{ position: "absolute", left: 540 - 1300 * circle * (0.25 + 0.75 * shrink), top: 900 - 1300 * circle * (0.25 + 0.75 * shrink), width: 2600 * circle * (0.25 + 0.75 * shrink), height: 2600 * circle * (0.25 + 0.75 * shrink), borderRadius: "50%", background: `radial-gradient(circle, ${G.green2}, ${G.green})` }} />
-      <div style={{ position: "absolute", left: 540 - 300, top: 560, width: 600, transform: `scale(${0.6 + 0.4 * logo}) translateY(${(1 - logo) * 60}px)`, opacity: logo, filter: `drop-shadow(0 30px 40px rgba(0,0,0,${0.25 * shrink}))` }}>
+    <AbsoluteFill style={{ opacity: 1 - exit, transform: `scale(${1 + exit * 0.08})` }}>
+      <div style={{ position: "absolute", left: 540 - 1400 * circle, top: 900 - 1400 * circle, width: 2800 * circle, height: 2800 * circle, borderRadius: "50%", background: `radial-gradient(circle, ${G.green2}, ${G.green} 60%)` }} />
+      <div style={{ position: "absolute", left: 540 - 300, top: 520, width: 600, overflow: "hidden", transform: `scale(${0.6 + 0.4 * logo}) translateY(${(1 - logo) * 60}px)`, opacity: logo }}>
         <Img src={img("br_logo.png")} style={{ width: "100%" }} />
+        <div style={{ position: "absolute", top: 0, left: shine, width: 120, height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent)", transform: "skewX(-20deg)" }} />
       </div>
-      <div style={{ position: "absolute", left: 340, top: 1035, width: 400 * line, height: 4, background: G.gold, borderRadius: 2 }} />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1075, textAlign: "center", fontFamily: INTER, fontWeight: 800, fontSize: 64, letterSpacing: 14 }}>
+      <div style={{ position: "absolute", left: 340, top: 995, width: 400 * line, height: 4, background: G.gold, borderRadius: 2 }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1035, textAlign: "center", fontFamily: INTER, fontWeight: 800, fontSize: 64, letterSpacing: 14, color: G.cream }}>
         {words.map((c, i) => {
-          const p = interpolate(frame, [32 + i * 2, 46 + i * 2], [0, 1], { ...clamp, easing: ease });
-          return <span key={i} style={{ display: "inline-block", opacity: p, transform: `translateY(${(1 - p) * 30}px)`, color: shrink > 0.5 ? G.cream : G.green }}>{c === " " ? " " : c}</span>;
+          const p = interpolate(frame, [30 + i * 2, 44 + i * 2], [0, 1], { ...clamp, easing: ease });
+          return <span key={i} style={{ display: "inline-block", opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>{c === " " ? "\u00a0" : c}</span>;
         })}
       </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1170, textAlign: "center", fontFamily: INTER, fontWeight: 500, fontSize: 34, letterSpacing: 4, opacity: tag, color: shrink > 0.5 ? G.gold : G.green }}>ONLINE SHOPPING IN PAKISTAN</div>
-      {/* welcome line in Urdu while VO greets */}
-      <Headline text="خوش آمدید" at={v(0)} out={v(2.0)} y={1260} size={84} color={G.green} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1130, textAlign: "center", fontFamily: INTER, fontWeight: 500, fontSize: 32, letterSpacing: 4, opacity: tag, color: G.gold }}>ONLINE SHOPPING IN PAKISTAN</div>
+      <Headline text="خوش آمدید" at={v(0)} out={v(2.3)} y={1230} size={84} color={G.cream} />
     </AbsoluteFill>
   );
 };
@@ -480,7 +481,6 @@ const Outro: React.FC = () => {
       <div style={{ position: "absolute", left: 0, right: 0, top: 1210, textAlign: "center", transform: `scale(${btn * pulse})`, opacity: btn }}>
         <span style={{ display: "inline-block", padding: "10px 60px 22px", borderRadius: 50, background: G.gold, fontFamily: URDU, fontSize: 64, color: G.green, boxShadow: "0 20px 40px rgba(0,0,0,.3)" }}>آج ہی آرڈر کریں</span>
       </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1390, textAlign: "center", fontFamily: INTER, fontWeight: 600, fontSize: 28, color: "rgba(245,241,230,.75)", opacity: btn }}>Cash on Delivery · Delivery Across Pakistan</div>
     </AbsoluteFill>
   );
 };

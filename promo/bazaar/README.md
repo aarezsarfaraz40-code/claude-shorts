@@ -20,3 +20,9 @@
   freezes, colors match across handovers. Music: `make_music2.py` (120 BPM,
   pumping, risers + impacts at 4.3 s and 14.6 s). Smoothness checked with a
   frame-difference test (no pops, no freezes > 0.33 s).
+
+## Promo 3 — "One store. Every need." categories showcase (60 fps, no VO)
+- Composition: `remotion/src/promo/BazaarCategories.tsx` (1080x1920, 60 fps, 17 s)
+- Render: `node remotion/render_comp.mjs --comp BazaarCategories --out output/bazaar_categories_promo.mp4`
+- Product images from the store catalog (12 products, 6 categories) in `remotion/public/bazaar/cat/`
+- Music: `make_music2.py ... 17 "3.5,14.5"` → `music4.wav`

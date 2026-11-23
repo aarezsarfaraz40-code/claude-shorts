@@ -15,3 +15,20 @@ Feedback on Bazaar Retail v1: fun and correct, but NOT Apple style. Missing:
 - **Minimal palette**: mostly black/white + one brand accent; lots of empty space.
 - **Rhythm**: every cut/reveal lands on a beat; music drives the edit.
 - Ask the owner for a reference video before starting the next promo.
+
+## Reference received: `promo/reference/where_are_we_going.mp4` (olafmotion style, 11 s)
+Breakdown (THIS is the target look):
+1. Light grey background (~#ECECF1), SF-Pro-like clean type, very few words.
+2. **Match-cut morphs** — every scene grows out of the previous element:
+   iOS app list scrolls (motion-blurred) → "Maps" picked → its icon lands
+   **inline inside the headline** ("Let's Plan Your [icon] Adventure") →
+   camera **zooms into the icon** → it becomes a blue circle → shrinks into a
+   "Directions" pill button → the pill **expands into a card**.
+3. **Strong motion blur** on every fast move (whip pans, card swaps).
+4. Cards swap with slight 3D tilt while a **blue route line draws itself**.
+5. Last card **zooms into a map**, pin + place label; quick logo end on black.
+6. Fast, beat-driven, ~11-20 s; soft shadows, rounded iOS cards, no emojis.
+
+Implementation notes (Remotion): install `@remotion/motion-blur` (same
+version as remotion) for CameraMotionBlur/Trail; build morphs by animating
+one element's size/radius/position/color across scenes instead of cutting.

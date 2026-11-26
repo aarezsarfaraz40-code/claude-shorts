@@ -1,0 +1,325 @@
+{
+  "language": "en",
+  "language_probability": 0.998,
+  "duration": 11.4,
+  "word_count": 29,
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "transcription_time_sec": 5.2,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.96,
+      "text": "Michael and Trevor themselves, Ned Luke and Steven Og, just talked about GTA 6!",
+      "words": [
+        {
+          "word": "Michael",
+          "start": 0.0,
+          "end": 0.4
+        },
+        {
+          "word": "and",
+          "start": 0.4,
+          "end": 0.6
+        },
+        {
+          "word": "Trevor",
+          "start": 0.6,
+          "end": 0.78
+        },
+        {
+          "word": "themselves,",
+          "start": 0.78,
+          "end": 1.36
+        },
+        {
+          "word": "Ned",
+          "start": 1.84,
+          "end": 2.0
+        },
+        {
+          "word": "Luke",
+          "start": 2.0,
+          "end": 2.26
+        },
+        {
+          "word": "and",
+          "start": 2.26,
+          "end": 2.46
+        },
+        {
+          "word": "Steven",
+          "start": 2.46,
+          "end": 2.78
+        },
+        {
+          "word": "Og,",
+          "start": 2.78,
+          "end": 3.1
+        },
+        {
+          "word": "just",
+          "start": 3.34,
+          "end": 3.52
+        },
+        {
+          "word": "talked",
+          "start": 3.52,
+          "end": 3.88
+        },
+        {
+          "word": "about",
+          "start": 3.88,
+          "end": 4.06
+        },
+        {
+          "word": "GTA",
+          "start": 4.06,
+          "end": 4.36
+        },
+        {
+          "word": "6!",
+          "start": 4.36,
+          "end": 4.96
+        }
+      ]
+    },
+    {
+      "start": 5.98,
+      "end": 8.6,
+      "text": "Would you want Michael and Trevor back in GTA 6?",
+      "words": [
+        {
+          "word": "Would",
+          "start": 5.98,
+          "end": 6.22
+        },
+        {
+          "word": "you",
+          "start": 6.22,
+          "end": 6.38
+        },
+        {
+          "word": "want",
+          "start": 6.38,
+          "end": 6.58
+        },
+        {
+          "word": "Michael",
+          "start": 6.58,
+          "end": 6.86
+        },
+        {
+          "word": "and",
+          "start": 6.86,
+          "end": 7.06
+        },
+        {
+          "word": "Trevor",
+          "start": 7.06,
+          "end": 7.32
+        },
+        {
+          "word": "back",
+          "start": 7.32,
+          "end": 7.68
+        },
+        {
+          "word": "in",
+          "start": 7.68,
+          "end": 7.88
+        },
+        {
+          "word": "GTA",
+          "start": 7.88,
+          "end": 8.16
+        },
+        {
+          "word": "6?",
+          "start": 8.16,
+          "end": 8.6
+        }
+      ]
+    },
+    {
+      "start": 9.06,
+      "end": 11.08,
+      "text": "Subscribe to Shadow GTA Plays!",
+      "words": [
+        {
+          "word": "Subscribe",
+          "start": 9.06,
+          "end": 9.42
+        },
+        {
+          "word": "to",
+          "start": 9.42,
+          "end": 9.78
+        },
+        {
+          "word": "Shadow",
+          "start": 9.78,
+          "end": 10.08
+        },
+        {
+          "word": "GTA",
+          "start": 10.08,
+          "end": 10.52
+        },
+        {
+          "word": "Plays!",
+          "start": 10.52,
+          "end": 11.08
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "text": " Michael",
+      "startMs": 0,
+      "endMs": 400
+    },
+    {
+      "text": " and",
+      "startMs": 400,
+      "endMs": 600
+    },
+    {
+      "text": " Trevor",
+      "startMs": 600,
+      "endMs": 780
+    },
+    {
+      "text": " themselves,",
+      "startMs": 780,
+      "endMs": 1360
+    },
+    {
+      "text": " Ned",
+      "startMs": 1840,
+      "endMs": 2000
+    },
+    {
+      "text": " Luke",
+      "startMs": 2000,
+      "endMs": 2260
+    },
+    {
+      "text": " and",
+      "startMs": 2260,
+      "endMs": 2460
+    },
+    {
+      "text": " Steven",
+      "startMs": 2460,
+      "endMs": 2780
+    },
+    {
+      "text": " Og,",
+      "startMs": 2780,
+      "endMs": 3100
+    },
+    {
+      "text": " just",
+      "startMs": 3340,
+      "endMs": 3520
+    },
+    {
+      "text": " talked",
+      "startMs": 3520,
+      "endMs": 3880
+    },
+    {
+      "text": " about",
+      "startMs": 3880,
+      "endMs": 4059
+    },
+    {
+      "text": " GTA",
+      "startMs": 4059,
+      "endMs": 4360
+    },
+    {
+      "text": " 6!",
+      "startMs": 4360,
+      "endMs": 4960
+    },
+    {
+      "text": " Would",
+      "startMs": 5980,
+      "endMs": 6220
+    },
+    {
+      "text": " you",
+      "startMs": 6220,
+      "endMs": 6380
+    },
+    {
+      "text": " want",
+      "startMs": 6380,
+      "endMs": 6580
+    },
+    {
+      "text": " Michael",
+      "startMs": 6580,
+      "endMs": 6860
+    },
+    {
+      "text": " and",
+      "startMs": 6860,
+      "endMs": 7060
+    },
+    {
+      "text": " Trevor",
+      "startMs": 7060,
+      "endMs": 7320
+    },
+    {
+      "text": " back",
+      "startMs": 7320,
+      "endMs": 7680
+    },
+    {
+      "text": " in",
+      "startMs": 7680,
+      "endMs": 7880
+    },
+    {
+      "text": " GTA",
+      "startMs": 7880,
+      "endMs": 8160
+    },
+    {
+      "text": " 6?",
+      "startMs": 8160,
+      "endMs": 8600
+    },
+    {
+      "text": " Subscribe",
+      "startMs": 9060,
+      "endMs": 9420
+    },
+    {
+      "text": " to",
+      "startMs": 9420,
+      "endMs": 9780
+    },
+    {
+      "text": " Shadow",
+      "startMs": 9780,
+      "endMs": 10080
+    },
+    {
+      "text": " GTA",
+      "startMs": 10080,
+      "endMs": 10520
+    },
+    {
+      "text": " Plays!",
+      "startMs": 10520,
+      "endMs": 11080
+    }
+  ]
+}

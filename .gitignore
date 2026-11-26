@@ -53,3 +53,8 @@ claude-shorts-code.zip
 # Reel assets (trailer, voiceovers, work files) stay local
 reels/assets/
 reels/work/
+
+# Source footage and big media stay local (too big / third-party)
+reels/shadow*/*.mp4
+reels/shadow*/*.mp3
+remotion/public/shadow2/*.mp4

@@ -1,0 +1,4470 @@
+{
+  "language": "en",
+  "language_probability": 0.985,
+  "duration": 145.8,
+  "word_count": 426,
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "transcription_time_sec": 66.3,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.76,
+      "text": "Nice your hair is right there, huh?",
+      "words": [
+        {
+          "word": "Nice",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": "your",
+          "start": 2.42,
+          "end": 2.6
+        },
+        {
+          "word": "hair",
+          "start": 2.6,
+          "end": 2.8
+        },
+        {
+          "word": "is",
+          "start": 2.8,
+          "end": 3.04
+        },
+        {
+          "word": "right",
+          "start": 3.04,
+          "end": 3.22
+        },
+        {
+          "word": "there,",
+          "start": 3.22,
+          "end": 3.52
+        },
+        {
+          "word": "huh?",
+          "start": 3.52,
+          "end": 3.76
+        }
+      ]
+    },
+    {
+      "start": 5.12,
+      "end": 8.96,
+      "text": "With the little bald spot. I love the ball. Yeah, they gave you a little bit more on top",
+      "words": [
+        {
+          "word": "With",
+          "start": 5.12,
+          "end": 5.56
+        },
+        {
+          "word": "the",
+          "start": 5.56,
+          "end": 5.7
+        },
+        {
+          "word": "little",
+          "start": 5.7,
+          "end": 5.88
+        },
+        {
+          "word": "bald",
+          "start": 5.88,
+          "end": 6.16
+        },
+        {
+          "word": "spot.",
+          "start": 6.16,
+          "end": 6.4
+        },
+        {
+          "word": "I",
+          "start": 6.62,
+          "end": 6.62
+        },
+        {
+          "word": "love",
+          "start": 6.62,
+          "end": 6.74
+        },
+        {
+          "word": "the",
+          "start": 6.74,
+          "end": 6.88
+        },
+        {
+          "word": "ball.",
+          "start": 6.88,
+          "end": 7.06
+        },
+        {
+          "word": "Yeah,",
+          "start": 7.06,
+          "end": 7.34
+        },
+        {
+          "word": "they",
+          "start": 7.34,
+          "end": 7.62
+        },
+        {
+          "word": "gave",
+          "start": 7.62,
+          "end": 7.8
+        },
+        {
+          "word": "you",
+          "start": 7.8,
+          "end": 7.92
+        },
+        {
+          "word": "a",
+          "start": 7.92,
+          "end": 8.02
+        },
+        {
+          "word": "little",
+          "start": 8.02,
+          "end": 8.16
+        },
+        {
+          "word": "bit",
+          "start": 8.16,
+          "end": 8.3
+        },
+        {
+          "word": "more",
+          "start": 8.3,
+          "end": 8.46
+        },
+        {
+          "word": "on",
+          "start": 8.46,
+          "end": 8.66
+        },
+        {
+          "word": "top",
+          "start": 8.66,
+          "end": 8.96
+        }
+      ]
+    },
+    {
+      "start": 10.44,
+      "end": 16.26,
+      "text": "So GTA 6 is gonna be like this whole this will all be smoother do you think and yeah?",
+      "words": [
+        {
+          "word": "So",
+          "start": 10.44,
+          "end": 10.88
+        },
+        {
+          "word": "GTA",
+          "start": 10.88,
+          "end": 11.32
+        },
+        {
+          "word": "6",
+          "start": 11.32,
+          "end": 11.74
+        },
+        {
+          "word": "is",
+          "start": 11.74,
+          "end": 11.98
+        },
+        {
+          "word": "gonna",
+          "start": 11.98,
+          "end": 12.08
+        },
+        {
+          "word": "be",
+          "start": 12.08,
+          "end": 12.28
+        },
+        {
+          "word": "like",
+          "start": 12.28,
+          "end": 12.5
+        },
+        {
+          "word": "this",
+          "start": 12.5,
+          "end": 12.74
+        },
+        {
+          "word": "whole",
+          "start": 12.74,
+          "end": 13.02
+        },
+        {
+          "word": "this",
+          "start": 13.02,
+          "end": 13.6
+        },
+        {
+          "word": "will",
+          "start": 13.6,
+          "end": 13.74
+        },
+        {
+          "word": "all",
+          "start": 13.74,
+          "end": 13.88
+        },
+        {
+          "word": "be",
+          "start": 13.88,
+          "end": 14.0
+        },
+        {
+          "word": "smoother",
+          "start": 14.0,
+          "end": 14.66
+        },
+        {
+          "word": "do",
+          "start": 14.66,
+          "end": 15.0
+        },
+        {
+          "word": "you",
+          "start": 15.0,
+          "end": 15.06
+        },
+        {
+          "word": "think",
+          "start": 15.06,
+          "end": 15.34
+        },
+        {
+          "word": "and",
+          "start": 15.34,
+          "end": 15.72
+        },
+        {
+          "word": "yeah?",
+          "start": 15.72,
+          "end": 16.26
+        }
+      ]
+    },
+    {
+      "start": 16.62,
+      "end": 20.54,
+      "text": "Yeah, I think the graphic movement graphics are gonna blow this away",
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 16.62,
+          "end": 16.76
+        },
+        {
+          "word": "I",
+          "start": 16.76,
+          "end": 17.04
+        },
+        {
+          "word": "think",
+          "start": 17.04,
+          "end": 17.18
+        },
+        {
+          "word": "the",
+          "start": 17.18,
+          "end": 17.34
+        },
+        {
+          "word": "graphic",
+          "start": 17.34,
+          "end": 17.56
+        },
+        {
+          "word": "movement",
+          "start": 17.56,
+          "end": 18.3
+        },
+        {
+          "word": "graphics",
+          "start": 18.54,
+          "end": 19.46
+        },
+        {
+          "word": "are",
+          "start": 19.46,
+          "end": 19.62
+        },
+        {
+          "word": "gonna",
+          "start": 19.62,
+          "end": 19.78
+        },
+        {
+          "word": "blow",
+          "start": 19.78,
+          "end": 19.98
+        },
+        {
+          "word": "this",
+          "start": 19.98,
+          "end": 20.22
+        },
+        {
+          "word": "away",
+          "start": 20.22,
+          "end": 20.54
+        }
+      ]
+    },
+    {
+      "start": 21.16,
+      "end": 24.88,
+      "text": "That's what I gathered from the bits. I saw it and watch the board and that looks thing",
+      "words": [
+        {
+          "word": "That's",
+          "start": 21.16,
+          "end": 21.6
+        },
+        {
+          "word": "what",
+          "start": 21.6,
+          "end": 21.7
+        },
+        {
+          "word": "I",
+          "start": 21.7,
+          "end": 21.8
+        },
+        {
+          "word": "gathered",
+          "start": 21.8,
+          "end": 22.12
+        },
+        {
+          "word": "from",
+          "start": 22.12,
+          "end": 22.4
+        },
+        {
+          "word": "the",
+          "start": 22.4,
+          "end": 22.56
+        },
+        {
+          "word": "bits.",
+          "start": 22.56,
+          "end": 22.72
+        },
+        {
+          "word": "I",
+          "start": 22.86,
+          "end": 22.86
+        },
+        {
+          "word": "saw",
+          "start": 22.86,
+          "end": 23.16
+        },
+        {
+          "word": "it",
+          "start": 23.16,
+          "end": 23.26
+        },
+        {
+          "word": "and",
+          "start": 23.26,
+          "end": 23.4
+        },
+        {
+          "word": "watch",
+          "start": 23.4,
+          "end": 23.64
+        },
+        {
+          "word": "the",
+          "start": 23.64,
+          "end": 23.8
+        },
+        {
+          "word": "board",
+          "start": 23.8,
+          "end": 24.06
+        },
+        {
+          "word": "and",
+          "start": 24.06,
+          "end": 24.34
+        },
+        {
+          "word": "that",
+          "start": 24.34,
+          "end": 24.44
+        },
+        {
+          "word": "looks",
+          "start": 24.44,
+          "end": 24.58
+        },
+        {
+          "word": "thing",
+          "start": 24.58,
+          "end": 24.88
+        }
+      ]
+    },
+    {
+      "start": 24.88,
+      "end": 29.8,
+      "text": "But the bits I saw see yeah, cuz like it what I think is gonna happen is",
+      "words": [
+        {
+          "word": "But",
+          "start": 24.88,
+          "end": 25.06
+        },
+        {
+          "word": "the",
+          "start": 25.06,
+          "end": 25.24
+        },
+        {
+          "word": "bits",
+          "start": 25.24,
+          "end": 25.42
+        },
+        {
+          "word": "I",
+          "start": 25.42,
+          "end": 25.56
+        },
+        {
+          "word": "saw",
+          "start": 25.56,
+          "end": 25.92
+        },
+        {
+          "word": "see",
+          "start": 25.92,
+          "end": 26.12
+        },
+        {
+          "word": "yeah,",
+          "start": 26.12,
+          "end": 26.98
+        },
+        {
+          "word": "cuz",
+          "start": 27.22,
+          "end": 27.54
+        },
+        {
+          "word": "like",
+          "start": 27.54,
+          "end": 27.8
+        },
+        {
+          "word": "it",
+          "start": 27.8,
+          "end": 28.14
+        },
+        {
+          "word": "what",
+          "start": 28.14,
+          "end": 28.46
+        },
+        {
+          "word": "I",
+          "start": 28.46,
+          "end": 28.6
+        },
+        {
+          "word": "think",
+          "start": 28.6,
+          "end": 28.78
+        },
+        {
+          "word": "is",
+          "start": 28.78,
+          "end": 28.9
+        },
+        {
+          "word": "gonna",
+          "start": 28.9,
+          "end": 29.04
+        },
+        {
+          "word": "happen",
+          "start": 29.04,
+          "end": 29.48
+        },
+        {
+          "word": "is",
+          "start": 29.48,
+          "end": 29.8
+        }
+      ]
+    },
+    {
+      "start": 30.88,
+      "end": 32.54,
+      "text": "You know the graphics are gonna be phenomenal",
+      "words": [
+        {
+          "word": "You",
+          "start": 30.88,
+          "end": 31.3
+        },
+        {
+          "word": "know",
+          "start": 31.3,
+          "end": 31.36
+        },
+        {
+          "word": "the",
+          "start": 31.36,
+          "end": 31.46
+        },
+        {
+          "word": "graphics",
+          "start": 31.46,
+          "end": 31.76
+        },
+        {
+          "word": "are",
+          "start": 31.76,
+          "end": 31.94
+        },
+        {
+          "word": "gonna",
+          "start": 31.94,
+          "end": 32.02
+        },
+        {
+          "word": "be",
+          "start": 32.02,
+          "end": 32.16
+        },
+        {
+          "word": "phenomenal",
+          "start": 32.16,
+          "end": 32.54
+        }
+      ]
+    },
+    {
+      "start": 32.54,
+      "end": 37.2,
+      "text": "It's gonna be way better like if you if you had watched the Netflix thing, but you know you can go back and watch",
+      "words": [
+        {
+          "word": "It's",
+          "start": 32.54,
+          "end": 32.82
+        },
+        {
+          "word": "gonna",
+          "start": 32.82,
+          "end": 32.88
+        },
+        {
+          "word": "be",
+          "start": 32.88,
+          "end": 33.0
+        },
+        {
+          "word": "way",
+          "start": 33.0,
+          "end": 33.2
+        },
+        {
+          "word": "better",
+          "start": 33.2,
+          "end": 33.48
+        },
+        {
+          "word": "like",
+          "start": 33.48,
+          "end": 33.66
+        },
+        {
+          "word": "if",
+          "start": 33.66,
+          "end": 33.84
+        },
+        {
+          "word": "you",
+          "start": 33.84,
+          "end": 34.0
+        },
+        {
+          "word": "if",
+          "start": 34.0,
+          "end": 34.24
+        },
+        {
+          "word": "you",
+          "start": 34.24,
+          "end": 34.44
+        },
+        {
+          "word": "had",
+          "start": 34.44,
+          "end": 34.9
+        },
+        {
+          "word": "watched",
+          "start": 34.9,
+          "end": 35.2
+        },
+        {
+          "word": "the",
+          "start": 35.2,
+          "end": 35.4
+        },
+        {
+          "word": "Netflix",
+          "start": 35.4,
+          "end": 35.68
+        },
+        {
+          "word": "thing,",
+          "start": 35.68,
+          "end": 35.92
+        },
+        {
+          "word": "but",
+          "start": 35.92,
+          "end": 36.06
+        },
+        {
+          "word": "you",
+          "start": 36.06,
+          "end": 36.18
+        },
+        {
+          "word": "know",
+          "start": 36.18,
+          "end": 36.28
+        },
+        {
+          "word": "you",
+          "start": 36.28,
+          "end": 36.42
+        },
+        {
+          "word": "can",
+          "start": 36.42,
+          "end": 36.56
+        },
+        {
+          "word": "go",
+          "start": 36.56,
+          "end": 36.66
+        },
+        {
+          "word": "back",
+          "start": 36.66,
+          "end": 36.84
+        },
+        {
+          "word": "and",
+          "start": 36.84,
+          "end": 36.98
+        },
+        {
+          "word": "watch",
+          "start": 36.98,
+          "end": 37.2
+        }
+      ]
+    },
+    {
+      "start": 37.2,
+      "end": 42.6,
+      "text": "It's on Netflix. You don't have some bits of it. I'm not when I'm on my Peloton in the morning. I watched yeah",
+      "words": [
+        {
+          "word": "It's",
+          "start": 37.2,
+          "end": 37.48
+        },
+        {
+          "word": "on",
+          "start": 37.48,
+          "end": 37.6
+        },
+        {
+          "word": "Netflix.",
+          "start": 37.6,
+          "end": 38.0
+        },
+        {
+          "word": "You",
+          "start": 38.2,
+          "end": 38.3
+        },
+        {
+          "word": "don't",
+          "start": 38.3,
+          "end": 38.44
+        },
+        {
+          "word": "have",
+          "start": 38.44,
+          "end": 38.66
+        },
+        {
+          "word": "some",
+          "start": 38.66,
+          "end": 38.9
+        },
+        {
+          "word": "bits",
+          "start": 38.9,
+          "end": 39.22
+        },
+        {
+          "word": "of",
+          "start": 39.22,
+          "end": 39.4
+        },
+        {
+          "word": "it.",
+          "start": 39.4,
+          "end": 39.56
+        },
+        {
+          "word": "I'm",
+          "start": 39.66,
+          "end": 39.74
+        },
+        {
+          "word": "not",
+          "start": 39.74,
+          "end": 39.88
+        },
+        {
+          "word": "when",
+          "start": 39.88,
+          "end": 40.36
+        },
+        {
+          "word": "I'm",
+          "start": 40.36,
+          "end": 40.52
+        },
+        {
+          "word": "on",
+          "start": 40.52,
+          "end": 40.64
+        },
+        {
+          "word": "my",
+          "start": 40.64,
+          "end": 40.84
+        },
+        {
+          "word": "Peloton",
+          "start": 40.84,
+          "end": 41.2
+        },
+        {
+          "word": "in",
+          "start": 41.2,
+          "end": 41.42
+        },
+        {
+          "word": "the",
+          "start": 41.42,
+          "end": 41.48
+        },
+        {
+          "word": "morning.",
+          "start": 41.48,
+          "end": 41.7
+        },
+        {
+          "word": "I",
+          "start": 41.82,
+          "end": 41.9
+        },
+        {
+          "word": "watched",
+          "start": 41.9,
+          "end": 42.32
+        },
+        {
+          "word": "yeah",
+          "start": 42.32,
+          "end": 42.6
+        }
+      ]
+    },
+    {
+      "start": 42.6,
+      "end": 45.18,
+      "text": "It's stuff I go into YouTube, but yeah",
+      "words": [
+        {
+          "word": "It's",
+          "start": 42.6,
+          "end": 42.9
+        },
+        {
+          "word": "stuff",
+          "start": 42.9,
+          "end": 43.52
+        },
+        {
+          "word": "I",
+          "start": 43.52,
+          "end": 43.7
+        },
+        {
+          "word": "go",
+          "start": 43.7,
+          "end": 43.82
+        },
+        {
+          "word": "into",
+          "start": 43.82,
+          "end": 43.96
+        },
+        {
+          "word": "YouTube,",
+          "start": 43.96,
+          "end": 44.24
+        },
+        {
+          "word": "but",
+          "start": 44.3,
+          "end": 44.66
+        },
+        {
+          "word": "yeah",
+          "start": 44.66,
+          "end": 45.18
+        }
+      ]
+    },
+    {
+      "start": 45.18,
+      "end": 49.66,
+      "text": "It's gonna be interesting man because the the two characters are completely different animals",
+      "words": [
+        {
+          "word": "It's",
+          "start": 45.18,
+          "end": 45.5
+        },
+        {
+          "word": "gonna",
+          "start": 45.5,
+          "end": 45.58
+        },
+        {
+          "word": "be",
+          "start": 45.58,
+          "end": 45.74
+        },
+        {
+          "word": "interesting",
+          "start": 45.74,
+          "end": 46.16
+        },
+        {
+          "word": "man",
+          "start": 46.16,
+          "end": 46.48
+        },
+        {
+          "word": "because",
+          "start": 46.48,
+          "end": 46.84
+        },
+        {
+          "word": "the",
+          "start": 46.84,
+          "end": 47.22
+        },
+        {
+          "word": "the",
+          "start": 47.22,
+          "end": 47.48
+        },
+        {
+          "word": "two",
+          "start": 47.48,
+          "end": 47.7
+        },
+        {
+          "word": "characters",
+          "start": 47.7,
+          "end": 48.2
+        },
+        {
+          "word": "are",
+          "start": 48.2,
+          "end": 48.5
+        },
+        {
+          "word": "completely",
+          "start": 48.5,
+          "end": 48.84
+        },
+        {
+          "word": "different",
+          "start": 48.84,
+          "end": 49.26
+        },
+        {
+          "word": "animals",
+          "start": 49.26,
+          "end": 49.66
+        }
+      ]
+    },
+    {
+      "start": 49.66,
+      "end": 56.48,
+      "text": "You know than we were you know, they're they're they're not animals",
+      "words": [
+        {
+          "word": "You",
+          "start": 49.66,
+          "end": 49.92
+        },
+        {
+          "word": "know",
+          "start": 49.92,
+          "end": 50.02
+        },
+        {
+          "word": "than",
+          "start": 50.02,
+          "end": 50.16
+        },
+        {
+          "word": "we",
+          "start": 50.16,
+          "end": 50.32
+        },
+        {
+          "word": "were",
+          "start": 50.32,
+          "end": 50.64
+        },
+        {
+          "word": "you",
+          "start": 52.38,
+          "end": 52.9
+        },
+        {
+          "word": "know,",
+          "start": 52.9,
+          "end": 53.02
+        },
+        {
+          "word": "they're",
+          "start": 53.06,
+          "end": 53.9
+        },
+        {
+          "word": "they're",
+          "start": 53.9,
+          "end": 54.36
+        },
+        {
+          "word": "they're",
+          "start": 54.36,
+          "end": 54.78
+        },
+        {
+          "word": "not",
+          "start": 54.78,
+          "end": 55.2
+        },
+        {
+          "word": "animals",
+          "start": 55.44,
+          "end": 56.48
+        }
+      ]
+    },
+    {
+      "start": 56.48,
+      "end": 62.12,
+      "text": "No, I mean now aren't they like when you when you look at the three of the characters of us",
+      "words": [
+        {
+          "word": "No,",
+          "start": 56.48,
+          "end": 57.26
+        },
+        {
+          "word": "I",
+          "start": 57.26,
+          "end": 57.5
+        },
+        {
+          "word": "mean",
+          "start": 57.5,
+          "end": 57.62
+        },
+        {
+          "word": "now",
+          "start": 57.62,
+          "end": 57.82
+        },
+        {
+          "word": "aren't",
+          "start": 57.82,
+          "end": 58.06
+        },
+        {
+          "word": "they",
+          "start": 58.06,
+          "end": 58.28
+        },
+        {
+          "word": "like",
+          "start": 58.28,
+          "end": 59.16
+        },
+        {
+          "word": "when",
+          "start": 59.4,
+          "end": 59.6
+        },
+        {
+          "word": "you",
+          "start": 59.6,
+          "end": 59.72
+        },
+        {
+          "word": "when",
+          "start": 59.72,
+          "end": 59.94
+        },
+        {
+          "word": "you",
+          "start": 59.94,
+          "end": 60.04
+        },
+        {
+          "word": "look",
+          "start": 60.04,
+          "end": 60.24
+        },
+        {
+          "word": "at",
+          "start": 60.24,
+          "end": 60.34
+        },
+        {
+          "word": "the",
+          "start": 60.34,
+          "end": 60.44
+        },
+        {
+          "word": "three",
+          "start": 60.44,
+          "end": 60.7
+        },
+        {
+          "word": "of",
+          "start": 60.7,
+          "end": 61.04
+        },
+        {
+          "word": "the",
+          "start": 61.04,
+          "end": 61.22
+        },
+        {
+          "word": "characters",
+          "start": 61.22,
+          "end": 61.62
+        },
+        {
+          "word": "of",
+          "start": 61.62,
+          "end": 61.92
+        },
+        {
+          "word": "us",
+          "start": 61.92,
+          "end": 62.12
+        }
+      ]
+    },
+    {
+      "start": 62.26,
+      "end": 63.04,
+      "text": "Right, right?",
+      "words": [
+        {
+          "word": "Right,",
+          "start": 62.26,
+          "end": 62.68
+        },
+        {
+          "word": "right?",
+          "start": 63.04,
+          "end": 63.04
+        }
+      ]
+    },
+    {
+      "start": 63.58,
+      "end": 68.92,
+      "text": "Well, no one was I think Trevor was the only animal like you were just well",
+      "words": [
+        {
+          "word": "Well,",
+          "start": 63.58,
+          "end": 63.62
+        },
+        {
+          "word": "no",
+          "start": 64.3,
+          "end": 64.68
+        },
+        {
+          "word": "one",
+          "start": 64.68,
+          "end": 64.84
+        },
+        {
+          "word": "was",
+          "start": 64.84,
+          "end": 65.0
+        },
+        {
+          "word": "I",
+          "start": 65.0,
+          "end": 65.18
+        },
+        {
+          "word": "think",
+          "start": 65.18,
+          "end": 65.52
+        },
+        {
+          "word": "Trevor",
+          "start": 65.52,
+          "end": 65.8
+        },
+        {
+          "word": "was",
+          "start": 65.8,
+          "end": 66.08
+        },
+        {
+          "word": "the",
+          "start": 66.08,
+          "end": 66.22
+        },
+        {
+          "word": "only",
+          "start": 66.22,
+          "end": 66.4
+        },
+        {
+          "word": "animal",
+          "start": 66.4,
+          "end": 67.06
+        },
+        {
+          "word": "like",
+          "start": 67.06,
+          "end": 67.5
+        },
+        {
+          "word": "you",
+          "start": 67.5,
+          "end": 67.78
+        },
+        {
+          "word": "were",
+          "start": 67.78,
+          "end": 68.0
+        },
+        {
+          "word": "just",
+          "start": 68.0,
+          "end": 68.3
+        },
+        {
+          "word": "well",
+          "start": 68.3,
+          "end": 68.92
+        }
+      ]
+    },
+    {
+      "start": 69.07,
+      "end": 77.4,
+      "text": "I didn't mean animals like like, you know, it's more hyperbolic than then, you know actual but these two are very",
+      "words": [
+        {
+          "word": "I",
+          "start": 69.07,
+          "end": 69.43
+        },
+        {
+          "word": "didn't",
+          "start": 69.43,
+          "end": 69.65
+        },
+        {
+          "word": "mean",
+          "start": 69.65,
+          "end": 69.83
+        },
+        {
+          "word": "animals",
+          "start": 69.83,
+          "end": 70.25
+        },
+        {
+          "word": "like",
+          "start": 70.25,
+          "end": 70.63
+        },
+        {
+          "word": "like,",
+          "start": 70.63,
+          "end": 71.01
+        },
+        {
+          "word": "you",
+          "start": 71.01,
+          "end": 71.45
+        },
+        {
+          "word": "know,",
+          "start": 71.45,
+          "end": 71.61
+        },
+        {
+          "word": "it's",
+          "start": 71.78,
+          "end": 72.52
+        },
+        {
+          "word": "more",
+          "start": 72.52,
+          "end": 72.7
+        },
+        {
+          "word": "hyperbolic",
+          "start": 72.7,
+          "end": 73.38
+        },
+        {
+          "word": "than",
+          "start": 73.38,
+          "end": 73.84
+        },
+        {
+          "word": "then,",
+          "start": 73.84,
+          "end": 74.26
+        },
+        {
+          "word": "you",
+          "start": 74.32,
+          "end": 74.64
+        },
+        {
+          "word": "know",
+          "start": 74.64,
+          "end": 74.94
+        },
+        {
+          "word": "actual",
+          "start": 74.94,
+          "end": 75.42
+        },
+        {
+          "word": "but",
+          "start": 75.42,
+          "end": 75.78
+        },
+        {
+          "word": "these",
+          "start": 75.78,
+          "end": 76.3
+        },
+        {
+          "word": "two",
+          "start": 76.3,
+          "end": 76.62
+        },
+        {
+          "word": "are",
+          "start": 76.62,
+          "end": 76.98
+        },
+        {
+          "word": "very",
+          "start": 76.98,
+          "end": 77.4
+        }
+      ]
+    },
+    {
+      "start": 77.4,
+      "end": 82.22,
+      "text": "Do you think there is between the the two it's the man and the woman, right?",
+      "words": [
+        {
+          "word": "Do",
+          "start": 77.4,
+          "end": 77.72
+        },
+        {
+          "word": "you",
+          "start": 77.72,
+          "end": 77.82
+        },
+        {
+          "word": "think",
+          "start": 77.82,
+          "end": 78.14
+        },
+        {
+          "word": "there",
+          "start": 78.14,
+          "end": 78.46
+        },
+        {
+          "word": "is",
+          "start": 78.46,
+          "end": 78.72
+        },
+        {
+          "word": "between",
+          "start": 78.72,
+          "end": 79.12
+        },
+        {
+          "word": "the",
+          "start": 79.12,
+          "end": 79.68
+        },
+        {
+          "word": "the",
+          "start": 79.68,
+          "end": 79.88
+        },
+        {
+          "word": "two",
+          "start": 79.88,
+          "end": 80.2
+        },
+        {
+          "word": "it's",
+          "start": 80.2,
+          "end": 80.86
+        },
+        {
+          "word": "the",
+          "start": 80.86,
+          "end": 81.1
+        },
+        {
+          "word": "man",
+          "start": 81.1,
+          "end": 81.4
+        },
+        {
+          "word": "and",
+          "start": 81.4,
+          "end": 81.5
+        },
+        {
+          "word": "the",
+          "start": 81.5,
+          "end": 81.62
+        },
+        {
+          "word": "woman,",
+          "start": 81.62,
+          "end": 81.86
+        },
+        {
+          "word": "right?",
+          "start": 81.9,
+          "end": 82.22
+        }
+      ]
+    },
+    {
+      "start": 82.7,
+      "end": 83.14,
+      "text": "I got it",
+      "words": [
+        {
+          "word": "I",
+          "start": 82.7,
+          "end": 82.86
+        },
+        {
+          "word": "got",
+          "start": 82.86,
+          "end": 83.0
+        },
+        {
+          "word": "it",
+          "start": 83.0,
+          "end": 83.14
+        }
+      ]
+    },
+    {
+      "start": 83.14,
+      "end": 88.77,
+      "text": "I got a real Bonnie and Clyde vibe from it young Bonnie and Clyde stuff",
+      "words": [
+        {
+          "word": "I",
+          "start": 83.14,
+          "end": 83.26
+        },
+        {
+          "word": "got",
+          "start": 83.26,
+          "end": 83.4
+        },
+        {
+          "word": "a",
+          "start": 83.4,
+          "end": 83.52
+        },
+        {
+          "word": "real",
+          "start": 83.52,
+          "end": 83.72
+        },
+        {
+          "word": "Bonnie",
+          "start": 83.72,
+          "end": 84.02
+        },
+        {
+          "word": "and",
+          "start": 84.02,
+          "end": 84.26
+        },
+        {
+          "word": "Clyde",
+          "start": 84.26,
+          "end": 84.58
+        },
+        {
+          "word": "vibe",
+          "start": 84.58,
+          "end": 84.8
+        },
+        {
+          "word": "from",
+          "start": 84.8,
+          "end": 85.1
+        },
+        {
+          "word": "it",
+          "start": 85.1,
+          "end": 85.32
+        },
+        {
+          "word": "young",
+          "start": 87.07,
+          "end": 87.61
+        },
+        {
+          "word": "Bonnie",
+          "start": 87.61,
+          "end": 87.91
+        },
+        {
+          "word": "and",
+          "start": 87.91,
+          "end": 88.19
+        },
+        {
+          "word": "Clyde",
+          "start": 88.19,
+          "end": 88.53
+        },
+        {
+          "word": "stuff",
+          "start": 88.53,
+          "end": 88.77
+        }
+      ]
+    },
+    {
+      "start": 88.77,
+      "end": 93.75,
+      "text": "You know what I mean like there there are a couple of young lovers that are going out on a rampage",
+      "words": [
+        {
+          "word": "You",
+          "start": 88.77,
+          "end": 89.05
+        },
+        {
+          "word": "know",
+          "start": 89.05,
+          "end": 89.15
+        },
+        {
+          "word": "what",
+          "start": 89.15,
+          "end": 89.21
+        },
+        {
+          "word": "I",
+          "start": 89.21,
+          "end": 89.27
+        },
+        {
+          "word": "mean",
+          "start": 89.27,
+          "end": 89.43
+        },
+        {
+          "word": "like",
+          "start": 89.43,
+          "end": 89.67
+        },
+        {
+          "word": "there",
+          "start": 89.67,
+          "end": 89.95
+        },
+        {
+          "word": "there",
+          "start": 89.95,
+          "end": 90.27
+        },
+        {
+          "word": "are",
+          "start": 90.27,
+          "end": 90.75
+        },
+        {
+          "word": "a",
+          "start": 90.75,
+          "end": 91.11
+        },
+        {
+          "word": "couple",
+          "start": 91.11,
+          "end": 91.27
+        },
+        {
+          "word": "of",
+          "start": 91.27,
+          "end": 91.37
+        },
+        {
+          "word": "young",
+          "start": 91.37,
+          "end": 91.53
+        },
+        {
+          "word": "lovers",
+          "start": 91.53,
+          "end": 91.75
+        },
+        {
+          "word": "that",
+          "start": 91.75,
+          "end": 92.01
+        },
+        {
+          "word": "are",
+          "start": 92.01,
+          "end": 92.11
+        },
+        {
+          "word": "going",
+          "start": 92.11,
+          "end": 92.31
+        },
+        {
+          "word": "out",
+          "start": 92.31,
+          "end": 92.53
+        },
+        {
+          "word": "on",
+          "start": 92.53,
+          "end": 92.75
+        },
+        {
+          "word": "a",
+          "start": 92.75,
+          "end": 92.95
+        },
+        {
+          "word": "rampage",
+          "start": 92.95,
+          "end": 93.75
+        }
+      ]
+    },
+    {
+      "start": 93.75,
+      "end": 97.13,
+      "text": "And they're they're stealing whatever they can steal. I mean so they are a couple",
+      "words": [
+        {
+          "word": "And",
+          "start": 93.75,
+          "end": 94.11
+        },
+        {
+          "word": "they're",
+          "start": 94.11,
+          "end": 94.11
+        },
+        {
+          "word": "they're",
+          "start": 94.11,
+          "end": 94.49
+        },
+        {
+          "word": "stealing",
+          "start": 94.49,
+          "end": 94.79
+        },
+        {
+          "word": "whatever",
+          "start": 94.79,
+          "end": 95.07
+        },
+        {
+          "word": "they",
+          "start": 95.07,
+          "end": 95.29
+        },
+        {
+          "word": "can",
+          "start": 95.29,
+          "end": 95.41
+        },
+        {
+          "word": "steal.",
+          "start": 95.41,
+          "end": 95.65
+        },
+        {
+          "word": "I",
+          "start": 95.79,
+          "end": 95.79
+        },
+        {
+          "word": "mean",
+          "start": 95.79,
+          "end": 95.89
+        },
+        {
+          "word": "so",
+          "start": 95.89,
+          "end": 96.35
+        },
+        {
+          "word": "they",
+          "start": 96.35,
+          "end": 96.51
+        },
+        {
+          "word": "are",
+          "start": 96.51,
+          "end": 96.69
+        },
+        {
+          "word": "a",
+          "start": 96.69,
+          "end": 96.81
+        },
+        {
+          "word": "couple",
+          "start": 96.81,
+          "end": 97.13
+        }
+      ]
+    },
+    {
+      "start": 97.71,
+      "end": 102.75,
+      "text": "Yeah, yeah, yeah like in the first trailer they had they were like, you know",
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 97.71,
+          "end": 97.95
+        },
+        {
+          "word": "yeah,",
+          "start": 97.95,
+          "end": 98.79
+        },
+        {
+          "word": "yeah",
+          "start": 98.79,
+          "end": 99.29
+        },
+        {
+          "word": "like",
+          "start": 99.29,
+          "end": 99.63
+        },
+        {
+          "word": "in",
+          "start": 99.63,
+          "end": 99.85
+        },
+        {
+          "word": "the",
+          "start": 99.85,
+          "end": 99.95
+        },
+        {
+          "word": "first",
+          "start": 99.95,
+          "end": 100.19
+        },
+        {
+          "word": "trailer",
+          "start": 100.19,
+          "end": 100.53
+        },
+        {
+          "word": "they",
+          "start": 100.53,
+          "end": 100.79
+        },
+        {
+          "word": "had",
+          "start": 100.79,
+          "end": 101.09
+        },
+        {
+          "word": "they",
+          "start": 101.09,
+          "end": 101.35
+        },
+        {
+          "word": "were",
+          "start": 101.35,
+          "end": 101.57
+        },
+        {
+          "word": "like,",
+          "start": 101.57,
+          "end": 101.95
+        },
+        {
+          "word": "you",
+          "start": 102.05,
+          "end": 102.61
+        },
+        {
+          "word": "know",
+          "start": 102.61,
+          "end": 102.75
+        }
+      ]
+    },
+    {
+      "start": 102.75,
+      "end": 108.65,
+      "text": "She was climbing on top of him in bed and you know said and they did this whole trust line",
+      "words": [
+        {
+          "word": "She",
+          "start": 102.75,
+          "end": 102.97
+        },
+        {
+          "word": "was",
+          "start": 102.97,
+          "end": 103.05
+        },
+        {
+          "word": "climbing",
+          "start": 103.05,
+          "end": 103.31
+        },
+        {
+          "word": "on",
+          "start": 103.31,
+          "end": 103.51
+        },
+        {
+          "word": "top",
+          "start": 103.51,
+          "end": 103.71
+        },
+        {
+          "word": "of",
+          "start": 103.71,
+          "end": 103.93
+        },
+        {
+          "word": "him",
+          "start": 103.93,
+          "end": 104.09
+        },
+        {
+          "word": "in",
+          "start": 104.09,
+          "end": 104.23
+        },
+        {
+          "word": "bed",
+          "start": 104.23,
+          "end": 104.51
+        },
+        {
+          "word": "and",
+          "start": 104.51,
+          "end": 105.53
+        },
+        {
+          "word": "you",
+          "start": 105.53,
+          "end": 106.03
+        },
+        {
+          "word": "know",
+          "start": 106.03,
+          "end": 106.19
+        },
+        {
+          "word": "said",
+          "start": 106.19,
+          "end": 106.59
+        },
+        {
+          "word": "and",
+          "start": 106.59,
+          "end": 107.07
+        },
+        {
+          "word": "they",
+          "start": 107.07,
+          "end": 107.21
+        },
+        {
+          "word": "did",
+          "start": 107.21,
+          "end": 107.33
+        },
+        {
+          "word": "this",
+          "start": 107.33,
+          "end": 107.53
+        },
+        {
+          "word": "whole",
+          "start": 107.53,
+          "end": 107.67
+        },
+        {
+          "word": "trust",
+          "start": 107.67,
+          "end": 108.13
+        },
+        {
+          "word": "line",
+          "start": 108.13,
+          "end": 108.65
+        }
+      ]
+    },
+    {
+      "start": 108.65,
+      "end": 113.12,
+      "text": "He said trust and you know, but it's gonna be yeah",
+      "words": [
+        {
+          "word": "He",
+          "start": 108.65,
+          "end": 108.89
+        },
+        {
+          "word": "said",
+          "start": 108.89,
+          "end": 109.15
+        },
+        {
+          "word": "trust",
+          "start": 109.15,
+          "end": 109.51
+        },
+        {
+          "word": "and",
+          "start": 109.51,
+          "end": 110.59
+        },
+        {
+          "word": "you",
+          "start": 110.59,
+          "end": 110.89
+        },
+        {
+          "word": "know,",
+          "start": 110.89,
+          "end": 111.01
+        },
+        {
+          "word": "but",
+          "start": 111.22,
+          "end": 111.9
+        },
+        {
+          "word": "it's",
+          "start": 111.9,
+          "end": 112.4
+        },
+        {
+          "word": "gonna",
+          "start": 112.4,
+          "end": 112.52
+        },
+        {
+          "word": "be",
+          "start": 112.52,
+          "end": 112.74
+        },
+        {
+          "word": "yeah",
+          "start": 112.74,
+          "end": 113.12
+        }
+      ]
+    },
+    {
+      "start": 113.12,
+      "end": 116.36,
+      "text": "The graphics and everything are gonna blow ours away like the hair",
+      "words": [
+        {
+          "word": "The",
+          "start": 113.12,
+          "end": 113.7
+        },
+        {
+          "word": "graphics",
+          "start": 113.7,
+          "end": 114.14
+        },
+        {
+          "word": "and",
+          "start": 114.14,
+          "end": 114.36
+        },
+        {
+          "word": "everything",
+          "start": 114.36,
+          "end": 114.54
+        },
+        {
+          "word": "are",
+          "start": 114.54,
+          "end": 114.78
+        },
+        {
+          "word": "gonna",
+          "start": 114.78,
+          "end": 114.9
+        },
+        {
+          "word": "blow",
+          "start": 114.9,
+          "end": 115.14
+        },
+        {
+          "word": "ours",
+          "start": 115.14,
+          "end": 115.4
+        },
+        {
+          "word": "away",
+          "start": 115.4,
+          "end": 115.62
+        },
+        {
+          "word": "like",
+          "start": 115.62,
+          "end": 115.94
+        },
+        {
+          "word": "the",
+          "start": 115.94,
+          "end": 116.12
+        },
+        {
+          "word": "hair",
+          "start": 116.12,
+          "end": 116.36
+        }
+      ]
+    },
+    {
+      "start": 116.36,
+      "end": 120.54,
+      "text": "Like if you look at at this thing like where your hair is like your hair your mullet",
+      "words": [
+        {
+          "word": "Like",
+          "start": 116.36,
+          "end": 116.88
+        },
+        {
+          "word": "if",
+          "start": 116.88,
+          "end": 117.0
+        },
+        {
+          "word": "you",
+          "start": 117.0,
+          "end": 117.08
+        },
+        {
+          "word": "look",
+          "start": 117.08,
+          "end": 117.26
+        },
+        {
+          "word": "at",
+          "start": 117.26,
+          "end": 117.42
+        },
+        {
+          "word": "at",
+          "start": 117.42,
+          "end": 117.9
+        },
+        {
+          "word": "this",
+          "start": 117.9,
+          "end": 118.16
+        },
+        {
+          "word": "thing",
+          "start": 118.16,
+          "end": 118.36
+        },
+        {
+          "word": "like",
+          "start": 118.36,
+          "end": 118.52
+        },
+        {
+          "word": "where",
+          "start": 118.52,
+          "end": 118.68
+        },
+        {
+          "word": "your",
+          "start": 118.68,
+          "end": 118.82
+        },
+        {
+          "word": "hair",
+          "start": 118.82,
+          "end": 119.1
+        },
+        {
+          "word": "is",
+          "start": 119.1,
+          "end": 119.32
+        },
+        {
+          "word": "like",
+          "start": 119.32,
+          "end": 119.48
+        },
+        {
+          "word": "your",
+          "start": 119.48,
+          "end": 119.64
+        },
+        {
+          "word": "hair",
+          "start": 119.64,
+          "end": 119.86
+        },
+        {
+          "word": "your",
+          "start": 119.86,
+          "end": 120.06
+        },
+        {
+          "word": "mullet",
+          "start": 120.06,
+          "end": 120.54
+        }
+      ]
+    },
+    {
+      "start": 120.68,
+      "end": 127.92,
+      "text": "It's not really moving is it right it's not like it's windswept or anything like that six will have a flow everything",
+      "words": [
+        {
+          "word": "It's",
+          "start": 120.68,
+          "end": 121.26
+        },
+        {
+          "word": "not",
+          "start": 121.26,
+          "end": 121.38
+        },
+        {
+          "word": "really",
+          "start": 121.38,
+          "end": 121.56
+        },
+        {
+          "word": "moving",
+          "start": 121.56,
+          "end": 121.84
+        },
+        {
+          "word": "is",
+          "start": 121.84,
+          "end": 122.1
+        },
+        {
+          "word": "it",
+          "start": 122.1,
+          "end": 122.44
+        },
+        {
+          "word": "right",
+          "start": 122.94,
+          "end": 123.3
+        },
+        {
+          "word": "it's",
+          "start": 123.3,
+          "end": 124.0
+        },
+        {
+          "word": "not",
+          "start": 124.0,
+          "end": 124.1
+        },
+        {
+          "word": "like",
+          "start": 124.1,
+          "end": 124.24
+        },
+        {
+          "word": "it's",
+          "start": 124.24,
+          "end": 124.38
+        },
+        {
+          "word": "windswept",
+          "start": 124.38,
+          "end": 124.96
+        },
+        {
+          "word": "or",
+          "start": 124.96,
+          "end": 125.08
+        },
+        {
+          "word": "anything",
+          "start": 125.08,
+          "end": 125.24
+        },
+        {
+          "word": "like",
+          "start": 125.24,
+          "end": 125.58
+        },
+        {
+          "word": "that",
+          "start": 125.58,
+          "end": 125.9
+        },
+        {
+          "word": "six",
+          "start": 125.9,
+          "end": 126.32
+        },
+        {
+          "word": "will",
+          "start": 126.32,
+          "end": 126.66
+        },
+        {
+          "word": "have",
+          "start": 126.66,
+          "end": 126.96
+        },
+        {
+          "word": "a",
+          "start": 126.96,
+          "end": 127.1
+        },
+        {
+          "word": "flow",
+          "start": 127.1,
+          "end": 127.42
+        },
+        {
+          "word": "everything",
+          "start": 127.42,
+          "end": 127.92
+        }
+      ]
+    },
+    {
+      "start": 127.92,
+      "end": 134.68,
+      "text": "Oh, man, that's you know, that's natural. That's the progression of technology. Yeah. Yeah, exactly progression of technology",
+      "words": [
+        {
+          "word": "Oh,",
+          "start": 127.92,
+          "end": 128.64
+        },
+        {
+          "word": "man,",
+          "start": 128.64,
+          "end": 129.04
+        },
+        {
+          "word": "that's",
+          "start": 129.24,
+          "end": 129.74
+        },
+        {
+          "word": "you",
+          "start": 129.74,
+          "end": 129.94
+        },
+        {
+          "word": "know,",
+          "start": 129.94,
+          "end": 130.1
+        },
+        {
+          "word": "that's",
+          "start": 130.1,
+          "end": 130.36
+        },
+        {
+          "word": "natural.",
+          "start": 130.36,
+          "end": 130.76
+        },
+        {
+          "word": "That's",
+          "start": 130.88,
+          "end": 131.04
+        },
+        {
+          "word": "the",
+          "start": 131.04,
+          "end": 131.1
+        },
+        {
+          "word": "progression",
+          "start": 131.1,
+          "end": 131.42
+        },
+        {
+          "word": "of",
+          "start": 131.42,
+          "end": 131.74
+        },
+        {
+          "word": "technology.",
+          "start": 131.74,
+          "end": 131.96
+        },
+        {
+          "word": "Yeah.",
+          "start": 132.14,
+          "end": 132.72
+        },
+        {
+          "word": "Yeah,",
+          "start": 132.76,
+          "end": 132.94
+        },
+        {
+          "word": "exactly",
+          "start": 132.96,
+          "end": 133.44
+        },
+        {
+          "word": "progression",
+          "start": 133.44,
+          "end": 133.98
+        },
+        {
+          "word": "of",
+          "start": 133.98,
+          "end": 134.26
+        },
+        {
+          "word": "technology",
+          "start": 134.26,
+          "end": 134.68
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "text": " Nice",
+      "startMs": 0,
+      "endMs": 680
+    },
+    {
+      "text": " your",
+      "startMs": 2420,
+      "endMs": 2600
+    },
+    {
+      "text": " hair",
+      "startMs": 2600,
+      "endMs": 2800
+    },
+    {
+      "text": " is",
+      "startMs": 2800,
+      "endMs": 3040
+    },
+    {
+      "text": " right",
+      "startMs": 3040,
+      "endMs": 3220
+    },
+    {
+      "text": " there,",
+      "startMs": 3220,
+      "endMs": 3520
+    },
+    {
+      "text": " huh?",
+      "startMs": 3520,
+      "endMs": 3760
+    },
+    {
+      "text": " With",
+      "startMs": 5120,
+      "endMs": 5560
+    },
+    {
+      "text": " the",
+      "startMs": 5560,
+      "endMs": 5700
+    },
+    {
+      "text": " little",
+      "startMs": 5700,
+      "endMs": 5880
+    },
+    {
+      "text": " bald",
+      "startMs": 5880,
+      "endMs": 6160
+    },
+    {
+      "text": " spot.",
+      "startMs": 6160,
+      "endMs": 6400
+    },
+    {
+      "text": " I",
+      "startMs": 6620,
+      "endMs": 6620
+    },
+    {
+      "text": " love",
+      "startMs": 6620,
+      "endMs": 6740
+    },
+    {
+      "text": " the",
+      "startMs": 6740,
+      "endMs": 6880
+    },
+    {
+      "text": " ball.",
+      "startMs": 6880,
+      "endMs": 7060
+    },
+    {
+      "text": " Yeah,",
+      "startMs": 7060,
+      "endMs": 7340
+    },
+    {
+      "text": " they",
+      "startMs": 7340,
+      "endMs": 7620
+    },
+    {
+      "text": " gave",
+      "startMs": 7620,
+      "endMs": 7800
+    },
+    {
+      "text": " you",
+      "startMs": 7800,
+      "endMs": 7920
+    },
+    {
+      "text": " a",
+      "startMs": 7920,
+      "endMs": 8020
+    },
+    {
+      "text": " little",
+      "startMs": 8020,
+      "endMs": 8160
+    },
+    {
+      "text": " bit",
+      "startMs": 8160,
+      "endMs": 8300
+    },
+    {
+      "text": " more",
+      "startMs": 8300,
+      "endMs": 8460
+    },
+    {
+      "text": " on",
+      "startMs": 8460,
+      "endMs": 8660
+    },
+    {
+      "text": " top",
+      "startMs": 8660,
+      "endMs": 8960
+    },
+    {
+      "text": " So",
+      "startMs": 10440,
+      "endMs": 10880
+    },
+    {
+      "text": " GTA",
+      "startMs": 10880,
+      "endMs": 11320
+    },
+    {
+      "text": " 6",
+      "startMs": 11320,
+      "endMs": 11740
+    },
+    {
+      "text": " is",
+      "startMs": 11740,
+      "endMs": 11980
+    },
+    {
+      "text": " gonna",
+      "startMs": 11980,
+      "endMs": 12080
+    },
+    {
+      "text": " be",
+      "startMs": 12080,
+      "endMs": 12280
+    },
+    {
+      "text": " like",
+      "startMs": 12280,
+      "endMs": 12500
+    },
+    {
+      "text": " this",
+      "startMs": 12500,
+      "endMs": 12740
+    },
+    {
+      "text": " whole",
+      "startMs": 12740,
+      "endMs": 13020
+    },
+    {
+      "text": " this",
+      "startMs": 13020,
+      "endMs": 13600
+    },
+    {
+      "text": " will",
+      "startMs": 13600,
+      "endMs": 13740
+    },
+    {
+      "text": " all",
+      "startMs": 13740,
+      "endMs": 13880
+    },
+    {
+      "text": " be",
+      "startMs": 13880,
+      "endMs": 14000
+    },
+    {
+      "text": " smoother",
+      "startMs": 14000,
+      "endMs": 14660
+    },
+    {
+      "text": " do",
+      "startMs": 14660,
+      "endMs": 15000
+    },
+    {
+      "text": " you",
+      "startMs": 15000,
+      "endMs": 15060
+    },
+    {
+      "text": " think",
+      "startMs": 15060,
+      "endMs": 15340
+    },
+    {
+      "text": " and",
+      "startMs": 15340,
+      "endMs": 15720
+    },
+    {
+      "text": " yeah?",
+      "startMs": 15720,
+      "endMs": 16260
+    },
+    {
+      "text": " Yeah,",
+      "startMs": 16620,
+      "endMs": 16760
+    },
+    {
+      "text": " I",
+      "startMs": 16760,
+      "endMs": 17040
+    },
+    {
+      "text": " think",
+      "startMs": 17040,
+      "endMs": 17180
+    },
+    {
+      "text": " the",
+      "startMs": 17180,
+      "endMs": 17340
+    },
+    {
+      "text": " graphic",
+      "startMs": 17340,
+      "endMs": 17560
+    },
+    {
+      "text": " movement",
+      "startMs": 17560,
+      "endMs": 18300
+    },
+    {
+      "text": " graphics",
+      "startMs": 18540,
+      "endMs": 19460
+    },
+    {
+      "text": " are",
+      "startMs": 19460,
+      "endMs": 19620
+    },
+    {
+      "text": " gonna",
+      "startMs": 19620,
+      "endMs": 19780
+    },
+    {
+      "text": " blow",
+      "startMs": 19780,
+      "endMs": 19980
+    },
+    {
+      "text": " this",
+      "startMs": 19980,
+      "endMs": 20220
+    },
+    {
+      "text": " away",
+      "startMs": 20220,
+      "endMs": 20540
+    },
+    {
+      "text": " That's",
+      "startMs": 21160,
+      "endMs": 21600
+    },
+    {
+      "text": " what",
+      "startMs": 21600,
+      "endMs": 21700
+    },
+    {
+      "text": " I",
+      "startMs": 21700,
+      "endMs": 21800
+    },
+    {
+      "text": " gathered",
+      "startMs": 21800,
+      "endMs": 22120
+    },
+    {
+      "text": " from",
+      "startMs": 22120,
+      "endMs": 22400
+    },
+    {
+      "text": " the",
+      "startMs": 22400,
+      "endMs": 22560
+    },
+    {
+      "text": " bits.",
+      "startMs": 22560,
+      "endMs": 22720
+    },
+    {
+      "text": " I",
+      "startMs": 22860,
+      "endMs": 22860
+    },
+    {
+      "text": " saw",
+      "startMs": 22860,
+      "endMs": 23160
+    },
+    {
+      "text": " it",
+      "startMs": 23160,
+      "endMs": 23260
+    },
+    {
+      "text": " and",
+      "startMs": 23260,
+      "endMs": 23400
+    },
+    {
+      "text": " watch",
+      "startMs": 23400,
+      "endMs": 23640
+    },
+    {
+      "text": " the",
+      "startMs": 23640,
+      "endMs": 23800
+    },
+    {
+      "text": " board",
+      "startMs": 23800,
+      "endMs": 24060
+    },
+    {
+      "text": " and",
+      "startMs": 24060,
+      "endMs": 24340
+    },
+    {
+      "text": " that",
+      "startMs": 24340,
+      "endMs": 24440
+    },
+    {
+      "text": " looks",
+      "startMs": 24440,
+      "endMs": 24580
+    },
+    {
+      "text": " thing",
+      "startMs": 24580,
+      "endMs": 24880
+    },
+    {
+      "text": " But",
+      "startMs": 24880,
+      "endMs": 25060
+    },
+    {
+      "text": " the",
+      "startMs": 25060,
+      "endMs": 25240
+    },
+    {
+      "text": " bits",
+      "startMs": 25240,
+      "endMs": 25420
+    },
+    {
+      "text": " I",
+      "startMs": 25420,
+      "endMs": 25560
+    },
+    {
+      "text": " saw",
+      "startMs": 25560,
+      "endMs": 25920
+    },
+    {
+      "text": " see",
+      "startMs": 25920,
+      "endMs": 26120
+    },
+    {
+      "text": " yeah,",
+      "startMs": 26120,
+      "endMs": 26980
+    },
+    {
+      "text": " cuz",
+      "startMs": 27220,
+      "endMs": 27540
+    },
+    {
+      "text": " like",
+      "startMs": 27540,
+      "endMs": 27800
+    },
+    {
+      "text": " it",
+      "startMs": 27800,
+      "endMs": 28140
+    },
+    {
+      "text": " what",
+      "startMs": 28140,
+      "endMs": 28460
+    },
+    {
+      "text": " I",
+      "startMs": 28460,
+      "endMs": 28600
+    },
+    {
+      "text": " think",
+      "startMs": 28600,
+      "endMs": 28780
+    },
+    {
+      "text": " is",
+      "startMs": 28780,
+      "endMs": 28900
+    },
+    {
+      "text": " gonna",
+      "startMs": 28900,
+      "endMs": 29040
+    },
+    {
+      "text": " happen",
+      "startMs": 29040,
+      "endMs": 29480
+    },
+    {
+      "text": " is",
+      "startMs": 29480,
+      "endMs": 29800
+    },
+    {
+      "text": " You",
+      "startMs": 30880,
+      "endMs": 31300
+    },
+    {
+      "text": " know",
+      "startMs": 31300,
+      "endMs": 31360
+    },
+    {
+      "text": " the",
+      "startMs": 31360,
+      "endMs": 31460
+    },
+    {
+      "text": " graphics",
+      "startMs": 31460,
+      "endMs": 31760
+    },
+    {
+      "text": " are",
+      "startMs": 31760,
+      "endMs": 31940
+    },
+    {
+      "text": " gonna",
+      "startMs": 31940,
+      "endMs": 32020
+    },
+    {
+      "text": " be",
+      "startMs": 32020,
+      "endMs": 32159
+    },
+    {
+      "text": " phenomenal",
+      "startMs": 32159,
+      "endMs": 32540
+    },
+    {
+      "text": " It's",
+      "startMs": 32540,
+      "endMs": 32820
+    },
+    {
+      "text": " gonna",
+      "startMs": 32820,
+      "endMs": 32880
+    },
+    {
+      "text": " be",
+      "startMs": 32880,
+      "endMs": 33000
+    },
+    {
+      "text": " way",
+      "startMs": 33000,
+      "endMs": 33200
+    },
+    {
+      "text": " better",
+      "startMs": 33200,
+      "endMs": 33480
+    },
+    {
+      "text": " like",
+      "startMs": 33480,
+      "endMs": 33660
+    },
+    {
+      "text": " if",
+      "startMs": 33660,
+      "endMs": 33840
+    },
+    {
+      "text": " you",
+      "startMs": 33840,
+      "endMs": 34000
+    },
+    {
+      "text": " if",
+      "startMs": 34000,
+      "endMs": 34240
+    },
+    {
+      "text": " you",
+      "startMs": 34240,
+      "endMs": 34440
+    },
+    {
+      "text": " had",
+      "startMs": 34440,
+      "endMs": 34900
+    },
+    {
+      "text": " watched",
+      "startMs": 34900,
+      "endMs": 35200
+    },
+    {
+      "text": " the",
+      "startMs": 35200,
+      "endMs": 35400
+    },
+    {
+      "text": " Netflix",
+      "startMs": 35400,
+      "endMs": 35680
+    },
+    {
+      "text": " thing,",
+      "startMs": 35680,
+      "endMs": 35920
+    },
+    {
+      "text": " but",
+      "startMs": 35920,
+      "endMs": 36060
+    },
+    {
+      "text": " you",
+      "startMs": 36060,
+      "endMs": 36180
+    },
+    {
+      "text": " know",
+      "startMs": 36180,
+      "endMs": 36280
+    },
+    {
+      "text": " you",
+      "startMs": 36280,
+      "endMs": 36420
+    },
+    {
+      "text": " can",
+      "startMs": 36420,
+      "endMs": 36560
+    },
+    {
+      "text": " go",
+      "startMs": 36560,
+      "endMs": 36660
+    },
+    {
+      "text": " back",
+      "startMs": 36660,
+      "endMs": 36840
+    },
+    {
+      "text": " and",
+      "startMs": 36840,
+      "endMs": 36980
+    },
+    {
+      "text": " watch",
+      "startMs": 36980,
+      "endMs": 37200
+    },
+    {
+      "text": " It's",
+      "startMs": 37200,
+      "endMs": 37480
+    },
+    {
+      "text": " on",
+      "startMs": 37480,
+      "endMs": 37600
+    },
+    {
+      "text": " Netflix.",
+      "startMs": 37600,
+      "endMs": 38000
+    },
+    {
+      "text": " You",
+      "startMs": 38200,
+      "endMs": 38300
+    },
+    {
+      "text": " don't",
+      "startMs": 38300,
+      "endMs": 38440
+    },
+    {
+      "text": " have",
+      "startMs": 38440,
+      "endMs": 38660
+    },
+    {
+      "text": " some",
+      "startMs": 38660,
+      "endMs": 38900
+    },
+    {
+      "text": " bits",
+      "startMs": 38900,
+      "endMs": 39220
+    },
+    {
+      "text": " of",
+      "startMs": 39220,
+      "endMs": 39400
+    },
+    {
+      "text": " it.",
+      "startMs": 39400,
+      "endMs": 39560
+    },
+    {
+      "text": " I'm",
+      "startMs": 39660,
+      "endMs": 39740
+    },
+    {
+      "text": " not",
+      "startMs": 39740,
+      "endMs": 39880
+    },
+    {
+      "text": " when",
+      "startMs": 39880,
+      "endMs": 40360
+    },
+    {
+      "text": " I'm",
+      "startMs": 40360,
+      "endMs": 40520
+    },
+    {
+      "text": " on",
+      "startMs": 40520,
+      "endMs": 40640
+    },
+    {
+      "text": " my",
+      "startMs": 40640,
+      "endMs": 40840
+    },
+    {
+      "text": " Peloton",
+      "startMs": 40840,
+      "endMs": 41200
+    },
+    {
+      "text": " in",
+      "startMs": 41200,
+      "endMs": 41420
+    },
+    {
+      "text": " the",
+      "startMs": 41420,
+      "endMs": 41480
+    },
+    {
+      "text": " morning.",
+      "startMs": 41480,
+      "endMs": 41700
+    },
+    {
+      "text": " I",
+      "startMs": 41820,
+      "endMs": 41900
+    },
+    {
+      "text": " watched",
+      "startMs": 41900,
+      "endMs": 42320
+    },
+    {
+      "text": " yeah",
+      "startMs": 42320,
+      "endMs": 42600
+    },
+    {
+      "text": " It's",
+      "startMs": 42600,
+      "endMs": 42900
+    },
+    {
+      "text": " stuff",
+      "startMs": 42900,
+      "endMs": 43520
+    },
+    {
+      "text": " I",
+      "startMs": 43520,
+      "endMs": 43700
+    },
+    {
+      "text": " go",
+      "startMs": 43700,
+      "endMs": 43820
+    },
+    {
+      "text": " into",
+      "startMs": 43820,
+      "endMs": 43960
+    },
+    {
+      "text": " YouTube,",
+      "startMs": 43960,
+      "endMs": 44240
+    },
+    {
+      "text": " but",
+      "startMs": 44300,
+      "endMs": 44660
+    },
+    {
+      "text": " yeah",
+      "startMs": 44660,
+      "endMs": 45180
+    },
+    {
+      "text": " It's",
+      "startMs": 45180,
+      "endMs": 45500
+    },
+    {
+      "text": " gonna",
+      "startMs": 45500,
+      "endMs": 45580
+    },
+    {
+      "text": " be",
+      "startMs": 45580,
+      "endMs": 45740
+    },
+    {
+      "text": " interesting",
+      "startMs": 45740,
+      "endMs": 46160
+    },
+    {
+      "text": " man",
+      "startMs": 46160,
+      "endMs": 46480
+    },
+    {
+      "text": " because",
+      "startMs": 46480,
+      "endMs": 46840
+    },
+    {
+      "text": " the",
+      "startMs": 46840,
+      "endMs": 47220
+    },
+    {
+      "text": " the",
+      "startMs": 47220,
+      "endMs": 47480
+    },
+    {
+      "text": " two",
+      "startMs": 47480,
+      "endMs": 47700
+    },
+    {
+      "text": " characters",
+      "startMs": 47700,
+      "endMs": 48200
+    },
+    {
+      "text": " are",
+      "startMs": 48200,
+      "endMs": 48500
+    },
+    {
+      "text": " completely",
+      "startMs": 48500,
+      "endMs": 48840
+    },
+    {
+      "text": " different",
+      "startMs": 48840,
+      "endMs": 49260
+    },
+    {
+      "text": " animals",
+      "startMs": 49260,
+      "endMs": 49660
+    },
+    {
+      "text": " You",
+      "startMs": 49660,
+      "endMs": 49920
+    },
+    {
+      "text": " know",
+      "startMs": 49920,
+      "endMs": 50020
+    },
+    {
+      "text": " than",
+      "startMs": 50020,
+      "endMs": 50160
+    },
+    {
+      "text": " we",
+      "startMs": 50160,
+      "endMs": 50320
+    },
+    {
+      "text": " were",
+      "startMs": 50320,
+      "endMs": 50640
+    },
+    {
+      "text": " you",
+      "startMs": 52380,
+      "endMs": 52900
+    },
+    {
+      "text": " know,",
+      "startMs": 52900,
+      "endMs": 53020
+    },
+    {
+      "text": " they're",
+      "startMs": 53060,
+      "endMs": 53900
+    },
+    {
+      "text": " they're",
+      "startMs": 53900,
+      "endMs": 54360
+    },
+    {
+      "text": " they're",
+      "startMs": 54360,
+      "endMs": 54780
+    },
+    {
+      "text": " not",
+      "startMs": 54780,
+      "endMs": 55200
+    },
+    {
+      "text": " animals",
+      "startMs": 55440,
+      "endMs": 56480
+    },
+    {
+      "text": " No,",
+      "startMs": 56480,
+      "endMs": 57260
+    },
+    {
+      "text": " I",
+      "startMs": 57260,
+      "endMs": 57500
+    },
+    {
+      "text": " mean",
+      "startMs": 57500,
+      "endMs": 57620
+    },
+    {
+      "text": " now",
+      "startMs": 57620,
+      "endMs": 57820
+    },
+    {
+      "text": " aren't",
+      "startMs": 57820,
+      "endMs": 58060
+    },
+    {
+      "text": " they",
+      "startMs": 58060,
+      "endMs": 58280
+    },
+    {
+      "text": " like",
+      "startMs": 58280,
+      "endMs": 59160
+    },
+    {
+      "text": " when",
+      "startMs": 59400,
+      "endMs": 59600
+    },
+    {
+      "text": " you",
+      "startMs": 59600,
+      "endMs": 59720
+    },
+    {
+      "text": " when",
+      "startMs": 59720,
+      "endMs": 59940
+    },
+    {
+      "text": " you",
+      "startMs": 59940,
+      "endMs": 60040
+    },
+    {
+      "text": " look",
+      "startMs": 60040,
+      "endMs": 60240
+    },
+    {
+      "text": " at",
+      "startMs": 60240,
+      "endMs": 60340
+    },
+    {
+      "text": " the",
+      "startMs": 60340,
+      "endMs": 60440
+    },
+    {
+      "text": " three",
+      "startMs": 60440,
+      "endMs": 60700
+    },
+    {
+      "text": " of",
+      "startMs": 60700,
+      "endMs": 61040
+    },
+    {
+      "text": " the",
+      "startMs": 61040,
+      "endMs": 61220
+    },
+    {
+      "text": " characters",
+      "startMs": 61220,
+      "endMs": 61620
+    },
+    {
+      "text": " of",
+      "startMs": 61620,
+      "endMs": 61920
+    },
+    {
+      "text": " us",
+      "startMs": 61920,
+      "endMs": 62120
+    },
+    {
+      "text": " Right,",
+      "startMs": 62260,
+      "endMs": 62680
+    },
+    {
+      "text": " right?",
+      "startMs": 63040,
+      "endMs": 63040
+    },
+    {
+      "text": " Well,",
+      "startMs": 63580,
+      "endMs": 63620
+    },
+    {
+      "text": " no",
+      "startMs": 64300,
+      "endMs": 64680
+    },
+    {
+      "text": " one",
+      "startMs": 64680,
+      "endMs": 64840
+    },
+    {
+      "text": " was",
+      "startMs": 64840,
+      "endMs": 65000
+    },
+    {
+      "text": " I",
+      "startMs": 65000,
+      "endMs": 65180
+    },
+    {
+      "text": " think",
+      "startMs": 65180,
+      "endMs": 65519
+    },
+    {
+      "text": " Trevor",
+      "startMs": 65519,
+      "endMs": 65800
+    },
+    {
+      "text": " was",
+      "startMs": 65800,
+      "endMs": 66080
+    },
+    {
+      "text": " the",
+      "startMs": 66080,
+      "endMs": 66220
+    },
+    {
+      "text": " only",
+      "startMs": 66220,
+      "endMs": 66400
+    },
+    {
+      "text": " animal",
+      "startMs": 66400,
+      "endMs": 67060
+    },
+    {
+      "text": " like",
+      "startMs": 67060,
+      "endMs": 67500
+    },
+    {
+      "text": " you",
+      "startMs": 67500,
+      "endMs": 67780
+    },
+    {
+      "text": " were",
+      "startMs": 67780,
+      "endMs": 68000
+    },
+    {
+      "text": " just",
+      "startMs": 68000,
+      "endMs": 68300
+    },
+    {
+      "text": " well",
+      "startMs": 68300,
+      "endMs": 68920
+    },
+    {
+      "text": " I",
+      "startMs": 69070,
+      "endMs": 69430
+    },
+    {
+      "text": " didn't",
+      "startMs": 69430,
+      "endMs": 69650
+    },
+    {
+      "text": " mean",
+      "startMs": 69650,
+      "endMs": 69830
+    },
+    {
+      "text": " animals",
+      "startMs": 69830,
+      "endMs": 70250
+    },
+    {
+      "text": " like",
+      "startMs": 70250,
+      "endMs": 70630
+    },
+    {
+      "text": " like,",
+      "startMs": 70630,
+      "endMs": 71010
+    },
+    {
+      "text": " you",
+      "startMs": 71010,
+      "endMs": 71450
+    },
+    {
+      "text": " know,",
+      "startMs": 71450,
+      "endMs": 71610
+    },
+    {
+      "text": " it's",
+      "startMs": 71780,
+      "endMs": 72520
+    },
+    {
+      "text": " more",
+      "startMs": 72520,
+      "endMs": 72700
+    },
+    {
+      "text": " hyperbolic",
+      "startMs": 72700,
+      "endMs": 73380
+    },
+    {
+      "text": " than",
+      "startMs": 73380,
+      "endMs": 73840
+    },
+    {
+      "text": " then,",
+      "startMs": 73840,
+      "endMs": 74260
+    },
+    {
+      "text": " you",
+      "startMs": 74320,
+      "endMs": 74640
+    },
+    {
+      "text": " know",
+      "startMs": 74640,
+      "endMs": 74940
+    },
+    {
+      "text": " actual",
+      "startMs": 74940,
+      "endMs": 75420
+    },
+    {
+      "text": " but",
+      "startMs": 75420,
+      "endMs": 75780
+    },
+    {
+      "text": " these",
+      "startMs": 75780,
+      "endMs": 76300
+    },
+    {
+      "text": " two",
+      "startMs": 76300,
+      "endMs": 76620
+    },
+    {
+      "text": " are",
+      "startMs": 76620,
+      "endMs": 76980
+    },
+    {
+      "text": " very",
+      "startMs": 76980,
+      "endMs": 77400
+    },
+    {
+      "text": " Do",
+      "startMs": 77400,
+      "endMs": 77720
+    },
+    {
+      "text": " you",
+      "startMs": 77720,
+      "endMs": 77820
+    },
+    {
+      "text": " think",
+      "startMs": 77820,
+      "endMs": 78140
+    },
+    {
+      "text": " there",
+      "startMs": 78140,
+      "endMs": 78460
+    },
+    {
+      "text": " is",
+      "startMs": 78460,
+      "endMs": 78720
+    },
+    {
+      "text": " between",
+      "startMs": 78720,
+      "endMs": 79120
+    },
+    {
+      "text": " the",
+      "startMs": 79120,
+      "endMs": 79680
+    },
+    {
+      "text": " the",
+      "startMs": 79680,
+      "endMs": 79880
+    },
+    {
+      "text": " two",
+      "startMs": 79880,
+      "endMs": 80200
+    },
+    {
+      "text": " it's",
+      "startMs": 80200,
+      "endMs": 80860
+    },
+    {
+      "text": " the",
+      "startMs": 80860,
+      "endMs": 81100
+    },
+    {
+      "text": " man",
+      "startMs": 81100,
+      "endMs": 81400
+    },
+    {
+      "text": " and",
+      "startMs": 81400,
+      "endMs": 81500
+    },
+    {
+      "text": " the",
+      "startMs": 81500,
+      "endMs": 81620
+    },
+    {
+      "text": " woman,",
+      "startMs": 81620,
+      "endMs": 81860
+    },
+    {
+      "text": " right?",
+      "startMs": 81900,
+      "endMs": 82220
+    },
+    {
+      "text": " I",
+      "startMs": 82700,
+      "endMs": 82860
+    },
+    {
+      "text": " got",
+      "startMs": 82860,
+      "endMs": 83000
+    },
+    {
+      "text": " it",
+      "startMs": 83000,
+      "endMs": 83140
+    },
+    {
+      "text": " I",
+      "startMs": 83140,
+      "endMs": 83260
+    },
+    {
+      "text": " got",
+      "startMs": 83260,
+      "endMs": 83400
+    },
+    {
+      "text": " a",
+      "startMs": 83400,
+      "endMs": 83520
+    },
+    {
+      "text": " real",
+      "startMs": 83520,
+      "endMs": 83720
+    },
+    {
+      "text": " Bonnie",
+      "startMs": 83720,
+      "endMs": 84020
+    },
+    {
+      "text": " and",
+      "startMs": 84020,
+      "endMs": 84260
+    },
+    {
+      "text": " Clyde",
+      "startMs": 84260,
+      "endMs": 84580
+    },
+    {
+      "text": " vibe",
+      "startMs": 84580,
+      "endMs": 84800
+    },
+    {
+      "text": " from",
+      "startMs": 84800,
+      "endMs": 85100
+    },
+    {
+      "text": " it",
+      "startMs": 85100,
+      "endMs": 85320
+    },
+    {
+      "text": " young",
+      "startMs": 87070,
+      "endMs": 87610
+    },
+    {
+      "text": " Bonnie",
+      "startMs": 87610,
+      "endMs": 87910
+    },
+    {
+      "text": " and",
+      "startMs": 87910,
+      "endMs": 88190
+    },
+    {
+      "text": " Clyde",
+      "startMs": 88190,
+      "endMs": 88530
+    },
+    {
+      "text": " stuff",
+      "startMs": 88530,
+      "endMs": 88770
+    },
+    {
+      "text": " You",
+      "startMs": 88770,
+      "endMs": 89050
+    },
+    {
+      "text": " know",
+      "startMs": 89050,
+      "endMs": 89150
+    },
+    {
+      "text": " what",
+      "startMs": 89150,
+      "endMs": 89210
+    },
+    {
+      "text": " I",
+      "startMs": 89210,
+      "endMs": 89270
+    },
+    {
+      "text": " mean",
+      "startMs": 89270,
+      "endMs": 89430
+    },
+    {
+      "text": " like",
+      "startMs": 89430,
+      "endMs": 89670
+    },
+    {
+      "text": " there",
+      "startMs": 89670,
+      "endMs": 89950
+    },
+    {
+      "text": " there",
+      "startMs": 89950,
+      "endMs": 90270
+    },
+    {
+      "text": " are",
+      "startMs": 90270,
+      "endMs": 90750
+    },
+    {
+      "text": " a",
+      "startMs": 90750,
+      "endMs": 91110
+    },
+    {
+      "text": " couple",
+      "startMs": 91110,
+      "endMs": 91270
+    },
+    {
+      "text": " of",
+      "startMs": 91270,
+      "endMs": 91370
+    },
+    {
+      "text": " young",
+      "startMs": 91370,
+      "endMs": 91530
+    },
+    {
+      "text": " lovers",
+      "startMs": 91530,
+      "endMs": 91750
+    },
+    {
+      "text": " that",
+      "startMs": 91750,
+      "endMs": 92010
+    },
+    {
+      "text": " are",
+      "startMs": 92010,
+      "endMs": 92110
+    },
+    {
+      "text": " going",
+      "startMs": 92110,
+      "endMs": 92310
+    },
+    {
+      "text": " out",
+      "startMs": 92310,
+      "endMs": 92530
+    },
+    {
+      "text": " on",
+      "startMs": 92530,
+      "endMs": 92750
+    },
+    {
+      "text": " a",
+      "startMs": 92750,
+      "endMs": 92950
+    },
+    {
+      "text": " rampage",
+      "startMs": 92950,
+      "endMs": 93750
+    },
+    {
+      "text": " And",
+      "startMs": 93750,
+      "endMs": 94110
+    },
+    {
+      "text": " they're",
+      "startMs": 94110,
+      "endMs": 94110
+    },
+    {
+      "text": " they're",
+      "startMs": 94110,
+      "endMs": 94490
+    },
+    {
+      "text": " stealing",
+      "startMs": 94490,
+      "endMs": 94790
+    },
+    {
+      "text": " whatever",
+      "startMs": 94790,
+      "endMs": 95070
+    },
+    {
+      "text": " they",
+      "startMs": 95070,
+      "endMs": 95290
+    },
+    {
+      "text": " can",
+      "startMs": 95290,
+      "endMs": 95410
+    },
+    {
+      "text": " steal.",
+      "startMs": 95410,
+      "endMs": 95650
+    },
+    {
+      "text": " I",
+      "startMs": 95790,
+      "endMs": 95790
+    },
+    {
+      "text": " mean",
+      "startMs": 95790,
+      "endMs": 95890
+    },
+    {
+      "text": " so",
+      "startMs": 95890,
+      "endMs": 96350
+    },
+    {
+      "text": " they",
+      "startMs": 96350,
+      "endMs": 96510
+    },
+    {
+      "text": " are",
+      "startMs": 96510,
+      "endMs": 96690
+    },
+    {
+      "text": " a",
+      "startMs": 96690,
+      "endMs": 96810
+    },
+    {
+      "text": " couple",
+      "startMs": 96810,
+      "endMs": 97130
+    },
+    {
+      "text": " Yeah,",
+      "startMs": 97710,
+      "endMs": 97950
+    },
+    {
+      "text": " yeah,",
+      "startMs": 97950,
+      "endMs": 98790
+    },
+    {
+      "text": " yeah",
+      "startMs": 98790,
+      "endMs": 99290
+    },
+    {
+      "text": " like",
+      "startMs": 99290,
+      "endMs": 99630
+    },
+    {
+      "text": " in",
+      "startMs": 99630,
+      "endMs": 99850
+    },
+    {
+      "text": " the",
+      "startMs": 99850,
+      "endMs": 99950
+    },
+    {
+      "text": " first",
+      "startMs": 99950,
+      "endMs": 100190
+    },
+    {
+      "text": " trailer",
+      "startMs": 100190,
+      "endMs": 100530
+    },
+    {
+      "text": " they",
+      "startMs": 100530,
+      "endMs": 100790
+    },
+    {
+      "text": " had",
+      "startMs": 100790,
+      "endMs": 101090
+    },
+    {
+      "text": " they",
+      "startMs": 101090,
+      "endMs": 101350
+    },
+    {
+      "text": " were",
+      "startMs": 101350,
+      "endMs": 101570
+    },
+    {
+      "text": " like,",
+      "startMs": 101570,
+      "endMs": 101950
+    },
+    {
+      "text": " you",
+      "startMs": 102050,
+      "endMs": 102610
+    },
+    {
+      "text": " know",
+      "startMs": 102610,
+      "endMs": 102750
+    },
+    {
+      "text": " She",
+      "startMs": 102750,
+      "endMs": 102970
+    },
+    {
+      "text": " was",
+      "startMs": 102970,
+      "endMs": 103050
+    },
+    {
+      "text": " climbing",
+      "startMs": 103050,
+      "endMs": 103310
+    },
+    {
+      "text": " on",
+      "startMs": 103310,
+      "endMs": 103510
+    },
+    {
+      "text": " top",
+      "startMs": 103510,
+      "endMs": 103710
+    },
+    {
+      "text": " of",
+      "startMs": 103710,
+      "endMs": 103930
+    },
+    {
+      "text": " him",
+      "startMs": 103930,
+      "endMs": 104090
+    },
+    {
+      "text": " in",
+      "startMs": 104090,
+      "endMs": 104230
+    },
+    {
+      "text": " bed",
+      "startMs": 104230,
+      "endMs": 104510
+    },
+    {
+      "text": " and",
+      "startMs": 104510,
+      "endMs": 105530
+    },
+    {
+      "text": " you",
+      "startMs": 105530,
+      "endMs": 106030
+    },
+    {
+      "text": " know",
+      "startMs": 106030,
+      "endMs": 106190
+    },
+    {
+      "text": " said",
+      "startMs": 106190,
+      "endMs": 106590
+    },
+    {
+      "text": " and",
+      "startMs": 106590,
+      "endMs": 107070
+    },
+    {
+      "text": " they",
+      "startMs": 107070,
+      "endMs": 107210
+    },
+    {
+      "text": " did",
+      "startMs": 107210,
+      "endMs": 107330
+    },
+    {
+      "text": " this",
+      "startMs": 107330,
+      "endMs": 107530
+    },
+    {
+      "text": " whole",
+      "startMs": 107530,
+      "endMs": 107670
+    },
+    {
+      "text": " trust",
+      "startMs": 107670,
+      "endMs": 108130
+    },
+    {
+      "text": " line",
+      "startMs": 108130,
+      "endMs": 108650
+    },
+    {
+      "text": " He",
+      "startMs": 108650,
+      "endMs": 108890
+    },
+    {
+      "text": " said",
+      "startMs": 108890,
+      "endMs": 109150
+    },
+    {
+      "text": " trust",
+      "startMs": 109150,
+      "endMs": 109510
+    },
+    {
+      "text": " and",
+      "startMs": 109510,
+      "endMs": 110590
+    },
+    {
+      "text": " you",
+      "startMs": 110590,
+      "endMs": 110890
+    },
+    {
+      "text": " know,",
+      "startMs": 110890,
+      "endMs": 111010
+    },
+    {
+      "text": " but",
+      "startMs": 111220,
+      "endMs": 111900
+    },
+    {
+      "text": " it's",
+      "startMs": 111900,
+      "endMs": 112400
+    },
+    {
+      "text": " gonna",
+      "startMs": 112400,
+      "endMs": 112520
+    },
+    {
+      "text": " be",
+      "startMs": 112520,
+      "endMs": 112740
+    },
+    {
+      "text": " yeah",
+      "startMs": 112740,
+      "endMs": 113120
+    },
+    {
+      "text": " The",
+      "startMs": 113120,
+      "endMs": 113700
+    },
+    {
+      "text": " graphics",
+      "startMs": 113700,
+      "endMs": 114140
+    },
+    {
+      "text": " and",
+      "startMs": 114140,
+      "endMs": 114360
+    },
+    {
+      "text": " everything",
+      "startMs": 114360,
+      "endMs": 114540
+    },
+    {
+      "text": " are",
+      "startMs": 114540,
+      "endMs": 114780
+    },
+    {
+      "text": " gonna",
+      "startMs": 114780,
+      "endMs": 114900
+    },
+    {
+      "text": " blow",
+      "startMs": 114900,
+      "endMs": 115140
+    },
+    {
+      "text": " ours",
+      "startMs": 115140,
+      "endMs": 115400
+    },
+    {
+      "text": " away",
+      "startMs": 115400,
+      "endMs": 115620
+    },
+    {
+      "text": " like",
+      "startMs": 115620,
+      "endMs": 115940
+    },
+    {
+      "text": " the",
+      "startMs": 115940,
+      "endMs": 116120
+    },
+    {
+      "text": " hair",
+      "startMs": 116120,
+      "endMs": 116360
+    },
+    {
+      "text": " Like",
+      "startMs": 116360,
+      "endMs": 116880
+    },
+    {
+      "text": " if",
+      "startMs": 116880,
+      "endMs": 117000
+    },
+    {
+      "text": " you",
+      "startMs": 117000,
+      "endMs": 117080
+    },
+    {
+      "text": " look",
+      "startMs": 117080,
+      "endMs": 117260
+    },
+    {
+      "text": " at",
+      "startMs": 117260,
+      "endMs": 117420
+    },
+    {
+      "text": " at",
+      "startMs": 117420,
+      "endMs": 117900
+    },
+    {
+      "text": " this",
+      "startMs": 117900,
+      "endMs": 118160
+    },
+    {
+      "text": " thing",
+      "startMs": 118160,
+      "endMs": 118360
+    },
+    {
+      "text": " like",
+      "startMs": 118360,
+      "endMs": 118520
+    },
+    {
+      "text": " where",
+      "startMs": 118520,
+      "endMs": 118680
+    },
+    {
+      "text": " your",
+      "startMs": 118680,
+      "endMs": 118820
+    },
+    {
+      "text": " hair",
+      "startMs": 118820,
+      "endMs": 119100
+    },
+    {
+      "text": " is",
+      "startMs": 119100,
+      "endMs": 119320
+    },
+    {
+      "text": " like",
+      "startMs": 119320,
+      "endMs": 119480
+    },
+    {
+      "text": " your",
+      "startMs": 119480,
+      "endMs": 119640
+    },
+    {
+      "text": " hair",
+      "startMs": 119640,
+      "endMs": 119860
+    },
+    {
+      "text": " your",
+      "startMs": 119860,
+      "endMs": 120060
+    },
+    {
+      "text": " mullet",
+      "startMs": 120060,
+      "endMs": 120540
+    },
+    {
+      "text": " It's",
+      "startMs": 120680,
+      "endMs": 121260
+    },
+    {
+      "text": " not",
+      "startMs": 121260,
+      "endMs": 121380
+    },
+    {
+      "text": " really",
+      "startMs": 121380,
+      "endMs": 121560
+    },
+    {
+      "text": " moving",
+      "startMs": 121560,
+      "endMs": 121840
+    },
+    {
+      "text": " is",
+      "startMs": 121840,
+      "endMs": 122100
+    },
+    {
+      "text": " it",
+      "startMs": 122100,
+      "endMs": 122440
+    },
+    {
+      "text": " right",
+      "startMs": 122940,
+      "endMs": 123300
+    },
+    {
+      "text": " it's",
+      "startMs": 123300,
+      "endMs": 124000
+    },
+    {
+      "text": " not",
+      "startMs": 124000,
+      "endMs": 124100
+    },
+    {
+      "text": " like",
+      "startMs": 124100,
+      "endMs": 124240
+    },
+    {
+      "text": " it's",
+      "startMs": 124240,
+      "endMs": 124380
+    },
+    {
+      "text": " windswept",
+      "startMs": 124380,
+      "endMs": 124960
+    },
+    {
+      "text": " or",
+      "startMs": 124960,
+      "endMs": 125080
+    },
+    {
+      "text": " anything",
+      "startMs": 125080,
+      "endMs": 125240
+    },
+    {
+      "text": " like",
+      "startMs": 125240,
+      "endMs": 125580
+    },
+    {
+      "text": " that",
+      "startMs": 125580,
+      "endMs": 125900
+    },
+    {
+      "text": " six",
+      "startMs": 125900,
+      "endMs": 126320
+    },
+    {
+      "text": " will",
+      "startMs": 126320,
+      "endMs": 126660
+    },
+    {
+      "text": " have",
+      "startMs": 126660,
+      "endMs": 126960
+    },
+    {
+      "text": " a",
+      "startMs": 126960,
+      "endMs": 127100
+    },
+    {
+      "text": " flow",
+      "startMs": 127100,
+      "endMs": 127420
+    },
+    {
+      "text": " everything",
+      "startMs": 127420,
+      "endMs": 127920
+    },
+    {
+      "text": " Oh,",
+      "startMs": 127920,
+      "endMs": 128639
+    },
+    {
+      "text": " man,",
+      "startMs": 128639,
+      "endMs": 129039
+    },
+    {
+      "text": " that's",
+      "startMs": 129240,
+      "endMs": 129740
+    },
+    {
+      "text": " you",
+      "startMs": 129740,
+      "endMs": 129940
+    },
+    {
+      "text": " know,",
+      "startMs": 129940,
+      "endMs": 130100
+    },
+    {
+      "text": " that's",
+      "startMs": 130100,
+      "endMs": 130360
+    },
+    {
+      "text": " natural.",
+      "startMs": 130360,
+      "endMs": 130759
+    },
+    {
+      "text": " That's",
+      "startMs": 130880,
+      "endMs": 131039
+    },
+    {
+      "text": " the",
+      "startMs": 131039,
+      "endMs": 131100
+    },
+    {
+      "text": " progression",
+      "startMs": 131100,
+      "endMs": 131420
+    },
+    {
+      "text": " of",
+      "startMs": 131420,
+      "endMs": 131740
+    },
+    {
+      "text": " technology.",
+      "startMs": 131740,
+      "endMs": 131960
+    },
+    {
+      "text": " Yeah.",
+      "startMs": 132140,
+      "endMs": 132720
+    },
+    {
+      "text": " Yeah,",
+      "startMs": 132760,
+      "endMs": 132940
+    },
+    {
+      "text": " exactly",
+      "startMs": 132960,
+      "endMs": 133440
+    },
+    {
+      "text": " progression",
+      "startMs": 133440,
+      "endMs": 133980
+    },
+    {
+      "text": " of",
+      "startMs": 133980,
+      "endMs": 134260
+    },
+    {
+      "text": " technology",
+      "startMs": 134260,
+      "endMs": 134680
+    }
+  ]
+}

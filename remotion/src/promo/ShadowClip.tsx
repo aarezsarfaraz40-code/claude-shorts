@@ -126,35 +126,24 @@ const LuciaCard: React.FC<{ t: number; a: number; b: number; x: number; y: numbe
 
 // ---------------------------------------------------------------- intro still (Mike A)
 const Intro: React.FC<{ t: number }> = ({ t }) => {
+  // full-screen: camera on the anchor, then glides to Lucia when Mike says "Lucia"
+  const { fps } = useVideoConfig();
   if (t > INTRO_END + 0.35) return null;
   const out = p(t, INTRO_END - 0.05, INTRO_END + 0.35, IO);
-  // both people on screen: the clip's two-shot (src 7.0 s →) as a full-width band
-  const { fps } = useVideoConfig();
   const SRC0 = 7.0;
-  const zoom = 1 + 0.05 * p(t, 0, INTRO_END, Easing.linear);
-  const bandH = 1080 * (1080 / 1920);
-  const bandTop = 960 - bandH / 2 + 40;
-  const k = t / INTRO_END;
-  const herX = 1080 * (0.37 + (0.25 - 0.37) * k), himX = 1080 * (0.79 + (0.72 - 0.79) * k);
-  const lab = (a: number) => interpolate(t, [a, a + 0.4], [0, 1], { ...CL, easing: BOUNCE });
-  const label = (x: number, txt: string, k2: number, color: string) => (
-    <div style={{ position: "absolute", left: 540 + (x - 540) * zoom - 150, width: 300, top: bandTop - 120, textAlign: "center", opacity: Math.min(1, k2), transform: `translateY(${(1 - k2) * 30}px) scale(${k2})` }}>
-      <span style={{ background: color, color: "#000", padding: "6px 18px", borderRadius: 12, ...T(40) }}>{txt}</span>
-      <div style={{ fontSize: 54, marginTop: 4 }}>👇</div>
-    </div>
-  );
+  const st = SRC0 + t;
+  const himX = interpolate(st, [7.0, 7.6, 8.0, 8.4, 8.8, 9.2, 9.6, 10.0, 11.6], [0.79, 0.85, 0.86, 0.81, 0.73, 0.67, 0.69, 0.7, 0.72], CL);
+  const herX = interpolate(st, CROP_KEYS.map((k) => k.t), CROP_KEYS.map((k) => k.x), CL);
+  const lucia = MIKE.A.find((w) => /lucia/i.test(w.text));
+  const panAt = (lucia ? lucia.startMs / 1000 : 2.1) + MIKE_AT.A - 0.15;
+  const k = p(t, panAt, panAt + 0.6, IO);
+  const cx = Math.min(0.842, Math.max(0.158, himX + (herX - himX) * k));
+  const vw = 1920 * (1920 / 1080);
+  const left = Math.min(0, Math.max(1080 - vw, 540 - cx * vw));
   return (
-    <AbsoluteFill style={{ opacity: 1 - out, background: "#000" }}>
-      {/* blurred fill */}
-      <AbsoluteFill style={{ transform: "scale(1.15)", filter: "blur(28px) brightness(.55)" }}>
-        <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(SRC0 * fps)} muted style={{ position: "absolute", left: -(1920 * (1920 / 1080) - 1080) / 2, top: 0, width: 1920 * (1920 / 1080), height: 1920, maxWidth: "none" }} />
-      </AbsoluteFill>
-      {/* sharp two-shot band */}
-      <div style={{ position: "absolute", left: 0, top: bandTop, width: 1080, height: bandH, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,.5)" }}>
-        <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(SRC0 * fps)} muted style={{ width: 1080, height: bandH, transform: `scale(${zoom})` }} />
-      </div>
-      {label(herX, "LUCIA", lab(1.9), C.yellow)}
-      {label(himX, "HIM", lab(2.4), C.white)}
+    <AbsoluteFill style={{ opacity: 1 - out, background: "#000", overflow: "hidden" }}>
+      <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(SRC0 * fps)} muted style={{ position: "absolute", left, top: 0, width: vw, height: 1920, maxWidth: "none" }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,.3) 0%, transparent 18%, transparent 66%, rgba(0,0,0,.35) 100%)" }} />
     </AbsoluteFill>
   );
 };
@@ -250,7 +239,7 @@ export const ShadowClip: React.FC = () => {
       </AbsoluteFill>
       <Intro t={t} />
       <Captions words={ALL_WORDS} t={t} />
-      <Pill t={t} a={0.1} b={INTRO_END} lines={["He had NO IDEA", "who she was 😭"]} hl={["NO", "IDEA"]} y={330} />
+      <Pill t={t} a={0.1} b={INTRO_END} lines={["He had NO IDEA", "who she was 😭"]} hl={["NO", "IDEA"]} y={760} />
       <Explainer t={t} />
       <EndCta t={t} cEnd={cEnd} />
       <Sequence from={f(A_START)} durationInFrames={f(A_END - A_START)}><Audio src={staticFile("shadow/clip.mp4")} startFrom={f(A_SRC[0])} /></Sequence>

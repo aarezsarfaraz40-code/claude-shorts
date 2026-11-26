@@ -38,17 +38,17 @@ const srcTime = (t: number): number | null => {
 };
 
 // ---------------------------------------------------------------- clip video (speaker-following crop)
-const ClipPart: React.FC<{ srcFrom: number; t: number }> = ({ srcFrom, t }) => {
+const ClipPart: React.FC<{ srcFrom: number; t: number; srcOf?: (t: number) => number; rate?: number; zoomK?: number }> = ({ srcFrom, t, srcOf, rate = 1, zoomK = 0 }) => {
   const { fps } = useVideoConfig();
-  const st = srcTime(t) ?? srcFrom;
+  const st = srcOf ? srcOf(t) : srcTime(t) ?? srcFrom;
   const cx = interpolate(st, CROP_KEYS.map((k) => k.t), CROP_KEYS.map((k) => k.x), CL);
   const vw = 1920 * (1920 / 1080);
   const left = Math.min(0, Math.max(1080 - vw, 540 - cx * vw));
-  const zoom = 1;
+  const zoom = 1 + zoomK;
   return (
     <AbsoluteFill style={{ background: "#000", overflow: "hidden" }}>
       <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
-        <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(srcFrom * fps)} muted style={{ position: "absolute", left, top: 0, width: vw, height: 1920, maxWidth: "none" }} />
+        <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(srcFrom * fps)} playbackRate={rate} muted style={{ position: "absolute", left, top: 0, width: vw, height: 1920, maxWidth: "none" }} />
       </AbsoluteFill>
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,.3) 0%, transparent 18%, transparent 66%, rgba(0,0,0,.35) 100%)" }} />
     </AbsoluteFill>
@@ -164,7 +164,6 @@ const Explainer: React.FC<{ t: number }> = ({ t }) => {
   const A = A_END, Bt = EXPL_END;
   if (t < A - 0.3 || t > Bt + 0.3) return null;
   const inn = p(t, A - 0.3, A + 0.15, IO), out = p(t, Bt - 0.15, Bt + 0.3, IO);
-  const r = interpolate(inn - out, [0, 1], [0, 1500], CL);
   const a = interpolate(t, [A + 0.1, A + 0.55], [0, 1], { ...CL, easing: BOUNCE });
   const b = interpolate(t, [A + 0.45, A + 0.9], [0, 1], { ...CL, easing: BOUNCE });
   const eq = p(t, A + 0.8, A + 1.1);
@@ -174,20 +173,19 @@ const Explainer: React.FC<{ t: number }> = ({ t }) => {
       <div style={{ height: 412, borderRadius: 30, overflow: "hidden", boxShadow: "0 24px 50px rgba(0,0,0,.18)", border: "6px solid #fff" }}>
         <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: pos }} />
       </div>
-      <div style={{ marginTop: 18, textAlign: "center", color: C.ink, ...T(34) }}>{label}</div>
-      <div style={{ marginTop: 4, textAlign: "center", color: C.grey, ...T(24, { fontWeight: 700 }) }}>{sub}</div>
+      <div style={{ marginTop: 18, textAlign: "center", color: C.white, textShadow: shadow, ...T(34) }}>{label}</div>
+      <div style={{ marginTop: 4, textAlign: "center", color: "#D9D9DE", textShadow: shadow, ...T(24, { fontWeight: 700 }) }}>{sub}</div>
     </div>
   );
   return (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: 540 - r, top: 960 - r, width: r * 2, height: r * 2, borderRadius: "50%", background: C.paper }} />
       <AbsoluteFill style={{ opacity: Math.min(inn, 1 - out) }}>
-        <div style={{ position: "absolute", left: SAFE.left, right: 1080 - SAFE.right, top: 400, textAlign: "center", color: C.ink, opacity: title, transform: `translateY(${(1 - title) * 30}px)`, ...T(64) }}>
-          GTA 6's <span style={{ background: C.yellow, padding: "0 12px", borderRadius: 10 }}>Lucia</span> IRL 👀
+        <div style={{ position: "absolute", left: SAFE.left, right: 1080 - SAFE.right, top: 400, textAlign: "center", color: C.white, textShadow: shadow, opacity: title, transform: `translateY(${(1 - title) * 30}px)`, ...T(64) }}>
+          GTA 6's <span style={{ background: C.yellow, color: "#000", textShadow: "none", padding: "0 12px", borderRadius: 10 }}>Lucia</span> IRL 👀
         </div>
         <div style={{ position: "absolute", left: 0, right: 0, top: 600, display: "flex", justifyContent: "center", alignItems: "center", gap: 24 }}>
           {card("shadow/lucia_game.jpg", "Lucia Caminos", "in the game", a, -3, "50% 20%")}
-          <div style={{ color: C.ink, opacity: eq, transform: `scale(${0.5 + 0.5 * eq})`, ...T(80) }}>=</div>
+          <div style={{ color: C.white, textShadow: shadow, opacity: eq, transform: `scale(${0.5 + 0.5 * eq})`, ...T(80) }}>=</div>
           {card("shadow/manni_real.jpg", "Manni L. Perez", "the actress", b, 3, "50% 30%")}
         </div>
       </AbsoluteFill>
@@ -198,11 +196,10 @@ const Explainer: React.FC<{ t: number }> = ({ t }) => {
 // ---------------------------------------------------------------- end CTA (no logo, Mike C)
 const EndCta: React.FC<{ t: number; cEnd: number }> = ({ t, cEnd }) => {
   const S = B_END;
-  if (t < S - 0.35) return null;
-  const inn = p(t, S - 0.35, S + 0.15, IO);
-  const r = interpolate(inn, [0, 1], [0, 1500]);
   const switchT = S + cEnd;
-  const joke = p(t, S + 0.15, S + 0.5) * (1 - p(t, switchT - 0.3, switchT, IO));
+  if (t < switchT - 0.4) return null;
+  const inn = p(t, switchT - 0.4, switchT + 0.1, IO);
+  const r = interpolate(inn, [0, 1], [0, 1500]);
   const cta = p(t, switchT - 0.1, switchT + 0.3);
   const btn = interpolate(t, [switchT + 0.3, switchT + 0.7], [0, 1], { ...CL, easing: BOUNCE });
   const tapT = switchT + 1.1, tapped = t >= tapT;
@@ -211,11 +208,6 @@ const EndCta: React.FC<{ t: number; cEnd: number }> = ({ t, cEnd }) => {
   return (
     <AbsoluteFill>
       <div style={{ position: "absolute", left: 540 - r, top: 960 - r, width: r * 2, height: r * 2, borderRadius: "50%", background: C.paper }} />
-      <div style={{ position: "absolute", left: SAFE.left, right: 1080 - SAFE.right, top: 560, textAlign: "center", opacity: joke, transform: `translateY(${(1 - joke) * 30}px)` }}>
-        <div style={{ color: C.ink, ...T(70) }}>She escaped like a</div>
-        <div style={{ marginTop: 14 }}><span style={{ background: C.yellow, color: "#000", padding: "4px 20px", borderRadius: 14, ...T(90) }}>5★ wanted level</span></div>
-        <div style={{ marginTop: 10, fontSize: 110 }}>😂</div>
-      </div>
       <div style={{ position: "absolute", left: SAFE.left, right: 1080 - SAFE.right, top: 600, textAlign: "center", opacity: cta, transform: `translateY(${(1 - cta) * 40}px)` }}>
         <div style={{ color: C.grey, ...T(48) }}>Subscribe to</div>
         <div style={{ marginTop: 10, color: C.ink, ...T(92, { letterSpacing: -2 }) }}>Shadow GTA<br /><span style={{ background: C.yellow, padding: "0 16px", borderRadius: 14 }}>Plays</span></div>
@@ -236,17 +228,26 @@ export const ShadowClip: React.FC = () => {
   // Mike C: the joke ends at the word before "Subscribe" → switch the end card there
   const subWord = MIKE.C.find((w) => /subscribe/i.test(w.text));
   const cEnd = subWord ? subWord.startMs / 1000 + MIKE_AT.C - B_END : 3.9;
+  const JOKE_SRC = 21.55;
+  // blur the video in → explainer → blur out
+  const blurK = p(t, A_END - 0.35, A_END + 0.15, IO) * (1 - p(t, EXPL_END - 0.2, EXPL_END + 0.3, IO));
   const SFX: { at: number; s: string; v: number }[] = [
     { at: 0.05, s: "pop", v: 0.18 }, { at: INTRO_END - 0.05, s: "whoosh", v: 0.2 },
     { at: A_END - 0.3, s: "whoosh", v: 0.22 }, { at: A_END + 0.15, s: "pop", v: 0.16 },
-    { at: A_END + 0.5, s: "pop", v: 0.16 }, { at: EXPL_END - 0.1, s: "whoosh", v: 0.2 }, { at: B_END - 0.35, s: "whoosh", v: 0.22 },
+    { at: A_END + 0.5, s: "pop", v: 0.16 }, { at: EXPL_END - 0.1, s: "whoosh", v: 0.2 }, { at: B_END + cEnd - 0.4, s: "whoosh", v: 0.22 },
     { at: B_END + cEnd + 1.1, s: "tick", v: 0.3 }, { at: B_END + cEnd + 1.3, s: "bell", v: 0.2 },
   ];
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <style dangerouslySetInnerHTML={{ __html: fontCSS }} />
-      <Sequence from={f(A_START)} durationInFrames={f(A_END - A_START) + 6}><ClipPart srcFrom={A_SRC[0]} t={t} /></Sequence>
-      <Sequence from={f(B_START)} durationInFrames={f(B_END - B_START) + 6}><ClipPart srcFrom={B_SRC[0]} t={t} /></Sequence>
+      <AbsoluteFill style={{ filter: `blur(${blurK * 26}px) brightness(${1 - blurK * 0.4})`, transform: `scale(${1 + blurK * 0.06})` }}>
+        <Sequence from={f(A_START)} durationInFrames={f(A_END - A_START) + 2}><ClipPart srcFrom={A_SRC[0]} t={t} /></Sequence>
+        {/* behind the explainer: the clip keeps playing (lead-in to part B), blurred */}
+        <Sequence from={f(A_END)} durationInFrames={f(EXPL_END - A_END) + 2}><ClipPart srcFrom={B_SRC[0] - (EXPL_END - A_END)} t={t} srcOf={(tt) => B_SRC[0] - (EXPL_END - tt)} /></Sequence>
+        <Sequence from={f(B_START)} durationInFrames={f(B_END - B_START) + 2}><ClipPart srcFrom={B_SRC[0]} t={t} /></Sequence>
+        {/* while Mike tells the joke: slow-motion replay of her walking off */}
+        <Sequence from={f(B_END)} durationInFrames={f(cEnd) + 12}><ClipPart srcFrom={JOKE_SRC} t={t} rate={0.45} srcOf={(tt) => JOKE_SRC + (tt - B_END) * 0.45} zoomK={0.06 * p(t, B_END, B_END + cEnd, Easing.linear)} /></Sequence>
+      </AbsoluteFill>
       <Intro t={t} />
       <Captions words={ALL_WORDS} t={t} />
       <Pill t={t} a={0.1} b={INTRO_END} lines={["He had NO IDEA", "who she was 😭"]} hl={["NO", "IDEA"]} y={330} />

@@ -1,0 +1,1045 @@
+{
+  "language": "en",
+  "language_probability": 0.987,
+  "duration": 26.6,
+  "word_count": 94,
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "transcription_time_sec": 32.8,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.76,
+      "text": "You passed the fit check. Are you rocking the weight vest? Is that a weight vest?",
+      "words": [
+        {
+          "word": "You",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": "passed",
+          "start": 0.42,
+          "end": 0.62
+        },
+        {
+          "word": "the",
+          "start": 0.62,
+          "end": 0.78
+        },
+        {
+          "word": "fit",
+          "start": 0.78,
+          "end": 0.88
+        },
+        {
+          "word": "check.",
+          "start": 0.88,
+          "end": 1.08
+        },
+        {
+          "word": "Are",
+          "start": 1.5,
+          "end": 1.6
+        },
+        {
+          "word": "you",
+          "start": 1.6,
+          "end": 1.7
+        },
+        {
+          "word": "rocking",
+          "start": 1.7,
+          "end": 1.92
+        },
+        {
+          "word": "the",
+          "start": 1.92,
+          "end": 2.06
+        },
+        {
+          "word": "weight",
+          "start": 2.06,
+          "end": 2.18
+        },
+        {
+          "word": "vest?",
+          "start": 2.18,
+          "end": 2.38
+        },
+        {
+          "word": "Is",
+          "start": 2.92,
+          "end": 3.2
+        },
+        {
+          "word": "that",
+          "start": 3.2,
+          "end": 3.3
+        },
+        {
+          "word": "a",
+          "start": 3.3,
+          "end": 3.36
+        },
+        {
+          "word": "weight",
+          "start": 3.36,
+          "end": 3.5
+        },
+        {
+          "word": "vest?",
+          "start": 3.5,
+          "end": 3.76
+        }
+      ]
+    },
+    {
+      "start": 4.68,
+      "end": 5.86,
+      "text": "No, no, no, it's just a normal vest.",
+      "words": [
+        {
+          "word": "No,",
+          "start": 4.68,
+          "end": 4.82
+        },
+        {
+          "word": "no,",
+          "start": 4.98,
+          "end": 4.98
+        },
+        {
+          "word": "no,",
+          "start": 5.04,
+          "end": 5.08
+        },
+        {
+          "word": "it's",
+          "start": 5.24,
+          "end": 5.3
+        },
+        {
+          "word": "just",
+          "start": 5.3,
+          "end": 5.34
+        },
+        {
+          "word": "a",
+          "start": 5.34,
+          "end": 5.44
+        },
+        {
+          "word": "normal",
+          "start": 5.44,
+          "end": 5.56
+        },
+        {
+          "word": "vest.",
+          "start": 5.56,
+          "end": 5.86
+        }
+      ]
+    },
+    {
+      "start": 6.5,
+      "end": 8.74,
+      "text": "Can I ask you a question? We're doing street interviews today.",
+      "words": [
+        {
+          "word": "Can",
+          "start": 6.5,
+          "end": 6.78
+        },
+        {
+          "word": "I",
+          "start": 6.78,
+          "end": 6.9
+        },
+        {
+          "word": "ask",
+          "start": 6.9,
+          "end": 6.98
+        },
+        {
+          "word": "you",
+          "start": 6.98,
+          "end": 7.04
+        },
+        {
+          "word": "a",
+          "start": 7.04,
+          "end": 7.1
+        },
+        {
+          "word": "question?",
+          "start": 7.1,
+          "end": 7.34
+        },
+        {
+          "word": "We're",
+          "start": 7.54,
+          "end": 7.54
+        },
+        {
+          "word": "doing",
+          "start": 7.54,
+          "end": 7.7
+        },
+        {
+          "word": "street",
+          "start": 7.7,
+          "end": 8.12
+        },
+        {
+          "word": "interviews",
+          "start": 8.12,
+          "end": 8.44
+        },
+        {
+          "word": "today.",
+          "start": 8.44,
+          "end": 8.74
+        }
+      ]
+    },
+    {
+      "start": 9.3,
+      "end": 12.28,
+      "text": "We're trying to find out how New York thinks Donald Trump is doing so far, his second term.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 9.3,
+          "end": 9.56
+        },
+        {
+          "word": "trying",
+          "start": 9.56,
+          "end": 9.7
+        },
+        {
+          "word": "to",
+          "start": 9.7,
+          "end": 9.82
+        },
+        {
+          "word": "find",
+          "start": 9.82,
+          "end": 9.92
+        },
+        {
+          "word": "out",
+          "start": 9.92,
+          "end": 10.06
+        },
+        {
+          "word": "how",
+          "start": 10.06,
+          "end": 10.2
+        },
+        {
+          "word": "New",
+          "start": 10.2,
+          "end": 10.34
+        },
+        {
+          "word": "York",
+          "start": 10.34,
+          "end": 10.48
+        },
+        {
+          "word": "thinks",
+          "start": 10.48,
+          "end": 10.64
+        },
+        {
+          "word": "Donald",
+          "start": 10.64,
+          "end": 10.88
+        },
+        {
+          "word": "Trump",
+          "start": 10.88,
+          "end": 11.06
+        },
+        {
+          "word": "is",
+          "start": 11.06,
+          "end": 11.2
+        },
+        {
+          "word": "doing",
+          "start": 11.2,
+          "end": 11.36
+        },
+        {
+          "word": "so",
+          "start": 11.36,
+          "end": 11.54
+        },
+        {
+          "word": "far,",
+          "start": 11.54,
+          "end": 11.74
+        },
+        {
+          "word": "his",
+          "start": 11.8,
+          "end": 11.88
+        },
+        {
+          "word": "second",
+          "start": 11.88,
+          "end": 12.04
+        },
+        {
+          "word": "term.",
+          "start": 12.04,
+          "end": 12.28
+        }
+      ]
+    },
+    {
+      "start": 13.13,
+      "end": 14.51,
+      "text": "You want to give an opinion? Free speech channel.",
+      "words": [
+        {
+          "word": "You",
+          "start": 13.13,
+          "end": 13.21
+        },
+        {
+          "word": "want",
+          "start": 13.21,
+          "end": 13.31
+        },
+        {
+          "word": "to",
+          "start": 13.31,
+          "end": 13.35
+        },
+        {
+          "word": "give",
+          "start": 13.35,
+          "end": 13.47
+        },
+        {
+          "word": "an",
+          "start": 13.47,
+          "end": 13.55
+        },
+        {
+          "word": "opinion?",
+          "start": 13.55,
+          "end": 13.71
+        },
+        {
+          "word": "Free",
+          "start": 13.95,
+          "end": 14.01
+        },
+        {
+          "word": "speech",
+          "start": 14.01,
+          "end": 14.21
+        },
+        {
+          "word": "channel.",
+          "start": 14.21,
+          "end": 14.51
+        }
+      ]
+    },
+    {
+      "start": 15.21,
+      "end": 15.75,
+      "text": "Go off queen.",
+      "words": [
+        {
+          "word": "Go",
+          "start": 15.21,
+          "end": 15.39
+        },
+        {
+          "word": "off",
+          "start": 15.39,
+          "end": 15.53
+        },
+        {
+          "word": "queen.",
+          "start": 15.53,
+          "end": 15.75
+        }
+      ]
+    },
+    {
+      "start": 18.68,
+      "end": 19.58,
+      "text": "It's probably best I go.",
+      "words": [
+        {
+          "word": "It's",
+          "start": 18.68,
+          "end": 18.74
+        },
+        {
+          "word": "probably",
+          "start": 18.74,
+          "end": 18.92
+        },
+        {
+          "word": "best",
+          "start": 18.92,
+          "end": 19.22
+        },
+        {
+          "word": "I",
+          "start": 19.22,
+          "end": 19.42
+        },
+        {
+          "word": "go.",
+          "start": 19.42,
+          "end": 19.58
+        }
+      ]
+    },
+    {
+      "start": 19.98,
+      "end": 20.74,
+      "text": "Yeah, you don't need to answer.",
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 19.98,
+          "end": 20.26
+        },
+        {
+          "word": "you",
+          "start": 20.3,
+          "end": 20.34
+        },
+        {
+          "word": "don't",
+          "start": 20.34,
+          "end": 20.44
+        },
+        {
+          "word": "need",
+          "start": 20.44,
+          "end": 20.54
+        },
+        {
+          "word": "to",
+          "start": 20.54,
+          "end": 20.66
+        },
+        {
+          "word": "answer.",
+          "start": 20.66,
+          "end": 20.74
+        }
+      ]
+    },
+    {
+      "start": 20.74,
+      "end": 21.58,
+      "text": "Yeah, it's probably best.",
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 20.74,
+          "end": 20.84
+        },
+        {
+          "word": "it's",
+          "start": 20.98,
+          "end": 21.06
+        },
+        {
+          "word": "probably",
+          "start": 21.06,
+          "end": 21.28
+        },
+        {
+          "word": "best.",
+          "start": 21.28,
+          "end": 21.58
+        }
+      ]
+    },
+    {
+      "start": 21.98,
+      "end": 23.1,
+      "text": "I think you might want to say no.",
+      "words": [
+        {
+          "word": "I",
+          "start": 21.98,
+          "end": 22.02
+        },
+        {
+          "word": "think",
+          "start": 22.02,
+          "end": 22.14
+        },
+        {
+          "word": "you",
+          "start": 22.14,
+          "end": 22.24
+        },
+        {
+          "word": "might",
+          "start": 22.24,
+          "end": 22.36
+        },
+        {
+          "word": "want",
+          "start": 22.36,
+          "end": 22.5
+        },
+        {
+          "word": "to",
+          "start": 22.5,
+          "end": 22.78
+        },
+        {
+          "word": "say",
+          "start": 22.78,
+          "end": 22.92
+        },
+        {
+          "word": "no.",
+          "start": 22.92,
+          "end": 23.1
+        }
+      ]
+    },
+    {
+      "start": 24.1,
+      "end": 24.48,
+      "text": "Have a good day.",
+      "words": [
+        {
+          "word": "Have",
+          "start": 24.1,
+          "end": 24.18
+        },
+        {
+          "word": "a",
+          "start": 24.18,
+          "end": 24.28
+        },
+        {
+          "word": "good",
+          "start": 24.28,
+          "end": 24.36
+        },
+        {
+          "word": "day.",
+          "start": 24.36,
+          "end": 24.48
+        }
+      ]
+    },
+    {
+      "start": 24.84,
+      "end": 24.96,
+      "text": "Yeah.",
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 24.84,
+          "end": 24.96
+        }
+      ]
+    },
+    {
+      "start": 25.34,
+      "end": 25.62,
+      "text": "Hi.",
+      "words": [
+        {
+          "word": "Hi.",
+          "start": 25.34,
+          "end": 25.62
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "text": " You",
+      "startMs": 0,
+      "endMs": 420
+    },
+    {
+      "text": " passed",
+      "startMs": 420,
+      "endMs": 620
+    },
+    {
+      "text": " the",
+      "startMs": 620,
+      "endMs": 780
+    },
+    {
+      "text": " fit",
+      "startMs": 780,
+      "endMs": 880
+    },
+    {
+      "text": " check.",
+      "startMs": 880,
+      "endMs": 1080
+    },
+    {
+      "text": " Are",
+      "startMs": 1500,
+      "endMs": 1600
+    },
+    {
+      "text": " you",
+      "startMs": 1600,
+      "endMs": 1700
+    },
+    {
+      "text": " rocking",
+      "startMs": 1700,
+      "endMs": 1920
+    },
+    {
+      "text": " the",
+      "startMs": 1920,
+      "endMs": 2060
+    },
+    {
+      "text": " weight",
+      "startMs": 2060,
+      "endMs": 2180
+    },
+    {
+      "text": " vest?",
+      "startMs": 2180,
+      "endMs": 2380
+    },
+    {
+      "text": " Is",
+      "startMs": 2920,
+      "endMs": 3200
+    },
+    {
+      "text": " that",
+      "startMs": 3200,
+      "endMs": 3300
+    },
+    {
+      "text": " a",
+      "startMs": 3300,
+      "endMs": 3360
+    },
+    {
+      "text": " weight",
+      "startMs": 3360,
+      "endMs": 3500
+    },
+    {
+      "text": " vest?",
+      "startMs": 3500,
+      "endMs": 3760
+    },
+    {
+      "text": " No,",
+      "startMs": 4680,
+      "endMs": 4820
+    },
+    {
+      "text": " no,",
+      "startMs": 4980,
+      "endMs": 4980
+    },
+    {
+      "text": " no,",
+      "startMs": 5040,
+      "endMs": 5080
+    },
+    {
+      "text": " it's",
+      "startMs": 5240,
+      "endMs": 5300
+    },
+    {
+      "text": " just",
+      "startMs": 5300,
+      "endMs": 5340
+    },
+    {
+      "text": " a",
+      "startMs": 5340,
+      "endMs": 5440
+    },
+    {
+      "text": " normal",
+      "startMs": 5440,
+      "endMs": 5560
+    },
+    {
+      "text": " vest.",
+      "startMs": 5560,
+      "endMs": 5860
+    },
+    {
+      "text": " Can",
+      "startMs": 6500,
+      "endMs": 6780
+    },
+    {
+      "text": " I",
+      "startMs": 6780,
+      "endMs": 6900
+    },
+    {
+      "text": " ask",
+      "startMs": 6900,
+      "endMs": 6980
+    },
+    {
+      "text": " you",
+      "startMs": 6980,
+      "endMs": 7040
+    },
+    {
+      "text": " a",
+      "startMs": 7040,
+      "endMs": 7100
+    },
+    {
+      "text": " question?",
+      "startMs": 7100,
+      "endMs": 7340
+    },
+    {
+      "text": " We're",
+      "startMs": 7540,
+      "endMs": 7540
+    },
+    {
+      "text": " doing",
+      "startMs": 7540,
+      "endMs": 7700
+    },
+    {
+      "text": " street",
+      "startMs": 7700,
+      "endMs": 8119
+    },
+    {
+      "text": " interviews",
+      "startMs": 8119,
+      "endMs": 8440
+    },
+    {
+      "text": " today.",
+      "startMs": 8440,
+      "endMs": 8740
+    },
+    {
+      "text": " We're",
+      "startMs": 9300,
+      "endMs": 9560
+    },
+    {
+      "text": " trying",
+      "startMs": 9560,
+      "endMs": 9700
+    },
+    {
+      "text": " to",
+      "startMs": 9700,
+      "endMs": 9820
+    },
+    {
+      "text": " find",
+      "startMs": 9820,
+      "endMs": 9920
+    },
+    {
+      "text": " out",
+      "startMs": 9920,
+      "endMs": 10060
+    },
+    {
+      "text": " how",
+      "startMs": 10060,
+      "endMs": 10200
+    },
+    {
+      "text": " New",
+      "startMs": 10200,
+      "endMs": 10340
+    },
+    {
+      "text": " York",
+      "startMs": 10340,
+      "endMs": 10480
+    },
+    {
+      "text": " thinks",
+      "startMs": 10480,
+      "endMs": 10640
+    },
+    {
+      "text": " Donald",
+      "startMs": 10640,
+      "endMs": 10880
+    },
+    {
+      "text": " Trump",
+      "startMs": 10880,
+      "endMs": 11060
+    },
+    {
+      "text": " is",
+      "startMs": 11060,
+      "endMs": 11200
+    },
+    {
+      "text": " doing",
+      "startMs": 11200,
+      "endMs": 11360
+    },
+    {
+      "text": " so",
+      "startMs": 11360,
+      "endMs": 11540
+    },
+    {
+      "text": " far,",
+      "startMs": 11540,
+      "endMs": 11740
+    },
+    {
+      "text": " his",
+      "startMs": 11800,
+      "endMs": 11880
+    },
+    {
+      "text": " second",
+      "startMs": 11880,
+      "endMs": 12040
+    },
+    {
+      "text": " term.",
+      "startMs": 12040,
+      "endMs": 12280
+    },
+    {
+      "text": " You",
+      "startMs": 13130,
+      "endMs": 13210
+    },
+    {
+      "text": " want",
+      "startMs": 13210,
+      "endMs": 13310
+    },
+    {
+      "text": " to",
+      "startMs": 13310,
+      "endMs": 13350
+    },
+    {
+      "text": " give",
+      "startMs": 13350,
+      "endMs": 13470
+    },
+    {
+      "text": " an",
+      "startMs": 13470,
+      "endMs": 13550
+    },
+    {
+      "text": " opinion?",
+      "startMs": 13550,
+      "endMs": 13710
+    },
+    {
+      "text": " Free",
+      "startMs": 13950,
+      "endMs": 14010
+    },
+    {
+      "text": " speech",
+      "startMs": 14010,
+      "endMs": 14210
+    },
+    {
+      "text": " channel.",
+      "startMs": 14210,
+      "endMs": 14510
+    },
+    {
+      "text": " Go",
+      "startMs": 15210,
+      "endMs": 15390
+    },
+    {
+      "text": " off",
+      "startMs": 15390,
+      "endMs": 15530
+    },
+    {
+      "text": " queen.",
+      "startMs": 15530,
+      "endMs": 15750
+    },
+    {
+      "text": " It's",
+      "startMs": 18680,
+      "endMs": 18740
+    },
+    {
+      "text": " probably",
+      "startMs": 18740,
+      "endMs": 18920
+    },
+    {
+      "text": " best",
+      "startMs": 18920,
+      "endMs": 19220
+    },
+    {
+      "text": " I",
+      "startMs": 19220,
+      "endMs": 19420
+    },
+    {
+      "text": " go.",
+      "startMs": 19420,
+      "endMs": 19580
+    },
+    {
+      "text": " Yeah,",
+      "startMs": 19980,
+      "endMs": 20260
+    },
+    {
+      "text": " you",
+      "startMs": 20300,
+      "endMs": 20340
+    },
+    {
+      "text": " don't",
+      "startMs": 20340,
+      "endMs": 20440
+    },
+    {
+      "text": " need",
+      "startMs": 20440,
+      "endMs": 20540
+    },
+    {
+      "text": " to",
+      "startMs": 20540,
+      "endMs": 20660
+    },
+    {
+      "text": " answer.",
+      "startMs": 20660,
+      "endMs": 20740
+    },
+    {
+      "text": " Yeah,",
+      "startMs": 20740,
+      "endMs": 20840
+    },
+    {
+      "text": " it's",
+      "startMs": 20980,
+      "endMs": 21060
+    },
+    {
+      "text": " probably",
+      "startMs": 21060,
+      "endMs": 21280
+    },
+    {
+      "text": " best.",
+      "startMs": 21280,
+      "endMs": 21580
+    },
+    {
+      "text": " I",
+      "startMs": 21980,
+      "endMs": 22020
+    },
+    {
+      "text": " think",
+      "startMs": 22020,
+      "endMs": 22140
+    },
+    {
+      "text": " you",
+      "startMs": 22140,
+      "endMs": 22240
+    },
+    {
+      "text": " might",
+      "startMs": 22240,
+      "endMs": 22360
+    },
+    {
+      "text": " want",
+      "startMs": 22360,
+      "endMs": 22500
+    },
+    {
+      "text": " to",
+      "startMs": 22500,
+      "endMs": 22780
+    },
+    {
+      "text": " say",
+      "startMs": 22780,
+      "endMs": 22920
+    },
+    {
+      "text": " no.",
+      "startMs": 22920,
+      "endMs": 23100
+    },
+    {
+      "text": " Have",
+      "startMs": 24100,
+      "endMs": 24180
+    },
+    {
+      "text": " a",
+      "startMs": 24180,
+      "endMs": 24280
+    },
+    {
+      "text": " good",
+      "startMs": 24280,
+      "endMs": 24360
+    },
+    {
+      "text": " day.",
+      "startMs": 24360,
+      "endMs": 24480
+    },
+    {
+      "text": " Yeah.",
+      "startMs": 24840,
+      "endMs": 24960
+    },
+    {
+      "text": " Hi.",
+      "startMs": 25340,
+      "endMs": 25620
+    }
+  ]
+}

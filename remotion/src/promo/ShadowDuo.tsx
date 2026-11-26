@@ -28,6 +28,10 @@ const segStart: number[] = [];
 { let t = INTRO; for (const s of SEGS) { segStart.push(t); t += s.src[1] - s.src[0]; } }
 const CLIPS_END = segStart[2] + (SEGS[2].src[1] - SEGS[2].src[0]);
 const OUTRO = 6.4;
+// The source screen recording is out of sync: its picture runs ~0.96 s behind
+// its sound (measured: mouth opening vs speech envelope). Show picture from
+// this much later in the file so lips match the voice.
+const VIDEO_LAG = 0.96;
 export const DUO_DURATION = Math.ceil((CLIPS_END + OUTRO) * 10) / 10;
 const toReel = (seg: number, srcT: number) => segStart[seg] + (srcT - SEGS[seg].src[0]);
 
@@ -207,7 +211,7 @@ export const ShadowDuo: React.FC = () => {
         <Sequence durationInFrames={f(INTRO) + 2}><TalkSplit srcFrom={40.0} /></Sequence>
         {SEGS.map((s, i) => (
           <Sequence key={i} from={f(segStart[i])} durationInFrames={f(s.src[1] - s.src[0]) + (i === SEGS.length - 1 ? f(OUTRO) : 2)}>
-            {s.kind === "talk" ? <TalkSplit srcFrom={s.src[0]} /> : <GameplaySplit srcFrom={s.src[0]} />}
+            {s.kind === "talk" ? <TalkSplit srcFrom={s.src[0] + VIDEO_LAG} /> : <GameplaySplit srcFrom={s.src[0] + VIDEO_LAG} />}
           </Sequence>
         ))}
       </AbsoluteFill>

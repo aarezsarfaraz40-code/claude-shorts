@@ -218,7 +218,7 @@ export const ShadowDuo: React.FC = () => {
       {CARDS.map((c, i) => <SeamCard key={i} {...c} t={t} />)}
       <NameTag t={t} a={1.75} y={858} name="Ned Luke" role="Michael · GTA 5" />
       <NameTag t={t} a={2.3} y={972} name="Steven Ogg" role="Trevor · GTA 5" />
-      <Captions t={t} />
+      {/* captions removed on request */}
       <Outro t={t} />
       {SEGS.map((s, i) => (
         <Sequence key={`a${i}`} from={f(segStart[i])} durationInFrames={f(s.src[1] - s.src[0])}>

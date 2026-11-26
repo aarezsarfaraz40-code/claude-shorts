@@ -128,13 +128,33 @@ const LuciaCard: React.FC<{ t: number; a: number; b: number; x: number; y: numbe
 const Intro: React.FC<{ t: number }> = ({ t }) => {
   if (t > INTRO_END + 0.35) return null;
   const out = p(t, INTRO_END - 0.05, INTRO_END + 0.35, IO);
-  const zoom = 1.08 + 0.1 * p(t, 0, INTRO_END, Easing.linear);
+  // both people on screen: the clip's two-shot (src 7.0 s →) as a full-width band
+  const { fps } = useVideoConfig();
+  const SRC0 = 7.0;
+  const zoom = 1 + 0.05 * p(t, 0, INTRO_END, Easing.linear);
+  const bandH = 1080 * (1080 / 1920);
+  const bandTop = 960 - bandH / 2 + 40;
+  const k = t / INTRO_END;
+  const herX = 1080 * (0.37 + (0.25 - 0.37) * k), himX = 1080 * (0.79 + (0.72 - 0.79) * k);
+  const lab = (a: number) => interpolate(t, [a, a + 0.4], [0, 1], { ...CL, easing: BOUNCE });
+  const label = (x: number, txt: string, k2: number, color: string) => (
+    <div style={{ position: "absolute", left: 540 + (x - 540) * zoom - 150, width: 300, top: bandTop - 120, textAlign: "center", opacity: Math.min(1, k2), transform: `translateY(${(1 - k2) * 30}px) scale(${k2})` }}>
+      <span style={{ background: color, color: "#000", padding: "6px 18px", borderRadius: 12, ...T(40) }}>{txt}</span>
+      <div style={{ fontSize: 54, marginTop: 4 }}>👇</div>
+    </div>
+  );
   return (
     <AbsoluteFill style={{ opacity: 1 - out, background: "#000" }}>
-      <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
-        <Img src={staticFile("shadow/manni_real.jpg")} style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 1920, objectFit: "cover", filter: "brightness(.9)" }} />
+      {/* blurred fill */}
+      <AbsoluteFill style={{ transform: "scale(1.15)", filter: "blur(28px) brightness(.55)" }}>
+        <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(SRC0 * fps)} muted style={{ position: "absolute", left: -(1920 * (1920 / 1080) - 1080) / 2, top: 0, width: 1920 * (1920 / 1080), height: 1920, maxWidth: "none" }} />
       </AbsoluteFill>
-      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,.25), transparent 30%, transparent 60%, rgba(0,0,0,.45))" }} />
+      {/* sharp two-shot band */}
+      <div style={{ position: "absolute", left: 0, top: bandTop, width: 1080, height: bandH, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,.5)" }}>
+        <OffthreadVideo src={staticFile("shadow/clip.mp4")} startFrom={Math.round(SRC0 * fps)} muted style={{ width: 1080, height: bandH, transform: `scale(${zoom})` }} />
+      </div>
+      {label(herX, "LUCIA", lab(1.9), C.yellow)}
+      {label(himX, "HIM", lab(2.4), C.white)}
     </AbsoluteFill>
   );
 };

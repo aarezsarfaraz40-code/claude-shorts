@@ -44,7 +44,7 @@ const ClipPart: React.FC<{ srcFrom: number; t: number }> = ({ srcFrom, t }) => {
   const cx = interpolate(st, CROP_KEYS.map((k) => k.t), CROP_KEYS.map((k) => k.x), CL);
   const vw = 1920 * (1920 / 1080);
   const left = Math.min(0, Math.max(1080 - vw, 540 - cx * vw));
-  const zoom = 1 + 0.035 * Math.sin(t * 0.35);
+  const zoom = 1;
   return (
     <AbsoluteFill style={{ background: "#000", overflow: "hidden" }}>
       <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
@@ -217,8 +217,8 @@ export const ShadowClip: React.FC = () => {
   const subWord = MIKE.C.find((w) => /subscribe/i.test(w.text));
   const cEnd = subWord ? subWord.startMs / 1000 + MIKE_AT.C - B_END : 3.9;
   const SFX: { at: number; s: string; v: number }[] = [
-    { at: 0.05, s: "pop", v: 0.18 }, { at: 1.6, s: "pop", v: 0.18 }, { at: INTRO_END - 0.05, s: "whoosh", v: 0.2 },
-    { at: A_START + 4.65, s: "pop", v: 0.18 }, { at: A_END - 0.3, s: "whoosh", v: 0.22 }, { at: A_END + 0.15, s: "pop", v: 0.16 },
+    { at: 0.05, s: "pop", v: 0.18 }, { at: INTRO_END - 0.05, s: "whoosh", v: 0.2 },
+    { at: A_END - 0.3, s: "whoosh", v: 0.22 }, { at: A_END + 0.15, s: "pop", v: 0.16 },
     { at: A_END + 0.5, s: "pop", v: 0.16 }, { at: EXPL_END - 0.1, s: "whoosh", v: 0.2 }, { at: B_END - 0.35, s: "whoosh", v: 0.22 },
     { at: B_END + cEnd + 1.1, s: "tick", v: 0.3 }, { at: B_END + cEnd + 1.3, s: "bell", v: 0.2 },
   ];
@@ -230,10 +230,6 @@ export const ShadowClip: React.FC = () => {
       <Intro t={t} />
       <Captions words={ALL_WORDS} t={t} />
       <Pill t={t} a={0.1} b={INTRO_END} lines={["He had NO IDEA", "who she was 😭"]} hl={["NO", "IDEA"]} y={330} />
-      <LuciaCard t={t} a={1.6} b={INTRO_END} x={540 - 140} y={640} w={280} tag="LUCIA · GTA 6" />
-      <Pill t={t} a={A_START + 4.6} b={A_START + 7.4} lines={["That's LUCIA", "from GTA 6 🤯"]} hl={["LUCIA"]} />
-      <LuciaCard t={t} a={A_START + 4.85} b={A_START + 7.4} x={540 - 120} y={820} w={240} tag="IN GTA 6" />
-      <Pill t={t} a={A_START + 9.3} b={A_START + 12.3} lines={["Asking LUCIA", "about politics 💀"]} hl={["LUCIA"]} />
       <Explainer t={t} />
       <EndCta t={t} cEnd={cEnd} />
       <Sequence from={f(A_START)} durationInFrames={f(A_END - A_START)}><Audio src={staticFile("shadow/clip.mp4")} startFrom={f(A_SRC[0])} /></Sequence>

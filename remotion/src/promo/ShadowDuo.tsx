@@ -74,13 +74,23 @@ const TalkSplit: React.FC<{ srcFrom: number }> = ({ srcFrom }) => (
     <div style={{ position: "absolute", left: 0, top: 956, width: 1080, height: 8, background: "#000" }} />
   </AbsoluteFill>
 );
-const GameplaySplit: React.FC<{ srcFrom: number }> = ({ srcFrom }) => (
-  <AbsoluteFill style={{ background: "#0d0b12" }}>
-    <Crop startFrom={srcFrom} box={GP_GAME} dest={TOP} fx={0.5} fy={0.5} />
-    <Crop startFrom={srcFrom} box={GP_NED} dest={{ x: 0, y: 964, w: 538, h: 956 }} fx={0.5} fy={0.45} />
-    <Crop startFrom={srcFrom} box={GP_OGG} dest={{ x: 542, y: 964, w: 538, h: 956 }} fx={0.5} fy={0.45} />
-  </AbsoluteFill>
-);
+// gameplay part of the stream: game on top, the person who is SPEAKING below
+// (Ned asks until src 15.9 s, then Ogg answers), soft crossfade between them
+const SPEAKER_SWITCH = 15.9;
+const GameplaySplit: React.FC<{ srcFrom: number }> = ({ srcFrom }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const srcT = srcFrom + frame / fps;
+  const k = interpolate(srcT, [SPEAKER_SWITCH - 0.15, SPEAKER_SWITCH + 0.2], [0, 1], { ...CL, easing: IO });
+  return (
+    <AbsoluteFill style={{ background: "#0d0b12" }}>
+      <Crop startFrom={srcFrom} box={GP_GAME} dest={TOP} fx={0.5} fy={0.5} />
+      <AbsoluteFill style={{ opacity: 1 - k }}><Crop startFrom={srcFrom} box={GP_NED} dest={BOT} fx={0.5} fy={0.42} /></AbsoluteFill>
+      <AbsoluteFill style={{ opacity: k }}><Crop startFrom={srcFrom} box={GP_OGG} dest={BOT} fx={0.5} fy={0.42} /></AbsoluteFill>
+      <div style={{ position: "absolute", left: 0, top: 956, width: 1080, height: 8, background: "#000" }} />
+    </AbsoluteFill>
+  );
+};
 
 // ---------------------------------------------------------------- captions (Montserrat, max 3 words)
 type Word = { text: string; startMs: number; endMs: number };

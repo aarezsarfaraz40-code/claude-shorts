@@ -14,45 +14,145 @@ const r = (voT: number) => VO + voT;
 // [reel start, file, src start] — each shot runs until the next one starts
 const SHOTS: { at: number; file: string; src: number }[] = [
   { at: 0, file: "shadow2/tr_aerial.mp4", src: 0 },
-  { at: 3.1, file: "shadow3/src.mp4", src: 0.3 },
-  { at: 6.9, file: "shadow3/src.mp4", src: 4.4 },
-  { at: 12.9, file: "shadow3/src.mp4", src: 11.0 },
-  { at: 15.0, file: "shadow3/src.mp4", src: 17.1 },
-  { at: 16.6, file: "shadow3/src.mp4", src: 19.6 },
-  { at: 18.6, file: "shadow3/src.mp4", src: 38.55 },
-  { at: 20.8, file: "shadow3/src.mp4", src: 34.4 },
-  { at: 22.2, file: "shadow3/src.mp4", src: 42.5 },
-  { at: 22.9, file: "shadow3/src.mp4", src: 49.9 },
-  { at: 25.0, file: "shadow3/src.mp4", src: 60.5 },
-  { at: 29.5, file: "shadow3/src.mp4", src: 52.3 },
-  { at: 32.7, file: "shadow3/src.mp4", src: 66.0 },
-  { at: 35.3, file: "shadow3/src.mp4", src: 68.6 },
-  { at: 40.6, file: "shadow3/src.mp4", src: 59.5 }, // outro background (blurred)
+  { at: 3.5, file: "shadow3/src.mp4", src: 17.1 }, // head to the old reactor
+  { at: 5.2, file: "shadow3/src.mp4", src: 19.6 }, // something strange happens
+  { at: 7.5, file: "shadow3/src.mp4", src: 38.55 }, // portal tears open
+  { at: 9.7, file: "shadow3/src.mp4", src: 34.4 }, // walk into it
+  { at: 11.2, file: "shadow3/src.mp4", src: 42.5 }, // BOOM
+  { at: 11.9, file: "shadow3/src.mp4", src: 49.9 }, // land in Vice City 2002
+  { at: 14.5, file: "shadow3/src.mp4", src: 60.5 }, // neon floors
+  { at: 18.4, file: "shadow3/src.mp4", src: 52.3 }, // "Where the hell is this?"
+  { at: 21.7, file: "shadow3/src.mp4", src: 66.0 }, // best part / make it back out
+  { at: 24.2, file: "shadow3/src.mp4", src: 0.3 }, // Tommy shirt + bike
+  { at: 27.5, file: "shadow3/src.mp4", src: 11.0 },
+  { at: 30.9, file: "shadow3/src.mp4", src: 71.2 }, // every creator…
+  { at: 33.9, file: "shadow3/src.mp4", src: 4.4 }, // full guide / comment TOMMY
+  { at: 39.2, file: "shadow3/src.mp4", src: 59.5 }, // outro background (blurred)
 ];
-export const TOMMY_DURATION = 46.4;
+export const TOMMY_DURATION = 45.4;
 
 // Mike's words (whisper timings, VO seconds) — spelling fixed
 const WORDS: [string, number, number][] = [
-  ["Rockstar", 0.0, 0.5], ["just", 0.52, 0.74], ["hid", 0.76, 0.88], ["a", 0.9, 1.0], ["time", 1.02, 1.28], ["machine", 1.3, 1.62], ["inside", 1.64, 1.9], ["GTA", 1.92, 2.3], ["6", 2.34, 2.7],
-  ["and", 2.84, 3.4], ["the", 3.44, 3.56], ["key", 3.58, 3.8], ["to", 3.82, 3.98], ["it", 4.0, 4.14], ["is", 4.16, 4.54], ["a", 4.56, 4.68], ["shirt.", 4.7, 5.3],
-  ["not", 5.5, 5.66], ["just", 5.68, 5.86], ["any", 5.88, 6.1], ["shirt.", 6.12, 6.6],
-  ["Tommy", 6.8, 7.08], ["Vercetti's", 7.1, 7.7], ["legendary", 7.72, 8.24], ["Hawaiian", 8.26, 8.78], ["shirt.", 8.8, 9.4],
-  ["yes,", 9.62, 10.1], ["the", 10.32, 10.36], ["Vice", 10.38, 10.62], ["City", 10.64, 10.9], ["legend", 10.92, 11.24], ["from", 11.26, 11.48], ["2002.", 11.5, 12.4],
-  ["put", 12.94, 13.12], ["it", 13.14, 13.26], ["on,", 13.28, 13.48], ["ride", 13.5, 13.9], ["out", 13.92, 14.1], ["at", 14.12, 14.26], ["night,", 14.28, 14.48],
-  ["and", 14.5, 14.74], ["head", 14.76, 14.94], ["to", 14.96, 15.08], ["the", 15.1, 15.2], ["old", 15.22, 15.38], ["reactor.", 15.4, 16.0],
-  ["then", 16.14, 16.58], ["this", 16.6, 17.18], ["happens.", 17.2, 17.9],
-  ["a", 18.28, 18.34], ["glowing", 18.36, 18.7], ["portal", 18.72, 19.16], ["tears", 19.18, 19.52], ["open.", 19.54, 20.2],
-  ["walk", 20.54, 20.64], ["straight", 20.66, 20.98], ["into", 21.0, 21.24], ["it...", 21.26, 21.5], ["and", 21.52, 21.9], ["BOOM!", 21.92, 22.6],
-  ["you", 22.82, 22.94], ["land", 22.96, 23.22], ["in", 23.24, 23.38], ["Vice", 23.4, 23.64], ["City", 23.66, 23.98], ["2002!", 24.0, 25.0],
-  ["neon", 25.74, 26.14], ["floors,", 26.16, 26.8], ["pink", 26.84, 26.98], ["walls,", 27.0, 27.38], ["that", 27.4, 27.78], ["whole", 27.8, 27.96], ["retro", 27.98, 28.34], ["vibe.", 28.36, 29.0],
-  ["even", 29.18, 29.36], ["Lucia", 29.38, 29.86], ["is", 29.88, 30.06], ["like...", 30.08, 30.5], ["where", 30.56, 30.76], ["the", 30.78, 30.92], ["hell", 30.94, 31.1], ["is", 31.12, 31.26], ["this?", 31.28, 32.2],
-  ["every", 32.46, 32.86], ["creator", 32.88, 33.24], ["is", 33.26, 33.52], ["talking", 33.54, 33.76], ["about", 33.78, 34.02], ["this", 34.04, 34.22], ["right", 34.24, 34.4], ["now.", 34.42, 34.9],
-  ["want", 35.04, 35.16], ["the", 35.18, 35.32], ["full", 35.34, 35.48], ["step-by-step", 35.5, 36.06], ["guide?", 36.08, 36.7],
-  ["comment", 36.8, 37.08], ["TOMMY", 37.1, 37.5], ["and", 37.54, 37.92], ["we'll", 37.94, 38.12], ["drop", 38.14, 38.3], ["the", 38.32, 38.46], ["complete", 38.48, 38.78], ["guide", 38.8, 39.12],
-  ["on", 39.14, 39.3], ["our", 39.32, 39.42], ["main", 39.44, 39.6], ["channel.", 39.62, 40.2],
+  ["Rockstar", 0.0, 0.48],
+  ["just", 0.48, 0.72],
+  ["hid", 0.72, 0.9],
+  ["a", 0.9, 1.02],
+  ["time", 1.02, 1.32],
+  ["machine", 1.32, 1.66],
+  ["inside", 1.66, 1.96],
+  ["GTA", 1.96, 2.32],
+  ["6!", 2.32, 2.9],
+  ["Head", 3.36, 3.54],
+  ["to", 3.54, 3.68],
+  ["the", 3.68, 3.78],
+  ["old", 3.78, 4.04],
+  ["reactor", 4.04, 4.42],
+  ["at", 4.42, 4.64],
+  ["night,", 4.64, 4.88],
+  ["and", 5.08, 5.34],
+  ["something", 5.34, 5.72],
+  ["strange", 5.72, 6.18],
+  ["happens.", 6.18, 6.74],
+  ["A", 7.3, 7.42],
+  ["glowing", 7.42, 7.82],
+  ["portal", 7.82, 8.32],
+  ["tears", 8.32, 8.7],
+  ["open.", 8.7, 9.18],
+  ["walk", 9.56, 9.8],
+  ["straight", 9.8, 10.16],
+  ["into", 10.16, 10.44],
+  ["it...", 10.44, 10.64],
+  ["and", 10.94, 11.04],
+  ["BOOM!", 11.04, 11.46],
+  ["You", 12.0, 12.12],
+  ["land", 12.12, 12.36],
+  ["in", 12.36, 12.52],
+  ["Vice", 12.52, 12.8],
+  ["City,", 12.8, 13.16],
+  ["2002!", 13.36, 14.22],
+  ["Neon", 14.8, 15.2],
+  ["floors,", 15.2, 15.52],
+  ["pink", 15.92, 16.08],
+  ["walls,", 16.08, 16.5],
+  ["that", 16.78, 16.9],
+  ["whole", 16.9, 17.04],
+  ["retro", 17.04, 17.46],
+  ["vibe.", 17.46, 17.8],
+  ["Even", 18.16, 18.38],
+  ["Lucia", 18.38, 18.82],
+  ["is", 18.82, 19.04],
+  ["like,", 19.04, 19.24],
+  ["where", 19.58, 19.76],
+  ["the", 19.76, 19.92],
+  ["hell", 19.92, 20.22],
+  ["is", 20.22, 20.4],
+  ["this?", 20.4, 21.1],
+  ["But", 21.52, 21.68],
+  ["the", 21.68, 21.82],
+  ["best", 21.82, 22.02],
+  ["part?", 22.02, 22.26],
+  ["When", 22.7, 22.82],
+  ["you", 22.82, 22.92],
+  ["make", 22.92, 23.08],
+  ["it", 23.08, 23.18],
+  ["back", 23.18, 23.34],
+  ["out,", 23.34, 23.66],
+  ["you", 23.88, 24.0],
+  ["unlock", 24.0, 24.26],
+  ["Tommy", 24.26, 24.64],
+  ["Vercetti's", 24.64, 25.28],
+  ["legendary", 25.28, 25.78],
+  ["Hawaiian", 25.78, 26.3],
+  ["shirt.", 26.3, 26.76],
+  ["And", 26.98, 27.24],
+  ["his", 27.24, 27.38],
+  ["bike", 27.38, 27.68],
+  ["too!", 27.68, 28.02],
+  ["Yes,", 28.02, 28.7],
+  ["the", 29.04, 29.12],
+  ["Vice", 29.12, 29.38],
+  ["City", 29.38, 29.68],
+  ["legend", 29.68, 30.02],
+  ["from", 30.02, 30.26],
+  ["2002!", 30.26, 31.58],
+  ["Every", 31.8, 32.1],
+  ["creator", 32.1, 32.46],
+  ["is", 32.46, 32.72],
+  ["talking", 32.72, 32.96],
+  ["about", 32.96, 33.22],
+  ["this", 33.22, 33.42],
+  ["right", 33.42, 33.6],
+  ["now.", 33.6, 33.84],
+  ["Want", 34.18, 34.32],
+  ["the", 34.32, 34.48],
+  ["full", 34.48, 34.64],
+  ["step-by-step", 34.64, 35.24],
+  ["guide?", 35.24, 35.52],
+  ["Comment", 35.92, 36.2],
+  ["TOMMY,", 36.2, 36.68],
+  ["and", 37.02, 37.08],
+  ["we'll", 37.08, 37.26],
+  ["drop", 37.26, 37.44],
+  ["the", 37.44, 37.62],
+  ["complete", 37.62, 37.94],
+  ["guide", 37.94, 38.28],
+  ["on", 38.28, 38.46],
+  ["our", 38.46, 38.58],
+  ["main", 38.58, 38.78],
+  ["channel.", 38.78, 39.18],
+  ["Subscribe", 39.54, 39.84],
+  ["to", 39.84, 40.12],
+  ["Shadow", 40.12, 40.38],
+  ["GTA", 40.38, 40.72],
+  ["Plays", 40.72, 41.26],
+  ["for", 41.26, 41.42],
+  ["more", 41.42, 41.62],
+  ["videos", 41.62, 41.94],
+  ["like", 41.94, 42.18],
+  ["this!", 42.18, 42.86],
 ];
-const KEY = new Set(["rockstar", "time", "machine", "gta", "6", "tommy", "vercetti's", "hawaiian", "shirt.", "2002.", "2002!", "portal", "boom!", "vice", "city", "lucia", "tommy", "guide?", "neon", "reactor."]);
-const OUTRO_AT = r(40.0);
+const KEY = new Set(["rockstar", "time", "machine", "gta", "6", "tommy", "vercetti's", "hawaiian", "shirt.", "2002.", "2002!", "portal", "boom!", "vice", "city", "lucia", "tommy", "guide?", "neon", "reactor", "bike", "best", "unlock", "TOMMY,".toLowerCase(), "boom!"]);
+const OUTRO_AT = r(39.3);
 
 const C = { purple: "#8B2CF5", purple2: "#B56CFF", white: "#FFFFFF", red: "#FF0033", ink: "#0B0710" };
 const FONT = "'MontserratV', 'Montserrat', sans-serif";
@@ -120,7 +220,7 @@ const RockstarLogo: React.FC<{ t: number }> = ({ t }) => {
 
 // ---------- Tommy cut-out: swipes up, then back down ----------
 const TommyCard: React.FC<{ t: number }> = ({ t }) => {
-  const a = r(6.7), b = r(12.3);
+  const a = r(24.2), b = r(26.85);
   if (t < a - 0.1 || t > b + 0.6) return null;
   const up = p(t, a, a + 0.55, OUT);
   const down = p(t, b, b + 0.5, IN);
@@ -140,7 +240,7 @@ const TommyCard: React.FC<{ t: number }> = ({ t }) => {
 
 // ---------- portal "BOOM" flash (pink, never white) ----------
 const Flash: React.FC<{ t: number }> = ({ t }) => {
-  const at = r(21.92);
+  const at = r(11.04);
   const k = interpolate(t, [at - 0.05, at + 0.05, at + 0.6], [0, 0.85, 0], CL);
   if (k <= 0) return null;
   return <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 45%, rgba(255,120,230,${k}) 0%, rgba(139,44,245,${k * 0.8}) 55%, rgba(40,0,70,${k * 0.6}) 100%)` }} />;
@@ -171,7 +271,7 @@ const Captions: React.FC<{ t: number }> = ({ t }) => {
   return (
     <div style={{ position: "absolute", left: 150, right: 150, top: 1440, transform: `translateY(-50%) scale(${0.85 + 0.15 * k})`, opacity: Math.min(1, k * 2), display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "6px 14px" }}>
       {pg.words.map(([w, s, e], i) => {
-        const on = vt >= s - 0.03 && vt < (pg.words[i + 1]?.[1] ?? pg.end);
+        const on = vt >= s && vt < (pg.words[i + 1]?.[1] ?? pg.end);
         const pop = on ? 1 + 0.08 * (1 - p(vt, s, s + 0.18)) : 1;
         const key = KEY.has(w.toLowerCase());
         return (
@@ -186,7 +286,7 @@ const Captions: React.FC<{ t: number }> = ({ t }) => {
 
 // ---------- "Comment TOMMY" bubble ----------
 const CommentPill: React.FC<{ t: number }> = ({ t }) => {
-  const a = r(36.8), b = OUTRO_AT - 0.1;
+  const a = r(35.92), b = OUTRO_AT - 0.1;
   if (t < a || t > b + 0.3) return null;
   const k = p(t, a, a + 0.4, BOUNCE) * (1 - p(t, b, b + 0.25, IN));
   return (
@@ -206,9 +306,9 @@ const Outro: React.FC<{ t: number }> = ({ t }) => {
   const blur = p(t, S - 0.4, S + 0.3, IO);
   const logo = interpolate(t, [S, S + 0.65], [0, 1], { ...CL, easing: BOUNCE });
   const glow = 0.5 + 0.5 * Math.sin(t * 4);
-  const subAt = r(40.38);
+  const subAt = r(39.54);
   const btn = interpolate(t, [subAt, subAt + 0.4], [0, 1], { ...CL, easing: BOUNCE });
-  const tapT = r(41.6), tapped = t >= tapT;
+  const tapT = r(40.7), tapped = t >= tapT;
   const tapK = p(t, tapT, tapT + 0.3);
   const bell = Math.sin(Math.max(0, t - tapT - 0.2) * 22) * 18 * (1 - p(t, tapT + 0.2, tapT + 1.0));
   const txt = p(t, S + 0.3, S + 0.8);
@@ -238,9 +338,9 @@ export const ShadowTommy: React.FC = () => {
   const f = (s: number) => Math.round(s * fps);
   const blurK = p(t, OUTRO_AT - 0.4, OUTRO_AT + 0.3, IO);
   const SFX = [
-    { at: r(0) - 0.1, s: "whoosh", v: 0.2 }, { at: r(6.7), s: "whoosh", v: 0.22 }, { at: r(12.3), s: "whoosh", v: 0.18 },
-    { at: r(21.92) - 0.05, s: "impact", v: 0.22 }, { at: r(36.8), s: "pop", v: 0.18 },
-    { at: OUTRO_AT, s: "impact", v: 0.12 }, { at: r(41.6) - 0.05, s: "tick", v: 0.3 }, { at: r(41.6) + 0.15, s: "bell", v: 0.2 },
+    { at: r(0) - 0.1, s: "whoosh", v: 0.2 }, { at: r(24.2), s: "whoosh", v: 0.22 }, { at: r(26.85), s: "whoosh", v: 0.18 },
+    { at: r(11.04) - 0.05, s: "impact", v: 0.22 }, { at: r(35.92), s: "pop", v: 0.18 },
+    { at: OUTRO_AT, s: "impact", v: 0.12 }, { at: r(40.7) - 0.05, s: "tick", v: 0.3 }, { at: r(40.7) + 0.15, s: "bell", v: 0.2 },
   ];
   return (
     <AbsoluteFill style={{ background: "#000" }}>

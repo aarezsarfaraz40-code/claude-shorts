@@ -3,7 +3,7 @@
 **Title:** GTA 6 Has a SECRET Time Machine to 2002 Vice City?! 😱 #shorts
 
 **Description:**
-Rockstar hid a crazy Easter egg in GTA 6 👀 Put on Tommy Vercetti's legendary Hawaiian shirt, head to the old reactor at night… and a glowing portal sends you back to 2002 Vice City! 🌴💜
+Rockstar hid a crazy Easter egg in GTA 6 👀 Head to the old reactor at night, step into a glowing portal… and you land in 2002 Vice City! 🌴💜 Make it back out and you unlock Tommy Vercetti's legendary Hawaiian shirt AND his bike 🏍️
 
 Want the full step-by-step guide? Comment "TOMMY" and we'll drop the complete guide video on our main channel!
 

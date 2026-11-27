@@ -98,19 +98,21 @@ const RockstarLogo: React.FC<{ t: number }> = ({ t }) => {
   const sweep = interpolate(t, [a + 0.7, a + 1.6], [-60, 160], CL);
   const SIZE = 430;
   const layers = Array.from({ length: 12 }, (_, i) => 11 - i);
-  const mask = { WebkitMaskImage: `url(${staticFile("shadow3/rockstar.png")})`, WebkitMaskSize: "100% 100%", maskImage: `url(${staticFile("shadow3/rockstar.png")})`, maskSize: "100% 100%" } as React.CSSProperties;
+  const mask = { WebkitMaskImage: `url(${staticFile("shadow3/rockstar_yellow.png")})`, WebkitMaskSize: "100% 100%", maskImage: `url(${staticFile("shadow3/rockstar_yellow.png")})`, maskSize: "100% 100%" } as React.CSSProperties;
   // fake 3D (works in any renderer): squash by cos(angle), extrude sideways, slight skew for perspective
   const rad = (ry * Math.PI) / 180;
   const cx = Math.cos(rad), sx = Math.sin(rad);
   const face = cx >= 0; // front or back side
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", opacity: 1 - outK }}>
-      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 42%, rgba(139,44,245,${0.5 * inK}) 0%, rgba(0,0,0,0) 45%)` }} />
+      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 42%, rgba(252,175,23,${0.35 * inK}) 0%, rgba(139,44,245,${0.25 * inK}) 30%, rgba(0,0,0,0) 50%)` }} />
       <div style={{ position: "relative", width: SIZE, height: SIZE * 680 / 640, marginTop: -180, transform: `scale(${sc}) skewY(${-sx * 8 + rx * 0.3}deg) scaleX(${Math.max(0.04, Math.abs(cx))})` }}>
         {layers.map((i) => (
-          <div key={i} style={{ position: "absolute", inset: 0, transform: `translateX(${(sx * i * 2.4) / Math.max(0.15, Math.abs(cx))}px)`, background: i === 0 ? (face ? "#FFFFFF" : "#D9C2FF") : `rgb(${120 - i * 5},${60 - i * 3},${190 - i * 7})`, ...mask }} />
+          i === 0
+            ? <Img key={i} src={staticFile("shadow3/rockstar_yellow.png")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", filter: face ? "none" : "brightness(.8)" }} />
+            : <div key={i} style={{ position: "absolute", inset: 0, transform: `translateX(${(sx * i * 2.4) / Math.max(0.15, Math.abs(cx))}px)`, background: `rgb(${200 - i * 9},${120 - i * 7},${10})`, ...mask }} />
         ))}
-        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, rgba(255,255,255,0) ${sweep - 18}%, rgba(255,240,140,.95) ${sweep}%, rgba(255,255,255,0) ${sweep + 18}%)`, ...mask }} />
+        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, rgba(255,255,255,0) ${sweep - 18}%, rgba(255,255,255,.75) ${sweep}%, rgba(255,255,255,0) ${sweep + 18}%)`, ...mask }} />
       </div>
     </AbsoluteFill>
   );

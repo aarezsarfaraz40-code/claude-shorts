@@ -8,6 +8,7 @@ import { BazaarGifts2, GIFTS2_DURATION, GIFTS2_FPS } from "./promo/BazaarGifts2"
 import { BazaarCategories, CATS_DURATION, CATS_FPS } from "./promo/BazaarCategories";
 import { ShadowClip, SHADOW_DURATION } from "./promo/ShadowClip";
 import { ShadowDuo, DUO_DURATION } from "./promo/ShadowDuo";
+import { ShadowTommy, TOMMY_DURATION } from "./promo/ShadowTommy";
 
 export const Root: React.FC = () => {
   return (
@@ -72,6 +73,7 @@ export const Root: React.FC = () => {
         })}
       />
       <Composition id="ShadowDuo" component={ShadowDuo} width={1080} height={1920} fps={30} durationInFrames={Math.round(DUO_DURATION * 30)} />
+      <Composition id="ShadowTommy" component={ShadowTommy} width={1080} height={1920} fps={30} durationInFrames={Math.round(TOMMY_DURATION * 30)} />
       <Composition id="ShadowClip" component={ShadowClip} width={1080} height={1920} fps={30} durationInFrames={Math.round(SHADOW_DURATION * 30)} />
       <Composition id="BazaarCategories" component={BazaarCategories} width={1080} height={1920} fps={CATS_FPS} durationInFrames={CATS_DURATION * CATS_FPS} />
       <Composition id="BazaarGifts2" component={BazaarGifts2} width={1080} height={1920} fps={GIFTS2_FPS} durationInFrames={GIFTS2_DURATION * GIFTS2_FPS} />

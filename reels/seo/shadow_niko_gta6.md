@@ -7,7 +7,7 @@ Niko Bellic just showed up in GTA 6 👀 The GTA 4 legend walks into this cutsce
 
 Fans waited years to see Niko in GTA 5 — he never showed up. Now he's back… so is this Rockstar's first hint at the long-rumoured GTA 4 Remaster? 🤔
 
-Would you play GTA 4 Remastered? YES or NO 👇
+Do you think Rockstar will drop GTA 4 Remastered next year? YES or NO 👇
 
 🔔 Subscribe to Shadow GTA Plays for more GTA 6 news, secrets & easter eggs.
 
@@ -15,4 +15,4 @@ Would you play GTA 4 Remastered? YES or NO 👇
 
 **Tags:** gta 6, niko bellic, niko bellic gta 6, gta 4 remastered, gta iv remaster, niko bellic returns, gta 6 cameo, gta 6 cutscene, michael hollick, gta 4, gta vi, rockstar games, gta 6 easter egg, shadow gta plays
 
-**Pinned comment:** Would you play GTA 4 Remastered? YES 👍 or NO 👎 — drop it below!
+**Pinned comment:** Will Rockstar drop GTA 4 Remastered next year? YES 👍 or NO 👎 — drop it below!

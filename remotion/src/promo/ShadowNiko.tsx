@@ -19,39 +19,49 @@ const MUSIC: string | null = null; // e.g. "shadow4/music.mp3" — very low volu
 const MUSIC_VOL = 0.05;
 
 // band where footage sits (blurred copy fills the rest)
-const BAND = { y: 250, h: 1150 };
-type ShotT = { at: number; file: "stream" | "actor"; src: number; fx: number };
-const LOGO_A0 = 2.8 + 37.6;
+type ShotT = { at: number; file: "stream" | "actor"; src: number; fx: number[] }; // fx = face-centre track, 5 samples/s
 const SHOTS: ShotT[] = [
-  { at: 0, file: "stream", src: BITE.audio + PIC_LAG, fx: 0.45 },
-  { at: r(0), file: "stream", src: 9.0, fx: 0.55 }, // Niko Bellic is back
-  { at: r(2.0), file: "stream", src: 24.0, fx: 0.5 },
-  { at: r(4.4), file: "stream", src: 66.0, fx: 0.38 }, // legend from GTA 4
-  { at: r(7.2), file: "stream", src: 48.0, fx: 0.32 }, // walks in, cold as ever
-  { at: r(10.5), file: "stream", src: 81.0, fx: 0.35 }, // someone is in big trouble (gun)
-  { at: r(11.6), file: "stream", src: 35.5, fx: 0.66 }, // Giorgio
-  { at: r(12.9), file: "stream", src: 100.0, fx: 0.33 }, // fans waited years (GTA 5)
-  { at: r(16.1), file: "stream", src: 110.0, fx: 0.33 },
-  { at: r(17.6), file: "stream", src: 70.0, fx: 0.4 }, // tiny Easter eggs
-  { at: r(20.3), file: "actor", src: 2.3, fx: 0.5 }, // Michael Hollick
-  { at: r(27.6), file: "stream", src: 151.0, fx: 0.3 }, // the Niko we grew up with
-  { at: r(29.6), file: "stream", src: 130.0, fx: 0.5 }, // why bring Niko back now?
-  { at: r(32.4), file: "stream", src: 94.5, fx: 0.45 }, // GTA 4 remaster rumours
-  { at: r(36.5), file: "stream", src: 133.0, fx: 0.7 },
-  { at: LOGO_A0, file: "stream", src: 158.5, fx: 0.5 }, // empty room under the logo // Rockstar's first hint
-  { at: r(39.5), file: "stream", src: 155.0, fx: 0.5 }, // would you play it?
-  { at: r(43.3), file: "stream", src: 158.0, fx: 0.5 }, // outro background
+  { at: 0, file: "stream", src: 138.3, fx: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45] },
+  { at: 2.8, file: "stream", src: 9.0, fx: [0.511, 0.512, 0.513, 0.515, 0.519, 0.523, 0.528, 0.533, 0.538, 0.542, 0.546] },
+  { at: 4.8, file: "stream", src: 24.0, fx: [0.462, 0.465, 0.465, 0.463, 0.461, 0.46, 0.459, 0.456, 0.452, 0.447, 0.441, 0.436, 0.434] },
+  { at: 7.2, file: "stream", src: 66.0, fx: [0.431, 0.431, 0.431, 0.431, 0.431, 0.431, 0.431, 0.432, 0.431, 0.429, 0.427, 0.425, 0.423, 0.421, 0.419] },
+  { at: 10.0, file: "stream", src: 48.0, fx: [0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32] },
+  { at: 13.3, file: "stream", src: 81.0, fx: [0.338, 0.34, 0.342, 0.344, 0.346, 0.348] },
+  { at: 14.4, file: "stream", src: 35.5, fx: [0.535, 0.509, 0.483, 0.456, 0.43, 0.403, 0.377] },
+  { at: 15.7, file: "stream", src: 36.0, fx: [0.454, 0.434, 0.419, 0.412, 0.409, 0.407, 0.396, 0.387, 0.381, 0.38, 0.38, 0.378, 0.372, 0.36, 0.342, 0.319, 0.295] },
+  { at: 18.9, file: "stream", src: 110.0, fx: [0.344, 0.344, 0.344, 0.344, 0.344, 0.344, 0.344, 0.344] },
+  { at: 20.4, file: "stream", src: 87.0, fx: [0.35, 0.351, 0.353, 0.355, 0.357, 0.361, 0.364, 0.368, 0.371, 0.376, 0.379, 0.381, 0.384, 0.386] },
+  { at: 23.1, file: "actor", src: 2.3, fx: [0.412, 0.416, 0.42, 0.424, 0.428, 0.433, 0.438, 0.444, 0.449, 0.453, 0.457, 0.461, 0.465, 0.47, 0.474, 0.478, 0.482, 0.485, 0.489, 0.491, 0.493, 0.493, 0.493, 0.491, 0.489, 0.486, 0.484, 0.482, 0.473, 0.45, 0.413, 0.38, 0.347, 0.314, 0.282, 0.251, 0.219] },
+  { at: 30.4, file: "stream", src: 26.0, fx: [0.434, 0.439, 0.443, 0.447, 0.45, 0.454, 0.457, 0.46, 0.462, 0.463, 0.463] },
+  { at: 32.4, file: "stream", src: 130.0, fx: [0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696, 0.696] },
+  { at: 35.2, file: "stream", src: 94.5, fx: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45] },
+  { at: 39.3, file: "stream", src: 133.0, fx: [0.689, 0.689, 0.688, 0.688, 0.688, 0.687] },
+  { at: 40.4, file: "stream", src: 158.5, fx: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5] },
+  { at: 42.3, file: "stream", src: 155.0, fx: [0.497, 0.508, 0.517, 0.525, 0.534, 0.543, 0.552, 0.564] },
+  { at: 43.7, file: "stream", src: 119.0, fx: [0.416, 0.415, 0.415, 0.414, 0.413, 0.413, 0.412, 0.412] },
+  { at: 45.2, file: "stream", src: 11.2, fx: [0.554, 0.555, 0.555, 0.556, 0.556, 0.556, 0.557, 0.558] },
+  { at: 46.6, file: "stream", src: 134.2, fx: [0.686, 0.686, 0.686, 0.685, 0.685, 0.685, 0.685] },
+  { at: 47.8, file: "stream", src: 158.0, fx: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5] },
 ];
-export const NIKO_DURATION = 52.2;
+export const NIKO_DURATION = 53.6;
 const LOGO_A = r(37.7), LOGO_B = r(39.4);
-const OUTRO_AT = r(43.5);
+const OUTRO_AT = r(45.2);
 
 const WORDS: [string, number, number][] = [
+  ["I", -2.76, -2.3],
+  ["don't", -2.26, -2.04],
+  ["have", -2.02, -1.92],
+  ["to", -1.9, -1.78],
+  ["tell", -1.76, -1.56],
+  ["you", -1.54, -1.4],
+  ["what", -1.38, -1.24],
+  ["happens", -1.22, -0.84],
+  ["next.", -0.82, -0.3],
   ["Niko", 0.0, 0.54],
   ["Bellic", 0.54, 0.98],
   ["is", 0.98, 1.22],
   ["back!", 1.22, 1.62],
-  ["And", 2.02, 2.16],
+  ["And", 2.04, 2.16],
   ["he", 2.16, 2.26],
   ["just", 2.26, 2.52],
   ["showed", 2.52, 2.76],
@@ -64,15 +74,15 @@ const WORDS: [string, number, number][] = [
   ["legend", 5.26, 5.66],
   ["from", 5.66, 5.9],
   ["GTA", 5.9, 6.28],
-  ["4!", 6.28, 6.86],
+  ["4!", 6.28, 6.88],
   ["In", 7.28, 7.42],
   ["this", 7.42, 7.6],
   ["cutscene,", 7.6, 8.04],
   ["Niko", 8.4, 8.6],
   ["walks", 8.6, 8.96],
   ["in,", 8.96, 9.28],
-  ["cold", 9.56, 9.8],
-  ["as", 9.8, 9.98],
+  ["cold", 9.56, 9.78],
+  ["as", 9.78, 9.98],
   ["ever,", 9.98, 10.26],
   ["and", 10.56, 10.72],
   ["someone", 10.72, 11.14],
@@ -89,12 +99,12 @@ const WORDS: [string, number, number][] = [
   ["in", 14.88, 15.04],
   ["GTA", 15.04, 15.36],
   ["5,", 15.36, 15.8],
-  ["but", 16.14, 16.32],
+  ["but", 16.12, 16.32],
   ["he", 16.32, 16.58],
   ["never", 16.58, 16.8],
   ["showed", 16.8, 17.06],
   ["up.", 17.06, 17.34],
-  ["Just", 17.66, 17.82],
+  ["Just", 17.64, 17.82],
   ["a", 17.82, 18.0],
   ["few", 18.0, 18.16],
   ["tiny", 18.16, 18.48],
@@ -119,24 +129,24 @@ const WORDS: [string, number, number][] = [
   ["His", 24.8, 24.96],
   ["voice,", 24.96, 25.32],
   ["his", 25.72, 25.82],
-  ["face,", 25.82, 26.18],
-  ["his", 26.6, 26.72],
+  ["face,", 25.82, 26.2],
+  ["his", 26.58, 26.72],
   ["attitude,", 26.72, 27.22],
   ["that's", 27.68, 28.02],
   ["the", 28.02, 28.16],
-  ["Niko", 28.16, 28.4],
-  ["we", 28.4, 28.66],
+  ["Niko", 28.16, 28.42],
+  ["we", 28.42, 28.66],
   ["all", 28.66, 28.96],
   ["grew", 28.96, 29.18],
   ["up", 29.18, 29.4],
   ["with.", 29.4, 29.64],
-  ["So,", 29.64, 30.22],
+  ["So,", 29.64, 30.24],
   ["why", 30.52, 30.68],
   ["bring", 30.68, 30.96],
   ["Niko", 30.96, 31.24],
   ["back", 31.24, 31.5],
   ["now?", 31.5, 31.84],
-  ["Rumors", 32.4, 32.7],
+  ["Rumors", 32.38, 32.7],
   ["about", 32.7, 32.94],
   ["a", 32.94, 33.1],
   ["GTA", 33.1, 33.38],
@@ -150,40 +160,45 @@ const WORDS: [string, number, number][] = [
   ["a", 35.48, 35.6],
   ["long", 35.6, 35.88],
   ["time,", 35.88, 36.26],
-  ["and", 36.56, 36.68],
-  ["this", 36.68, 36.86],
+  ["and", 36.56, 36.7],
+  ["this", 36.7, 36.86],
   ["cameo", 36.86, 37.38],
   ["might", 37.38, 37.7],
   ["be", 37.7, 37.88],
   ["Rockstar's", 37.88, 38.46],
-  ["first", 38.46, 38.72],
-  ["hint.", 38.72, 39.04],
-  ["Would", 39.58, 39.66],
-  ["you", 39.66, 39.82],
-  ["play", 39.82, 40.0],
-  ["GTA", 40.0, 40.34],
-  ["4", 40.34, 40.7],
-  ["remastered?", 40.7, 41.38],
-  ["Yes", 41.64, 41.84],
-  ["or", 41.84, 42.0],
-  ["no?", 42.0, 42.2],
-  ["Tell", 42.54, 42.62],
-  ["me", 42.62, 42.76],
-  ["in", 42.76, 42.84],
-  ["the", 42.84, 42.92],
-  ["comments!", 42.92, 43.2],
-  ["Subscribe", 43.7, 44.02],
-  ["to", 44.02, 44.28],
-  ["Shadow", 44.28, 44.54],
-  ["GTA", 44.54, 44.9],
-  ["Plays", 44.9, 45.5],
-  ["for", 45.5, 45.64],
-  ["more", 45.64, 45.86],
-  ["videos", 45.86, 46.2],
-  ["like", 46.2, 46.46],
-  ["this!", 46.46, 47.18],
+  ["first", 38.46, 38.7],
+  ["hint.", 38.7, 39.06],
+  ["Do", 39.64, 39.82],
+  ["you", 39.82, 39.98],
+  ["think", 39.98, 40.16],
+  ["Rockstar", 40.16, 40.7],
+  ["will", 40.7, 40.88],
+  ["drop", 40.88, 41.1],
+  ["GTA", 41.1, 41.46],
+  ["4", 41.46, 41.86],
+  ["remastered", 41.86, 42.58],
+  ["next", 42.58, 42.7],
+  ["year?", 42.7, 42.96],
+  ["Yes", 43.3, 43.5],
+  ["or", 43.5, 43.66],
+  ["no?", 43.66, 43.86],
+  ["Tell", 44.2, 44.3],
+  ["me", 44.3, 44.44],
+  ["in", 44.44, 44.52],
+  ["the", 44.52, 44.6],
+  ["comments!", 44.6, 44.9],
+  ["Subscribe", 45.38, 45.7],
+  ["to", 45.7, 46.04],
+  ["Shadow", 46.04, 46.28],
+  ["GTA", 46.28, 46.7],
+  ["Plays", 46.7, 47.22],
+  ["for", 47.22, 47.38],
+  ["more", 47.38, 47.64],
+  ["videos", 47.64, 47.98],
+  ["like", 47.98, 48.24],
+  ["this!", 48.24, 48.96],
 ];
-const KEY = new Set(["niko", "bellic", "back!", "6!", "4!", "legend", "big", "trouble.", "years", "5,", "never", "easter", "michael", "hollick,", "2008.", "now?", "remaster", "rockstar's", "hint.", "yes", "no?", "remastered?"]);
+const KEY = new Set(["niko", "bellic", "back!", "6!", "4!", "legend", "big", "trouble.", "years", "5,", "never", "easter", "michael", "hollick,", "2008.", "now?", "remaster", "rockstar's", "hint.", "yes", "no?", "remastered?", "next.", "next", "year?", "drop"]);
 
 const C = { purple: "#8B2CF5", purple2: "#B56CFF", white: "#FFFFFF", red: "#FF0033", ink: "#0B0710" };
 const FONT = "'MontserratV', 'Montserrat', sans-serif";
@@ -199,27 +214,26 @@ const STROKE = "0 4px 0 #000, 0 0 3px #000, 0 6px 22px rgba(0,0,0,.85)";
 
 // ---------- footage ----------
 const SRCSIZE = { stream: { w: 1280, h: 640 }, actor: { w: 584, h: 480 } };
+const ZOOM = 1.15, ANCHOR_Y = 0.4; // zoom pushes the game's burned-in subtitles off the bottom
 const Shot: React.FC<{ s: ShotT; dur: number }> = ({ s, dur }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const k = frame / fps;
   const punch = 1 + 0.04 * (1 - p(k, 0, 0.3));
-  const push = 1 + 0.05 * (k / Math.max(dur, 0.1));
+  const push = 1 + 0.04 * (k / Math.max(dur, 0.1));
   const file = s.file === "stream" ? "shadow4/stream.mp4" : "shadow4/actor.mp4";
   const sz = SRCSIZE[s.file];
-  const sc = Math.max(1080 / sz.w, BAND.h / sz.h);
+  const sc = Math.max(1080 / sz.w, 1920 / sz.h) * ZOOM * punch * push;
   const W = sz.w * sc, H = sz.h * sc;
-  const left = Math.min(0, Math.max(1080 - W, 540 - s.fx * W));
-  const v = (st: React.CSSProperties) => <OffthreadVideo src={staticFile(file)} startFrom={Math.round(s.src * fps)} muted style={{ position: "absolute", maxWidth: "none", ...st }} />;
+  const i = Math.min(s.fx.length - 1, k * 5);
+  const i0 = Math.floor(i), i1 = Math.min(s.fx.length - 1, i0 + 1);
+  const fx = s.fx[i0] + (s.fx[i1] - s.fx[i0]) * (i - i0);
+  const left = Math.min(0, Math.max(1080 - W, 540 - fx * W));
+  const top = 1920 * ANCHOR_Y - H * ANCHOR_Y;
   return (
-    <AbsoluteFill>
-      <AbsoluteFill style={{ filter: "blur(34px) brightness(.45) saturate(1.2)", transform: "scale(1.25)" }}>{v({ left: 0, top: 0, width: "100%", height: "100%", objectFit: "cover" })}</AbsoluteFill>
-      <div style={{ position: "absolute", left: 0, top: BAND.y, width: 1080, height: BAND.h, overflow: "hidden", boxShadow: "0 0 60px rgba(0,0,0,.6)" }}>
-        <div style={{ position: "absolute", inset: 0, transform: `scale(${punch * push})` }}>
-          {v({ left, top: (BAND.h - H) / 2, width: W, height: H, filter: "contrast(1.06) saturate(1.08)" })}
-        </div>
-        <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 12%, rgba(0,0,0,0) 85%, rgba(0,0,0,.6) 100%)" }} />
-      </div>
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      <OffthreadVideo src={staticFile(file)} startFrom={Math.round(s.src * fps)} muted style={{ position: "absolute", left, top, width: W, height: H, maxWidth: "none", filter: "contrast(1.06) saturate(1.08)" }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 14%, rgba(0,0,0,0) 62%, rgba(0,0,0,.55) 100%)" }} />
     </AbsoluteFill>
   );
 };
@@ -241,7 +255,7 @@ const NameTag: React.FC<{ t: number }> = ({ t }) => {
 
 // ---------- YES / NO poll ----------
 const Poll: React.FC<{ t: number }> = ({ t }) => {
-  const a = r(41.6), b = OUTRO_AT - 0.1;
+  const a = r(43.3), b = OUTRO_AT - 0.1;
   if (t < a || t > b + 0.3) return null;
   const k = (d: number) => p(t, a + d, a + d + 0.4, BOUNCE) * (1 - p(t, b, b + 0.25, IN));
   const box = (txt: string, bg: string, d: number) => (
@@ -333,9 +347,9 @@ const Outro: React.FC<{ t: number }> = ({ t }) => {
   const blur = p(t, S - 0.4, S + 0.3, IO);
   const logo = interpolate(t, [S, S + 0.65], [0, 1], { ...CL, easing: BOUNCE });
   const glow = 0.5 + 0.5 * Math.sin(t * 4);
-  const subAt = r(43.7);
+  const subAt = r(45.38);
   const btn = interpolate(t, [subAt, subAt + 0.4], [0, 1], { ...CL, easing: BOUNCE });
-  const tapT = r(44.9), tapped = t >= tapT;
+  const tapT = r(46.6), tapped = t >= tapT;
   const tapK = p(t, tapT, tapT + 0.3);
   const bell = Math.sin(Math.max(0, t - tapT - 0.2) * 22) * 18 * (1 - p(t, tapT + 0.2, tapT + 1.0));
   const txt = p(t, S + 0.3, S + 0.8);
@@ -368,8 +382,8 @@ export const ShadowNiko: React.FC = () => {
   // quiet SFX (owner: keep them soft)
   const SFX = [
     { at: r(0) - 0.1, s: "whoosh", v: 0.08 }, { at: r(20.3) - 0.1, s: "whoosh", v: 0.08 },
-    { at: LOGO_A, s: "whoosh", v: 0.09 }, { at: r(41.6), s: "pop", v: 0.09 },
-    { at: OUTRO_AT, s: "impact", v: 0.07 }, { at: r(44.9) - 0.05, s: "tick", v: 0.14 }, { at: r(44.9) + 0.15, s: "bell", v: 0.1 },
+    { at: LOGO_A, s: "whoosh", v: 0.09 }, { at: r(43.3), s: "pop", v: 0.09 },
+    { at: OUTRO_AT, s: "impact", v: 0.07 }, { at: r(46.6) - 0.05, s: "tick", v: 0.14 }, { at: r(46.6) + 0.15, s: "bell", v: 0.1 },
   ];
   return (
     <AbsoluteFill style={{ background: "#000" }}>

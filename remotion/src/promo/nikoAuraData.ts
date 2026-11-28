@@ -1,8 +1,8 @@
 // generated: beat grid of aura/phonk.wav + face-tracked Niko shots (fx = 5 samples per source second)
-export const AURA = { bpm: 130.0, beat: 0.46153846153846156, drop: 3.6923, duration: 20.062 };
-export type AuraShot = { at: number; file: "stream" | "slow_a" | "slow_b"; src: number; rate: number; fx: number[] };
+export const AURA = { bpm: 130.0, beat: 0.46153846153846156, drop: 3.6923, duration: 21.908 };
+export type AuraShot = { at: number; file: "stream" | "field" | "slow_a" | "slow_b" | "slow_c" | "slow_d"; src: number; rate: number; fx: number[] };
 export const AURA_SHOTS: AuraShot[] = [
-  { at: 0, file: "slow_a", src: 9.0, rate: 0.56, fx: [0.511, 0.512, 0.513, 0.515, 0.519, 0.523, 0.528, 0.533, 0.538, 0.542, 0.546] },
+  { at: 0, file: "slow_c", src: 48.0, rate: 0.62, fx: [0.47, 0.471, 0.473, 0.475, 0.477, 0.479, 0.481, 0.483, 0.484, 0.485, 0.486, 0.487] },
   { at: 3.6923, file: "stream", src: 81.0, rate: 1, fx: [0.337, 0.339, 0.34, 0.341, 0.343] },
   { at: 4.6154, file: "stream", src: 24.0, rate: 1, fx: [0.463, 0.469, 0.474, 0.48, 0.486] },
   { at: 5.5385, file: "stream", src: 66.2, rate: 1, fx: [0.4] },
@@ -19,5 +19,9 @@ export const AURA_SHOTS: AuraShot[] = [
   { at: 13.3846, file: "stream", src: 88.5, rate: 1, fx: [0.374, 0.375, 0.376] },
   { at: 13.8461, file: "stream", src: 131.5, rate: 1, fx: [0.55] },
   { at: 14.3077, file: "stream", src: 134.3, rate: 1, fx: [0.686, 0.686, 0.685] },
-  { at: 14.7692, file: "slow_b", src: 26.0, rate: 0.32, fx: [0.434, 0.439, 0.443, 0.447, 0.45, 0.454, 0.458, 0.461, 0.463] },
+  { at: 14.7692, file: "field", src: 5.0, rate: 1, fx: [0.64, 0.62] },
+  { at: 15.6923, file: "field", src: 12.6, rate: 1, fx: [0.6, 0.57, 0.53, 0.52] },
+  { at: 16.6154, file: "field", src: 2.6, rate: 1, fx: [0.58] },
+  { at: 17.5385, file: "field", src: 26.5, rate: 1, fx: [0.46] },
+  { at: 18.4615, file: "slow_d", src: 50.5, rate: 0.58, fx: [0.5] },
 ];

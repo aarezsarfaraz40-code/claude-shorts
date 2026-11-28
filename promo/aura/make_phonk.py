@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Original drift-phonk style beat for "aura" edits (copyright-free, made from scratch).
+"""Original phonk beat (v2: harder Brazilian-phonk / "montagem" style drop) for "aura" edits (copyright-free, made from scratch).
 130 BPM. 2-bar filtered intro + riser, DROP on bar 3 (cowbell melody, distorted 808, hats).
 Usage: python3 make_phonk.py out.wav [bars_after_drop=6]
 Prints the drop time and every beat time (JSON) so the edit can cut on them."""
@@ -88,25 +88,50 @@ for i in range(INTRO_BARS * 8):
 # riser (noise sweep) into the drop
 rn = int(BAR * SR); rt = np.arange(rn) / SR
 riser = rng.standard_normal(rn) * (rt / BAR) ** 2 * 0.25
+riser[-int(BEAT * 0.5 * SR):] = 0
 put(riser, DROP - BAR, 0, 1)
 put(kick() * 0.9, DROP - BEAT * 0.5, 0, 0.6)
 
-# ---- drop ----
+# ---- drop: Brazilian-phonk groove (16 steps per bar) ----
 beats = []
-for b in range(POST * 4):
-    t0 = DROP + b * BEAT
-    beats.append(round(t0, 4))
-    if b % 2 == 0: put(kick(), t0, 0, 0.95)
-    if b % 4 == 2: put(snare(), t0, 0, 0.8)
-    if b % 8 == 7: put(kick(), t0 + BEAT * 0.5, 0, 0.7)
-    for h in range(4):  # 16th hats with rolls
-        put(hat(open_=(h == 2 and b % 4 == 3)), t0 + h * BEAT / 4, -0.2, 0.9 if h % 2 == 0 else 0.55)
-for i in range(POST * 8):  # cowbell melody (8th notes)
-    put(cowbell(MEL[i % 16]), DROP + i * BEAT / 2, 0.15, 1)
-BASS = [(45, 45), (45, 48), (41, 41), (43, 40)]  # per bar (note, slide target)
-for b in range(POST):
-    m, s = BASS[b % 4]
-    put(b808(m, BAR * 0.95, s if s != m else None), DROP + b * BAR, 0, 0.9)
+STEP = BEAT / 4
+KICKS = [0, 3, 6, 8, 11, 14]          # funk / tamborzão-like kick pattern
+CLAPS = [4, 12]
+BASSN = [45, 45, 48, 43]               # 808 note per bar (A, A, C, G)
+def clap():
+    n = int(0.22 * SR); t = np.arange(n) / SR
+    s = sum(rng.standard_normal(n) * np.exp(-np.maximum(0, t - d) * 30) * (t >= d) for d in (0, 0.008, 0.016))
+    return np.tanh(np.diff(np.r_[0, s]) * 2.0) * 0.6
+def dist808(m, dur):
+    n = int(dur * SR); t = np.arange(n) / SR
+    f = hz(m) * (1 + 0.9 * np.exp(-t * 30))
+    x = np.sin(2 * np.pi * np.cumsum(f) / SR)
+    return np.tanh(x * 7.0) * np.minimum(1, t / 0.003) * np.exp(-t * 5.5) * 0.75
+def lead(m, dur):
+    n = int(dur * SR); t = np.arange(n) / SR
+    vib = 1 + 0.006 * np.sin(2 * np.pi * 6 * t)
+    x = sum(((2 * ((hz(m) * k * vib * t) % 1) - 1) / k) for k in (1, 2, 3))
+    x = np.convolve(x, np.ones(8) / 8, "same")
+    return np.tanh(x * 1.5) * env(n, 0.004, 0.18) * 0.28
+for bar in range(POST):
+    t0 = DROP + bar * BAR
+    for st in range(16):
+        tt_ = t0 + st * STEP
+        if st % 4 == 0: beats.append(round(tt_, 4))
+        if st in KICKS:
+            put(kick(), tt_, 0, 0.95); put(dist808(BASSN[bar % 4], 0.42), tt_, 0, 0.8)
+        if st in CLAPS: put(clap(), tt_, 0, 0.75)
+        put(hat(open_=(st % 8 == 6)), tt_, -0.2, 0.7 if st % 2 == 0 else 0.4)
+    # bar 4 & 8: hat roll into next bar
+    if bar % 4 == 3:
+        for r_ in range(8): put(hat(), t0 + 12 * STEP + r_ * STEP / 2, -0.2, 0.5)
+for i in range(POST * 8):  # cowbell hook (8th notes), brighter
+    put(cowbell(MEL[i % 16] + 12, 0.18), DROP + i * BEAT / 2, 0.2, 0.9)
+LEAD = [81, None, 79, 76, None, 74, 76, None]
+for bar in range(POST):
+    if bar % 2 == 1:
+        for j, m in enumerate(LEAD):
+            if m: put(lead(m, STEP * 2), DROP + bar * BAR + j * STEP * 2, -0.25, 1)
 
 # ---- tail: last cowbell ring + sub ----
 put(cowbell(69, 0.6), DROP + POST * BAR, 0.15, 1)

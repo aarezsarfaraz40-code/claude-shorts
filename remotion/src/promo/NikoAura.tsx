@@ -13,7 +13,6 @@ import { AURA, AURA_SHOTS, AuraShot } from "./nikoAuraData";
 
 export const AURA_DURATION = AURA.duration;
 const { beat: BT, drop: DROP } = AURA;
-const FAST_AT = DROP + 16 * BT; // cuts every beat from here
 const OUTRO_AT = AURA_SHOTS[AURA_SHOTS.length - 1].at;
 
 const FONT = "'MontserratV', 'Montserrat', sans-serif";
@@ -23,7 +22,7 @@ const OUT = Easing.bezier(0.22, 1, 0.36, 1);
 const p = (t: number, a: number, b: number, e = OUT) => interpolate(t, [a, b], [0, 1], { ...CL, easing: e });
 const RED = "#E0182D";
 
-const FILES = { stream: "shadow4/stream.mp4", slow_a: "aura/slow_a.mp4", slow_b: "aura/slow_b.mp4" };
+const FILES = { stream: "shadow4/stream.mp4", field: "aura/field.mp4", slow_a: "aura/slow_a.mp4", slow_b: "aura/slow_b.mp4", slow_c: "aura/slow_c.mp4", slow_d: "aura/slow_d.mp4" };
 const SRCW = 1280, SRCH = 640;
 
 // kicks (every 2 beats after the drop) drive punches / shake / flashes
@@ -37,10 +36,10 @@ const Shot: React.FC<{ s: AuraShot; dur: number; grade: string }> = ({ s, dur, g
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const k = frame / fps;
-  const slow = s.file !== "stream";
+  const slow = s.file.startsWith("slow");
   const punch = slow ? 1 : 1 + 0.14 * (1 - p(k, 0, 0.28));
   const push = 1 + (slow ? 0.18 : 0.05) * (k / Math.max(dur, 0.1));
-  const sc = (1920 / SRCH) * 1.12 * punch * push;
+  const sc = (1920 / SRCH) * 1.18 * punch * push; // 1.18 pushes burned-in subtitles off-screen
   const W = SRCW * sc, H = SRCH * sc;
   const i = Math.min(s.fx.length - 1, k * s.rate * 5);
   const i0 = Math.floor(i), i1 = Math.min(s.fx.length - 1, i0 + 1);
@@ -75,10 +74,11 @@ export const NikoAura: React.FC = () => {
   const live = t >= DROP && t < OUTRO_AT;
   const shakeAmp = live ? 14 * Math.exp(-ka * 9) : 0;
   const sx = Math.sin(t * 93) * shakeAmp, sy = Math.cos(t * 71) * shakeAmp;
-  const flash = live ? 0.28 * Math.exp(-ka * 14) : 0;
+  const flash = live ? 0.12 * Math.exp(-ka * 16) : 0;
   // grade: intro / outro colder B&W, drop keeps a bit of red
-  const sat = t < DROP || t >= OUTRO_AT ? 0.05 : 0.45;
-  const grade = `grayscale(${1 - sat}) contrast(1.35) brightness(${t < DROP ? 0.9 : 0.97})`;
+  const FIELD_AT = AURA_SHOTS.find((x) => x.file === "field")!.at;
+  const golden = t < DROP || t >= FIELD_AT; // warm field scenes
+  const grade = golden ? "contrast(1.12) saturate(1.1) brightness(1.02)" : "contrast(1.22) saturate(0.75) brightness(1.04)";
   const bars = t < DROP ? 1 - p(t, DROP - 0.25, DROP) : t >= OUTRO_AT ? p(t, OUTRO_AT, OUTRO_AT + 0.6) : 0;
   const introFade = p(t, 0, 0.6);
   const endFade = p(t, AURA.duration - 0.6, AURA.duration);
@@ -105,6 +105,8 @@ export const NikoAura: React.FC = () => {
 
       {/* intro whisper text */}
       <BigText t={t} at={1.4} until={DROP - 0.3} text="he's back." size={70} y={1440} track={2} />
+      <BigText t={t} at={FIELD_AT} until={FIELD_AT + 2 * BT - 0.05} text="the legend" size={150} y={1440} />
+      <BigText t={t} at={FIELD_AT + 4 * BT} until={FIELD_AT + 6 * BT - 0.05} text="& rocco" size={150} y={1440} color={RED} />
       {/* drop */}
       <BigText t={t} at={DROP} until={DROP + 2 * BT - 0.05} text="NIKO" size={260} y={1440} />
       <BigText t={t} at={DROP + 2 * BT} until={DROP + 4 * BT - 0.05} text="BELLIC" size={230} y={1440} color={RED} />

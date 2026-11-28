@@ -11,6 +11,7 @@ import { ShadowDuo, DUO_DURATION } from "./promo/ShadowDuo";
 import { ShadowTommy, TOMMY_DURATION } from "./promo/ShadowTommy";
 import { ShadowNiko, NIKO_DURATION } from "./promo/ShadowNiko";
 import { NikoAura, AURA_DURATION } from "./promo/NikoAura";
+import { OggInterview, OGG_DURATION } from "./promo/OggInterview";
 
 export const Root: React.FC = () => {
   return (
@@ -78,6 +79,7 @@ export const Root: React.FC = () => {
       <Composition id="ShadowTommy" component={ShadowTommy} width={1080} height={1920} fps={30} durationInFrames={Math.round(TOMMY_DURATION * 30)} />
       <Composition id="ShadowNiko" component={ShadowNiko} width={1080} height={1920} fps={30} durationInFrames={Math.round(NIKO_DURATION * 30)} />
       <Composition id="NikoAura" component={NikoAura} width={1080} height={1920} fps={30} durationInFrames={Math.round(AURA_DURATION * 30)} />
+      <Composition id="OggInterview" component={OggInterview} width={1080} height={1920} fps={30} durationInFrames={Math.round(OGG_DURATION * 30)} />
       <Composition id="ShadowClip" component={ShadowClip} width={1080} height={1920} fps={30} durationInFrames={Math.round(SHADOW_DURATION * 30)} />
       <Composition id="BazaarCategories" component={BazaarCategories} width={1080} height={1920} fps={CATS_FPS} durationInFrames={CATS_DURATION * CATS_FPS} />
       <Composition id="BazaarGifts2" component={BazaarGifts2} width={1080} height={1920} fps={GIFTS2_FPS} durationInFrames={GIFTS2_DURATION * GIFTS2_FPS} />

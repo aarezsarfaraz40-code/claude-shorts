@@ -1,0 +1,1284 @@
+{
+ "durationInSeconds": 39.5,
+ "trailer": "trailer.mp4",
+ "voiceover": "vo/r02.wav",
+ "tag": "",
+ "logo": "logo.jpg",
+ "logoText": "GTA HIGHEST",
+ "music": {
+  "file": "music_sa.wav",
+  "volume": 0.13,
+  "startAt": 6.35
+ },
+ "clips": [
+  {
+   "from": 0,
+   "to": 2.1,
+   "src": 150.4,
+   "focusX": 0.752,
+   "focusTo": 0.391
+  },
+  {
+   "from": 2.1,
+   "to": 4.2,
+   "src": 80.2,
+   "focusX": 0.33,
+   "focusTo": 0.33,
+   "lockFocus": true
+  },
+  {
+   "from": 4.2,
+   "to": 5.7,
+   "src": 117.6,
+   "focusX": 0.613,
+   "focusTo": 0.613
+  },
+  {
+   "from": 5.7,
+   "to": 7.9,
+   "src": 100.4,
+   "focusX": 0.558,
+   "focusTo": 0.432
+  },
+  {
+   "from": 7.9,
+   "to": 10.0,
+   "src": 149.0,
+   "focusX": 0.731,
+   "focusTo": 0.731
+  },
+  {
+   "from": 10.0,
+   "to": 12.3,
+   "src": 96.0,
+   "focusX": 0.398,
+   "focusTo": 0.472
+  },
+  {
+   "from": 12.3,
+   "to": 13.8,
+   "src": 125.1,
+   "focusX": 0.465,
+   "focusTo": 0.557
+  },
+  {
+   "from": 13.8,
+   "to": 15.4,
+   "src": 129.5,
+   "focusX": 0.596,
+   "focusTo": 0.596
+  },
+  {
+   "from": 15.4,
+   "to": 17.5,
+   "src": 108.0,
+   "focusX": 0.464,
+   "focusTo": 0.599
+  },
+  {
+   "from": 17.5,
+   "to": 20.0,
+   "src": 106.0,
+   "focusX": 0.681,
+   "focusTo": 0.452
+  },
+  {
+   "from": 20.0,
+   "to": 22.0,
+   "src": 144.0,
+   "focusX": 0.467,
+   "focusTo": 0.586
+  },
+  {
+   "from": 22.0,
+   "to": 24.1,
+   "src": 27.0,
+   "focusX": 0.543,
+   "focusTo": 0.723
+  },
+  {
+   "from": 24.1,
+   "to": 25.9,
+   "src": 142.2,
+   "focusX": 0.448,
+   "focusTo": 0.448
+  },
+  {
+   "from": 25.9,
+   "to": 28.4,
+   "src": 111.1,
+   "focusX": 0.6,
+   "focusTo": 0.505
+  },
+  {
+   "from": 28.4,
+   "to": 30.5,
+   "src": 140.3,
+   "focusX": 0.45,
+   "focusTo": 0.45,
+   "lockFocus": true
+  },
+  {
+   "from": 30.5,
+   "to": 32.8,
+   "src": 119.2,
+   "focusX": 0.695,
+   "focusTo": 0.159
+  },
+  {
+   "from": 32.8,
+   "to": 34.3,
+   "src": 66.2,
+   "focusX": 0.7,
+   "focusTo": 0.7,
+   "lockFocus": true
+  },
+  {
+   "from": 34.3,
+   "to": 39.5,
+   "src": 88.0,
+   "focusX": 0.407,
+   "focusTo": 0.8
+  }
+ ],
+ "overlays": [
+  {
+   "type": "hook",
+   "from": 0,
+   "to": 5.6,
+   "lines": [
+    "$2 BILLION",
+    "IN ONE DAY?!"
+   ],
+   "highlight": [
+    "BILLION"
+   ]
+  },
+  {
+   "type": "hook",
+   "from": 5.7,
+   "to": 7.9,
+   "lines": [
+    "SALES TRACKER",
+    "SENSOR TOWER 📊"
+   ],
+   "highlight": [
+    "SENSOR",
+    "TOWER"
+   ]
+  },
+  {
+   "type": "hook",
+   "from": 7.9,
+   "to": 12.2,
+   "lines": [
+    "SOLD BY",
+    "LAUNCH DAY"
+   ],
+   "highlight": [
+    "LAUNCH"
+   ]
+  },
+  {
+   "type": "counter",
+   "from": 7.9,
+   "to": 12.2,
+   "start": 0,
+   "end": 19050000,
+   "land": 10.04,
+   "label": "COPIES SOLD",
+   "size": 190
+  },
+  {
+   "type": "stamp",
+   "from": 10.3,
+   "to": 12.2,
+   "text": "ESTIMATE ⚠️",
+   "x": 330,
+   "y": 1300
+  },
+  {
+   "type": "text",
+   "from": 5.7,
+   "to": 19.9,
+   "text": "Source: Sensor Tower (estimate)"
+  },
+  {
+   "type": "hook",
+   "from": 12.3,
+   "to": 15.3,
+   "lines": [
+    "THAT'S AROUND..."
+   ]
+  },
+  {
+   "type": "counter",
+   "from": 12.3,
+   "to": 15.3,
+   "start": 0,
+   "end": 1.84,
+   "decimals": 2,
+   "separator": false,
+   "prefix": "$",
+   "suffix": "B",
+   "land": 13.8,
+   "label": "REVENUE (EST.)",
+   "color": "#3DFF8B"
+  },
+  {
+   "type": "hook",
+   "from": 15.4,
+   "to": 19.9,
+   "lines": [
+    "NOT OFFICIAL",
+    "NUMBERS YET"
+   ],
+   "highlight": [
+    "OFFICIAL"
+   ]
+  },
+  {
+   "type": "stamp",
+   "from": 15.6,
+   "to": 19.9,
+   "text": "ESTIMATES ONLY",
+   "x": 230,
+   "y": 880,
+   "size": 80,
+   "rotate": -10
+  },
+  {
+   "type": "hook",
+   "from": 20.0,
+   "to": 25.8,
+   "lines": [
+    "GTA 5 VS GTA 6"
+   ],
+   "highlight": [
+    "VS"
+   ]
+  },
+  {
+   "type": "bars",
+   "from": 20.0,
+   "to": 28.3,
+   "title": "DAY 1 SALES",
+   "min": 0,
+   "max": 2,
+   "items": [
+    {
+     "label": "GTA V ’13",
+     "value": 0.8,
+     "decimals": 1,
+     "prefix": "$",
+     "suffix": "B",
+     "at": 22.0
+    },
+    {
+     "label": "GTA VI ’26",
+     "value": 1.84,
+     "decimals": 2,
+     "prefix": "$",
+     "suffix": "B*",
+     "at": 26.0,
+     "highlight": true,
+     "crown": true
+    }
+   ]
+  },
+  {
+   "type": "hook",
+   "from": 25.9,
+   "to": 28.3,
+   "lines": [
+    "MORE THAN",
+    "DOUBLE 🤯"
+   ],
+   "highlight": [
+    "DOUBLE"
+   ]
+  },
+  {
+   "type": "text",
+   "from": 20.0,
+   "to": 28.3,
+   "text": "*estimate · GTA V: Take-Two (2013)"
+  },
+  {
+   "type": "hook",
+   "from": 28.4,
+   "to": 32.7,
+   "lines": [
+    "LAUNCH WEEK?"
+   ],
+   "highlight": [
+    "WEEK?"
+   ]
+  },
+  {
+   "type": "counter",
+   "from": 28.4,
+   "to": 32.7,
+   "start": 0,
+   "end": 5,
+   "prefix": "$",
+   "suffix": "B",
+   "land": 31.18,
+   "label": "UP TO (NEWZOO)",
+   "size": 300
+  },
+  {
+   "type": "stamp",
+   "from": 31.4,
+   "to": 32.7,
+   "text": "PROJECTION",
+   "x": 360,
+   "y": 1300
+  },
+  {
+   "type": "poll",
+   "from": 32.8,
+   "to": 34.3,
+   "question": "DID YOU BUY IT DAY ONE?",
+   "options": [
+    {
+     "label": "YES",
+     "emoji": "🎮"
+    },
+    {
+     "label": "NOT YET",
+     "emoji": "⏳"
+    }
+   ]
+  },
+  {
+   "type": "hook",
+   "from": 32.8,
+   "to": 34.3,
+   "lines": [
+    "COMMENT 👇"
+   ]
+  },
+  {
+   "type": "endcard",
+   "from": 34.3,
+   "to": 39.5,
+   "line1": "FOLLOW GTA HIGHEST",
+   "line2": "DAILY GTA 6 NEWS 🔔"
+  }
+ ],
+ "captions": [
+  {
+   "text": " GTA",
+   "startMs": 0,
+   "endMs": 400
+  },
+  {
+   "text": " 6",
+   "startMs": 400,
+   "endMs": 940
+  },
+  {
+   "text": " may",
+   "startMs": 940,
+   "endMs": 1180
+  },
+  {
+   "text": " have",
+   "startMs": 1180,
+   "endMs": 1320
+  },
+  {
+   "text": " just",
+   "startMs": 1320,
+   "endMs": 1560
+  },
+  {
+   "text": " made",
+   "startMs": 1560,
+   "endMs": 1760
+  },
+  {
+   "text": " almost",
+   "startMs": 1760,
+   "endMs": 2100
+  },
+  {
+   "text": " $2",
+   "startMs": 2100,
+   "endMs": 2600
+  },
+  {
+   "text": " billion",
+   "startMs": 2600,
+   "endMs": 3140
+  },
+  {
+   "text": " in",
+   "startMs": 3140,
+   "endMs": 4200
+  },
+  {
+   "text": " a",
+   "startMs": 4200,
+   "endMs": 4340
+  },
+  {
+   "text": " single",
+   "startMs": 4340,
+   "endMs": 4700
+  },
+  {
+   "text": " day!",
+   "startMs": 4700,
+   "endMs": 5140
+  },
+  {
+   "text": " According",
+   "startMs": 5720,
+   "endMs": 5960
+  },
+  {
+   "text": " to",
+   "startMs": 5960,
+   "endMs": 6260
+  },
+  {
+   "text": " sales",
+   "startMs": 6260,
+   "endMs": 6500
+  },
+  {
+   "text": " tracker",
+   "startMs": 6500,
+   "endMs": 6880
+  },
+  {
+   "text": " Sensor",
+   "startMs": 6880,
+   "endMs": 7280
+  },
+  {
+   "text": " Tower,",
+   "startMs": 7280,
+   "endMs": 7620
+  },
+  {
+   "text": " GTA",
+   "startMs": 7980,
+   "endMs": 8200
+  },
+  {
+   "text": " 6",
+   "startMs": 8200,
+   "endMs": 8640
+  },
+  {
+   "text": " sold",
+   "startMs": 8640,
+   "endMs": 8880
+  },
+  {
+   "text": " an",
+   "startMs": 8880,
+   "endMs": 9020
+  },
+  {
+   "text": " estimated",
+   "startMs": 9020,
+   "endMs": 9480
+  },
+  {
+   "text": " 19",
+   "startMs": 9480,
+   "endMs": 10040
+  },
+  {
+   "text": " million",
+   "startMs": 10040,
+   "endMs": 10660
+  },
+  {
+   "text": " copies",
+   "startMs": 10660,
+   "endMs": 11140
+  },
+  {
+   "text": " by",
+   "startMs": 11140,
+   "endMs": 11400
+  },
+  {
+   "text": " launch",
+   "startMs": 11400,
+   "endMs": 11660
+  },
+  {
+   "text": " day.",
+   "startMs": 11660,
+   "endMs": 11880
+  },
+  {
+   "text": " That's",
+   "startMs": 12360,
+   "endMs": 12640
+  },
+  {
+   "text": " around",
+   "startMs": 12640,
+   "endMs": 12800
+  },
+  {
+   "text": " $1.84",
+   "startMs": 12800,
+   "endMs": 13780
+  },
+  {
+   "text": " billion.",
+   "startMs": 13780,
+   "endMs": 14460
+  },
+  {
+   "text": " And",
+   "startMs": 15440,
+   "endMs": 15640
+  },
+  {
+   "text": " remember,",
+   "startMs": 15640,
+   "endMs": 15860
+  },
+  {
+   "text": " these",
+   "startMs": 16320,
+   "endMs": 16440
+  },
+  {
+   "text": " are",
+   "startMs": 16440,
+   "endMs": 16580
+  },
+  {
+   "text": " estimates.",
+   "startMs": 16580,
+   "endMs": 17040
+  },
+  {
+   "text": " Rockstar",
+   "startMs": 17540,
+   "endMs": 17880
+  },
+  {
+   "text": " hasn't",
+   "startMs": 17880,
+   "endMs": 18300
+  },
+  {
+   "text": " shared",
+   "startMs": 18300,
+   "endMs": 18500
+  },
+  {
+   "text": " official",
+   "startMs": 18500,
+   "endMs": 18840
+  },
+  {
+   "text": " numbers",
+   "startMs": 18840,
+   "endMs": 19180
+  },
+  {
+   "text": " yet.",
+   "startMs": 19180,
+   "endMs": 19420
+  },
+  {
+   "text": " For",
+   "startMs": 20020,
+   "endMs": 20120
+  },
+  {
+   "text": " comparison,",
+   "startMs": 20120,
+   "endMs": 20580
+  },
+  {
+   "text": " GTA",
+   "startMs": 21100,
+   "endMs": 21320
+  },
+  {
+   "text": " 5",
+   "startMs": 21320,
+   "endMs": 21780
+  },
+  {
+   "text": " made",
+   "startMs": 21780,
+   "endMs": 22020
+  },
+  {
+   "text": " $800",
+   "startMs": 22020,
+   "endMs": 22600
+  },
+  {
+   "text": " million",
+   "startMs": 22600,
+   "endMs": 23100
+  },
+  {
+   "text": " on",
+   "startMs": 23100,
+   "endMs": 23680
+  },
+  {
+   "text": " its",
+   "startMs": 23680,
+   "endMs": 23960
+  },
+  {
+   "text": " first",
+   "startMs": 23960,
+   "endMs": 24140
+  },
+  {
+   "text": " day",
+   "startMs": 24140,
+   "endMs": 24440
+  },
+  {
+   "text": " back",
+   "startMs": 24440,
+   "endMs": 24680
+  },
+  {
+   "text": " in",
+   "startMs": 24680,
+   "endMs": 24820
+  },
+  {
+   "text": " 2013,",
+   "startMs": 24820,
+   "endMs": 25320
+  },
+  {
+   "text": " so",
+   "startMs": 25940,
+   "endMs": 26140
+  },
+  {
+   "text": " GTA",
+   "startMs": 26140,
+   "endMs": 26480
+  },
+  {
+   "text": " 6",
+   "startMs": 26480,
+   "endMs": 26920
+  },
+  {
+   "text": " could",
+   "startMs": 26920,
+   "endMs": 27120
+  },
+  {
+   "text": " have",
+   "startMs": 27120,
+   "endMs": 27240
+  },
+  {
+   "text": " more",
+   "startMs": 27240,
+   "endMs": 27420
+  },
+  {
+   "text": " than",
+   "startMs": 27420,
+   "endMs": 27580
+  },
+  {
+   "text": " doubled",
+   "startMs": 27580,
+   "endMs": 27940
+  },
+  {
+   "text": " it.",
+   "startMs": 27940,
+   "endMs": 28180
+  },
+  {
+   "text": " And",
+   "startMs": 28500,
+   "endMs": 28740
+  },
+  {
+   "text": " analysts",
+   "startMs": 28740,
+   "endMs": 29160
+  },
+  {
+   "text": " at",
+   "startMs": 29160,
+   "endMs": 29320
+  },
+  {
+   "text": " Newzoo",
+   "startMs": 29320,
+   "endMs": 29780
+  },
+  {
+   "text": " think",
+   "startMs": 29780,
+   "endMs": 30020
+  },
+  {
+   "text": " launch",
+   "startMs": 30020,
+   "endMs": 30340
+  },
+  {
+   "text": " week",
+   "startMs": 30340,
+   "endMs": 30540
+  },
+  {
+   "text": " could",
+   "startMs": 30540,
+   "endMs": 30780
+  },
+  {
+   "text": " hit",
+   "startMs": 30780,
+   "endMs": 30940
+  },
+  {
+   "text": " up",
+   "startMs": 30940,
+   "endMs": 31060
+  },
+  {
+   "text": " to",
+   "startMs": 31060,
+   "endMs": 31180
+  },
+  {
+   "text": " $5",
+   "startMs": 31180,
+   "endMs": 31700
+  },
+  {
+   "text": " billion.",
+   "startMs": 31700,
+   "endMs": 32020
+  },
+  {
+   "text": " Did",
+   "startMs": 32860,
+   "endMs": 33100
+  },
+  {
+   "text": " you",
+   "startMs": 33100,
+   "endMs": 33240
+  },
+  {
+   "text": " buy",
+   "startMs": 33240,
+   "endMs": 33420
+  },
+  {
+   "text": " it",
+   "startMs": 33420,
+   "endMs": 33520
+  },
+  {
+   "text": " day",
+   "startMs": 33520,
+   "endMs": 33660
+  },
+  {
+   "text": " one?",
+   "startMs": 33660,
+   "endMs": 33860
+  },
+  {
+   "text": " Follow",
+   "startMs": 34360,
+   "endMs": 34580
+  },
+  {
+   "text": " GTA",
+   "startMs": 34580,
+   "endMs": 34920
+  },
+  {
+   "text": " Highest",
+   "startMs": 34920,
+   "endMs": 35460
+  },
+  {
+   "text": " for",
+   "startMs": 35460,
+   "endMs": 35620
+  },
+  {
+   "text": " more",
+   "startMs": 35620,
+   "endMs": 35800
+  },
+  {
+   "text": " updates.",
+   "startMs": 35800,
+   "endMs": 36180
+  }
+ ],
+ "sfx": [
+  {
+   "at": 0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 0.05,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 2.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 4.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 5.7,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 5.75,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 7.9,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 7.95,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 8.1,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.22,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.34,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.46,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.58,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.7,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.82,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.94,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.04,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 9.06,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.18,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.3,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.42,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.54,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.66,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.78,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 9.9,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 10.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 10.04,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 10.3,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 12.3,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 12.35,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 12.5,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 12.62,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 12.74,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 12.8,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 12.86,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 12.98,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.1,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.22,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.34,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.46,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.58,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.7,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 13.8,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 13.8,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 15.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 15.45,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 15.6,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 17.5,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 20.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 20.05,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 22.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 22.0,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 24.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 25.9,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 25.95,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 26.0,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 28.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 28.45,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 28.6,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 28.72,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 28.84,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 28.96,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.08,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.2,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.32,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.44,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.56,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.68,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.8,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.92,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.04,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.16,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.18,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 30.28,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.4,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.5,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 30.52,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.64,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.76,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.88,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 31.0,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 31.18,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 31.4,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 32.8,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 32.85,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.0,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.2,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.7,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 35.0,
+   "file": "sfx/bell.wav",
+   "volume": 0.16
+  }
+ ]
+}

@@ -6,8 +6,10 @@ description: >
   (GPU), Claude scores and presents candidate segments interactively, user picks and
   adjusts, Remotion renders premium animated captions (Bold/Bounce/Clean styles),
   FFmpeg exports platform-optimized files (YouTube Shorts, TikTok, Instagram Reels).
-  Use when user says "shorts", "short clips", "shortform", "extract clips",
-  "tiktok from video", "reels from video", "vertical clips", or "create shorts".
+  Has a gameplay mode (GTA etc.): keeps the game character centered and blurs out
+  any streamer facecam. Use when user says "shorts", "short clips", "shortform",
+  "extract clips", "tiktok from video", "reels from video", "vertical clips",
+  "gameplay clips", or "create shorts".
 allowed-tools:
   - Bash
   - Read
@@ -30,8 +32,8 @@ Before starting, locate the project root:
 ```bash
 # Try common locations in priority order
 SHORTS_ROOT=""
-for dir in "$HOME/.claude/skills/shorts" "$HOME/.claude/skills/claude-shorts" "$HOME/claude-shorts" "$(pwd)"; do
-    if [ -f "$dir/SKILL.md" ]; then
+for dir in "$(git rev-parse --show-toplevel 2>/dev/null)" "$(pwd)" "$HOME/.claude/skills/shorts" "$HOME/.claude/skills/claude-shorts" "$HOME/claude-shorts"; do
+    if [ -n "$dir" ] && [ -f "$dir/SKILL.md" ] && [ -d "$dir/scripts" ]; then
         SHORTS_ROOT="$dir"
         break
     fi
@@ -46,6 +48,34 @@ Set up the temp directory (configurable via `SHORTS_TMP` environment variable):
 SHORTS_TMP="${SHORTS_TMP:-/tmp/claude-shorts}"
 mkdir -p "$SHORTS_TMP/clips"
 ```
+
+Output folder: final clips always go to `./output/` (relative to the project root).
+If the user gives no video path, look in `./input/` and use the newest video there
+(if several, ask which one — one simple question).
+
+## Gameplay Mode (GTA and other games)
+
+Use gameplay mode when the user says the video is gameplay / a game (e.g. GTA 6),
+or Step 3 shows game footage. These rules are MANDATORY in gameplay mode:
+
+1. **Character centered** — content type is `gameplay`: fixed center 9:16 crop, which
+   keeps the third-person character (e.g. Jason/Lucia) in the middle. Never use
+   face tracking on gameplay (it would lock onto the streamer's facecam).
+2. **No facecam / creator face** — run facecam detection (Step 3b). Every detected
+   facecam box is pixelated + blurred during extraction (Step 8), and every finished
+   short is checked with `gameplay.py verify` (Step 10). Also LOOK at the contact
+   sheets yourself (Read the `_sheet.jpg` images). If any real human face from a
+   facecam is visible, re-run Step 3b with a manual `--box` and redo Steps 8-10.
+3. **Length 20-45 seconds** — pick segments in that range and pass
+   `--min-dur 20 --max-dur 45` to snap_boundaries.py.
+4. **Captions** — on by default (style `bold` unless the user picks another).
+   Gameplay can have little or no speech; that is fine (captions just stay empty).
+5. **Defaults, don't ask** — if the user already gave their goal, don't ask about
+   style/platform: use `bold` + `youtube` (1080x1920 H.264 works on all platforms).
+   Still show the candidate table and get a yes before rendering.
+
+The user may be non-technical: talk in simple words (match their language, e.g.
+Roman Urdu), ask at most ONE simple question at a time.
 
 ## 10-Step Interactive Pipeline
 
@@ -80,6 +110,10 @@ python3 "$SHORTS_ROOT/scripts/transcribe.py" INPUT_FILE \
     --output $SHORTS_TMP/transcript.json
 ```
 
+**No GPU (CPU only, e.g. cloud sessions): add `--model small`.** `large-v3` on CPU
+is far too slow for long videos. Use `--model medium` only if the user asks for
+higher accuracy and accepts the wait.
+
 Output is dual-format JSON:
 - `segments[]` — WhisperX-style with word timestamps (for Claude to read)
 - `captions[]` — Remotion-native `{text, startMs, endMs}` array (for rendering)
@@ -98,6 +132,26 @@ Report detected type to user. Ask if they want to override.
 - **talking-head**: Face-tracked center crop to 9:16
 - **screen**: Letterboxed framed layout (content centered, dark padding)
 - **podcast**: Side-by-side speaker tracking or center crop
+- **gameplay**: Fixed center crop that keeps the game character centered (see Gameplay Mode).
+  The detector does not know about games — if the footage is a game, use `gameplay`
+  regardless of what detect_content.py says.
+
+### Step 3b (gameplay): FACECAM + ACTION HIGHLIGHTS
+
+```bash
+python3 "$SHORTS_ROOT/scripts/gameplay.py" facecam INPUT_FILE \
+    --output $SHORTS_TMP/facecam.json
+python3 "$SHORTS_ROOT/scripts/gameplay.py" highlights INPUT_FILE \
+    --output $SHORTS_TMP/highlights.json --min-dur 20 --max-dur 45
+```
+
+- `facecam.json` → `boxes[]` (normalized x,y,w,h) of any streamer facecam. Report
+  in simple words whether a facecam was found. If the user says there is a facecam
+  that was missed, or names its corner, re-run with a manual box, e.g. top-right:
+  `--box 0.70,0,0.30,0.40` (x,y,w,h as fractions of the frame; repeatable).
+- `highlights.json` → `top_windows[]` with `action_score` (loudness + scene-cut
+  activity: explosions, crashes, chases). Combine these with the transcript in
+  Step 4 — for gameplay, action moments matter as much as what is said.
 
 ### Step 4: ANALYZE — Claude Reads Transcript
 
@@ -111,7 +165,10 @@ Also load the scoring rubric:
 Read $SHORTS_ROOT/references/scoring-rubric.md
 ```
 
-Score 8-12 candidate segments (15-55 seconds each) on 5 dimensions:
+Score 8-12 candidate segments (15-55 seconds each; **20-45s in gameplay mode**) on 5 dimensions.
+In gameplay mode also use `highlights.json`: big action moments (high `action_score`)
+count toward hook strength and emotional intensity, and a strong action peak in the
+first 3 seconds makes a great hook.
 
 | Dimension | Weight | What to look for |
 |-----------|--------|------------------|
@@ -207,6 +264,7 @@ The script:
 6. Enforces min 5s / max 60s duration, clamps to video bounds
 
 Use `--no-silence` to skip silence detection (faster, word-boundary snapping only).
+**Gameplay mode:** add `--min-dur 20 --max-dur 45`.
 
 Report to user: adjustment deltas per segment (e.g., "start +150ms, end +362ms").
 
@@ -214,7 +272,19 @@ From this point forward, use `snapped_segments.json` instead of `approved_segmen
 
 ### Step 8: PREPARE — Extract Clips + Compute Reframe
 
-Extract each snapped segment via FFmpeg stream copy (near-instant, lossless).
+**Gameplay mode — use this instead of the stream-copy command below** (frame-accurate
+cut, and blurs every facecam box from Step 3b):
+```bash
+python3 "$SHORTS_ROOT/scripts/gameplay.py" extract INPUT_FILE \
+    --segments $SHORTS_TMP/snapped_segments.json \
+    --facecam $SHORTS_TMP/facecam.json \
+    --clips-dir $SHORTS_TMP/clips/
+python3 "$SHORTS_ROOT/scripts/compute_reframe.py" \
+    --clips-dir $SHORTS_TMP/clips/ --content-type gameplay \
+    --output $SHORTS_TMP/reframe.json
+```
+
+Other content: extract each snapped segment via FFmpeg stream copy (near-instant, lossless).
 Use the snapped start/end times from `$SHORTS_TMP/snapped_segments.json`:
 ```bash
 ffmpeg -y -ss START -to END -i INPUT_FILE -c copy \
@@ -259,7 +329,7 @@ Export rendered shorts with platform-specific encoding:
 bash "$SHORTS_ROOT/scripts/export.sh" \
     --input-dir $SHORTS_TMP/render/ \
     --platform PLATFORM \
-    --output-dir ./shorts/
+    --output-dir ./output/
 ```
 
 Platform encoding specs:
@@ -275,15 +345,24 @@ Present final summary table:
 ```
 | # | File                      | Platform  | Duration | Size   |
 |---|---------------------------|-----------|----------|--------|
-| 1 | shorts/short_01_yt.mp4    | YouTube   | 39s      | 12.3MB |
-| 1 | shorts/short_01_tt.mp4    | TikTok    | 39s      | 8.7MB  |
-| 1 | shorts/short_01_ig.mp4    | Instagram | 39s      | 7.1MB  |
+| 1 | output/short_01_yt.mp4    | YouTube   | 39s      | 12.3MB |
+| 1 | output/short_01_tt.mp4    | TikTok    | 39s      | 8.7MB  |
+| 1 | output/short_01_ig.mp4    | Instagram | 39s      | 7.1MB  |
 ```
 
 **Post-export validation:** Run validation on all exported files:
 ```bash
-bash "$SHORTS_ROOT/scripts/validate.sh" --output-dir ./shorts/
+bash "$SHORTS_ROOT/scripts/validate.sh" --output-dir ./output/
 ```
+
+**Gameplay mode — facecam safety check (required):**
+```bash
+python3 "$SHORTS_ROOT/scripts/gameplay.py" verify --dir ./output/ \
+    --sheets-dir $SHORTS_TMP/checks/
+```
+`"pass": true` means no face stayed in one spot (no facecam). Then Read each
+`$SHORTS_TMP/checks/*_sheet.jpg` and confirm with your own eyes: character centered,
+no real person's face. Game characters' faces in cutscenes are fine.
 
 Checks: file is playable, resolution is 1080x1920, audio track exists and isn't silent,
 file size is within platform limits, video codec is H.264, duration is 3-90 seconds.
@@ -333,3 +412,7 @@ These defaults work well for most content. Offer alternatives when the user has 
 - **Remotion render fails**: Check `cd remotion && npm install`, verify node_modules exists
 - **Export fails**: Check FFmpeg version (`ffmpeg -version`), try CPU encoding if NVENC fails
 - **Out of disk space**: Clean $SHORTS_TMP/, check with `df -h /tmp`
+- **Remotion can't download Chrome**: render.mjs uses a local headless shell if found;
+  or set `REMOTION_BROWSER_EXECUTABLE=/path/to/chrome-headless-shell`
+- **Whisper `metadata_errors` error**: `pip install "av>=14,<17"`
+- **MediaPipe `libEGL.so.1` error**: `sudo apt install libegl1 libgles2`

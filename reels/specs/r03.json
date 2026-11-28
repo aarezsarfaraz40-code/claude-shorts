@@ -1,0 +1,1052 @@
+{
+ "durationInSeconds": 40.5,
+ "trailer": "trailer.mp4",
+ "voiceover": "vo/r03.wav",
+ "tag": "",
+ "logo": "logo.jpg",
+ "logoText": "GTA HIGHEST",
+ "music": {
+  "file": "music_sa.wav",
+  "volume": 0.13,
+  "startAt": 6.35
+ },
+ "keywords": {
+  "yellow": [
+   "6-STAR",
+   "WANTED",
+   "HEAT",
+   "CCTV",
+   "MINIMAP",
+   "STARS",
+   "FACE",
+   "CAR",
+   "OUTFIT",
+   "WEAPON",
+   "PARTNER",
+   "ALARM"
+  ],
+  "pink": [
+   "SCARY",
+   "SMARTER",
+   "HUNTING",
+   "FLASHING",
+   "EVER",
+   "ENTIRE"
+  ]
+ },
+ "clips": [
+  {
+   "from": 0,
+   "to": 2.6,
+   "src": 6.2,
+   "focusX": 0.524,
+   "focusTo": 0.524
+  },
+  {
+   "from": 2.6,
+   "to": 4.0,
+   "src": 108.0,
+   "focusX": 0.451,
+   "focusTo": 0.579
+  },
+  {
+   "from": 4.0,
+   "to": 5.7,
+   "src": 142.2,
+   "focusX": 0.448,
+   "focusTo": 0.448
+  },
+  {
+   "from": 5.7,
+   "to": 8.0,
+   "src": 9.5,
+   "focusX": 0.621,
+   "focusTo": 0.621
+  },
+  {
+   "from": 8.0,
+   "to": 10.1,
+   "src": 76.0,
+   "focusX": 0.607,
+   "focusTo": 0.607
+  },
+  {
+   "from": 10.1,
+   "to": 12.0,
+   "src": 118.3,
+   "focusX": 0.501,
+   "focusTo": 0.412
+  },
+  {
+   "from": 12.0,
+   "to": 13.6,
+   "src": 39.0,
+   "focusX": 0.556,
+   "focusTo": 0.556
+  },
+  {
+   "from": 13.6,
+   "to": 17.8,
+   "src": 27.0,
+   "focusX": 0.711,
+   "focusTo": 0.711
+  },
+  {
+   "from": 17.8,
+   "to": 19.2,
+   "src": 111.1,
+   "focusX": 0.623,
+   "focusTo": 0.623
+  },
+  {
+   "from": 19.2,
+   "to": 21.2,
+   "src": 76.5,
+   "focusX": 0.641,
+   "focusTo": 0.741
+  },
+  {
+   "from": 21.2,
+   "to": 24.2,
+   "src": 63.0,
+   "focusX": 0.409,
+   "focusTo": 0.409
+  },
+  {
+   "from": 24.2,
+   "to": 27.4,
+   "src": 140.5,
+   "focusX": 0.45,
+   "focusTo": 0.45,
+   "lockFocus": true
+  },
+  {
+   "from": 27.4,
+   "to": 29.4,
+   "src": 142.2,
+   "focusX": 0.467,
+   "focusTo": 0.467
+  },
+  {
+   "from": 29.4,
+   "to": 33.2,
+   "src": 117.4,
+   "focusX": 0.534,
+   "focusTo": 0.534
+  },
+  {
+   "from": 33.2,
+   "to": 40.5,
+   "src": 141.0,
+   "focusX": 0.444,
+   "focusTo": 0.573
+  }
+ ],
+ "overlays": [
+  {
+   "type": "logo3d",
+   "from": 0,
+   "to": 2.6,
+   "src": "brand/gtavi.png",
+   "width": 900,
+   "y": 380
+  },
+  {
+   "type": "counter",
+   "from": 2.6,
+   "to": 5.6,
+   "start": 0,
+   "end": 6,
+   "land": 3.2,
+   "suffix": "★",
+   "label": "WANTED LEVEL"
+  },
+  {
+   "type": "wipe",
+   "from": 5.45,
+   "to": 5.95
+  },
+  {
+   "type": "focus",
+   "from": 6.0,
+   "to": 8.0,
+   "x": 250,
+   "y": 560,
+   "w": 580,
+   "h": 620,
+   "label": "WITNESS 👀"
+  },
+  {
+   "type": "badge",
+   "from": 9.05,
+   "to": 10.0,
+   "title": "OR AN",
+   "value": "ALARM",
+   "color": "#E3262A"
+  },
+  {
+   "type": "bignumber",
+   "from": 10.6,
+   "to": 13.5,
+   "text": "HEAT 🔥",
+   "x": 110,
+   "y": 620
+  },
+  {
+   "type": "wipe",
+   "from": 13.35,
+   "to": 13.85
+  },
+  {
+   "type": "grid",
+   "from": 13.6,
+   "to": 17.8,
+   "items": [
+    {
+     "src": 27.3,
+     "n": 1,
+     "at": 14.5,
+     "focusX": 0.6
+    },
+    {
+     "src": 149.0,
+     "n": 2,
+     "at": 15.3,
+     "focusX": 0.7
+    },
+    {
+     "src": 94.6,
+     "n": 3,
+     "at": 15.96
+    },
+    {
+     "src": 129.6,
+     "n": 4,
+     "at": 16.68
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "from": 17.8,
+   "to": 19.2,
+   "src": "chars/lucia.jpg",
+   "name": "PARTNER",
+   "sub": "Lucia counts too",
+   "width": 700
+  },
+  {
+   "type": "focus",
+   "from": 19.3,
+   "to": 21.1,
+   "x": 220,
+   "y": 520,
+   "w": 640,
+   "h": 620,
+   "label": "CCTV 📹"
+  },
+  {
+   "type": "stamp",
+   "from": 22.4,
+   "to": 24.1,
+   "text": "STILL HUNTED",
+   "x": 230,
+   "y": 880,
+   "size": 80,
+   "rotate": -8
+  },
+  {
+   "type": "badge",
+   "from": 25.0,
+   "to": 27.3,
+   "title": "LINE OF SIGHT",
+   "value": "LOST",
+   "color": "#E3262A"
+  },
+  {
+   "type": "stamp",
+   "from": 27.6,
+   "to": 29.3,
+   "text": "MINIMAP: OFF ❌",
+   "x": 200,
+   "y": 880,
+   "size": 80,
+   "rotate": -6
+  },
+  {
+   "type": "wipe",
+   "from": 29.2,
+   "to": 29.7
+  },
+  {
+   "type": "counter",
+   "from": 29.5,
+   "to": 33.1,
+   "start": 0,
+   "end": 6,
+   "land": 30.1,
+   "suffix": "★",
+   "label": "WHOLE MAP HUNTS YOU",
+   "color": "#FF3B3B"
+  },
+  {
+   "type": "channel",
+   "from": 33.2,
+   "to": 40.5,
+   "channel": "GTA HIGHEST",
+   "sub": "Daily GTA 6 news & updates",
+   "teaser": "MORE GTA 6 UPDATES",
+   "teaserSrc": 140.7,
+   "line1": "FOLLOW FOR MORE"
+  }
+ ],
+ "captions": [
+  {
+   "text": " GTA",
+   "startMs": 0,
+   "endMs": 380
+  },
+  {
+   "text": " 6",
+   "startMs": 380,
+   "endMs": 920
+  },
+  {
+   "text": " just",
+   "startMs": 920,
+   "endMs": 1300
+  },
+  {
+   "text": " brought",
+   "startMs": 1300,
+   "endMs": 1560
+  },
+  {
+   "text": " back",
+   "startMs": 1560,
+   "endMs": 1840
+  },
+  {
+   "text": " the",
+   "startMs": 1840,
+   "endMs": 2020
+  },
+  {
+   "text": " 6-star",
+   "startMs": 2020,
+   "endMs": 2460
+  },
+  {
+   "text": " wanted",
+   "startMs": 2460,
+   "endMs": 2780
+  },
+  {
+   "text": " level",
+   "startMs": 2780,
+   "endMs": 3100
+  },
+  {
+   "text": " and",
+   "startMs": 3100,
+   "endMs": 3500
+  },
+  {
+   "text": " the",
+   "startMs": 3500,
+   "endMs": 3660
+  },
+  {
+   "text": " cops",
+   "startMs": 3660,
+   "endMs": 3880
+  },
+  {
+   "text": " are",
+   "startMs": 3880,
+   "endMs": 4160
+  },
+  {
+   "text": " smarter",
+   "startMs": 4160,
+   "endMs": 4620
+  },
+  {
+   "text": " than",
+   "startMs": 4620,
+   "endMs": 4800
+  },
+  {
+   "text": " ever.",
+   "startMs": 4800,
+   "endMs": 5200
+  },
+  {
+   "text": " First,",
+   "startMs": 5720,
+   "endMs": 5960
+  },
+  {
+   "text": " a",
+   "startMs": 6340,
+   "endMs": 6460
+  },
+  {
+   "text": " crime",
+   "startMs": 6460,
+   "endMs": 6680
+  },
+  {
+   "text": " only",
+   "startMs": 6680,
+   "endMs": 7020
+  },
+  {
+   "text": " gets",
+   "startMs": 7020,
+   "endMs": 7200
+  },
+  {
+   "text": " reported",
+   "startMs": 7200,
+   "endMs": 7560
+  },
+  {
+   "text": " if",
+   "startMs": 7560,
+   "endMs": 7820
+  },
+  {
+   "text": " someone",
+   "startMs": 7820,
+   "endMs": 8080
+  },
+  {
+   "text": " sees",
+   "startMs": 8080,
+   "endMs": 8380
+  },
+  {
+   "text": " it",
+   "startMs": 8380,
+   "endMs": 8600
+  },
+  {
+   "text": " or",
+   "startMs": 8600,
+   "endMs": 8900
+  },
+  {
+   "text": " an",
+   "startMs": 8900,
+   "endMs": 9100
+  },
+  {
+   "text": " alarm",
+   "startMs": 9100,
+   "endMs": 9380
+  },
+  {
+   "text": " goes",
+   "startMs": 9380,
+   "endMs": 9580
+  },
+  {
+   "text": " off.",
+   "startMs": 9580,
+   "endMs": 9920
+  },
+  {
+   "text": " But",
+   "startMs": 10140,
+   "endMs": 10360
+  },
+  {
+   "text": " here's",
+   "startMs": 10360,
+   "endMs": 10680
+  },
+  {
+   "text": " the",
+   "startMs": 10680,
+   "endMs": 10780
+  },
+  {
+   "text": " scary",
+   "startMs": 10780,
+   "endMs": 11180
+  },
+  {
+   "text": " part,",
+   "startMs": 11180,
+   "endMs": 11460
+  },
+  {
+   "text": " the",
+   "startMs": 11860,
+   "endMs": 11960
+  },
+  {
+   "text": " new",
+   "startMs": 11960,
+   "endMs": 12240
+  },
+  {
+   "text": " heat",
+   "startMs": 12240,
+   "endMs": 12580
+  },
+  {
+   "text": " system.",
+   "startMs": 12580,
+   "endMs": 13020
+  },
+  {
+   "text": " The",
+   "startMs": 13580,
+   "endMs": 13680
+  },
+  {
+   "text": " police",
+   "startMs": 13680,
+   "endMs": 13960
+  },
+  {
+   "text": " remember",
+   "startMs": 13960,
+   "endMs": 14240
+  },
+  {
+   "text": " your",
+   "startMs": 14240,
+   "endMs": 14500
+  },
+  {
+   "text": " face,",
+   "startMs": 14500,
+   "endMs": 14820
+  },
+  {
+   "text": " your",
+   "startMs": 15220,
+   "endMs": 15320
+  },
+  {
+   "text": " car,",
+   "startMs": 15320,
+   "endMs": 15660
+  },
+  {
+   "text": " your",
+   "startMs": 15880,
+   "endMs": 15960
+  },
+  {
+   "text": " outfit,",
+   "startMs": 15960,
+   "endMs": 16420
+  },
+  {
+   "text": " your",
+   "startMs": 16580,
+   "endMs": 16680
+  },
+  {
+   "text": " weapon,",
+   "startMs": 16680,
+   "endMs": 17040
+  },
+  {
+   "text": " even",
+   "startMs": 17340,
+   "endMs": 17620
+  },
+  {
+   "text": " your",
+   "startMs": 17620,
+   "endMs": 17840
+  },
+  {
+   "text": " partner,",
+   "startMs": 17840,
+   "endMs": 18240
+  },
+  {
+   "text": " and",
+   "startMs": 18580,
+   "endMs": 18820
+  },
+  {
+   "text": " whether",
+   "startMs": 18820,
+   "endMs": 19060
+  },
+  {
+   "text": " a",
+   "startMs": 19060,
+   "endMs": 19300
+  },
+  {
+   "text": " CCTV",
+   "startMs": 19300,
+   "endMs": 19580
+  },
+  {
+   "text": " camera",
+   "startMs": 19580,
+   "endMs": 20240
+  },
+  {
+   "text": " caught",
+   "startMs": 20240,
+   "endMs": 20500
+  },
+  {
+   "text": " you.",
+   "startMs": 20500,
+   "endMs": 20720
+  },
+  {
+   "text": " Lose",
+   "startMs": 21180,
+   "endMs": 21420
+  },
+  {
+   "text": " the",
+   "startMs": 21420,
+   "endMs": 21580
+  },
+  {
+   "text": " stars",
+   "startMs": 21580,
+   "endMs": 21880
+  },
+  {
+   "text": " and",
+   "startMs": 21880,
+   "endMs": 22240
+  },
+  {
+   "text": " that",
+   "startMs": 22240,
+   "endMs": 22400
+  },
+  {
+   "text": " heat",
+   "startMs": 22400,
+   "endMs": 22680
+  },
+  {
+   "text": " can",
+   "startMs": 22680,
+   "endMs": 22880
+  },
+  {
+   "text": " still",
+   "startMs": 22880,
+   "endMs": 23240
+  },
+  {
+   "text": " follow",
+   "startMs": 23240,
+   "endMs": 23600
+  },
+  {
+   "text": " you.",
+   "startMs": 23600,
+   "endMs": 23840
+  },
+  {
+   "text": " When",
+   "startMs": 24240,
+   "endMs": 24480
+  },
+  {
+   "text": " you",
+   "startMs": 24480,
+   "endMs": 24620
+  },
+  {
+   "text": " break",
+   "startMs": 24620,
+   "endMs": 24780
+  },
+  {
+   "text": " line",
+   "startMs": 24780,
+   "endMs": 25020
+  },
+  {
+   "text": " of",
+   "startMs": 25020,
+   "endMs": 25120
+  },
+  {
+   "text": " sight,",
+   "startMs": 25120,
+   "endMs": 25400
+  },
+  {
+   "text": " your",
+   "startMs": 25660,
+   "endMs": 25740
+  },
+  {
+   "text": " stars",
+   "startMs": 25740,
+   "endMs": 26080
+  },
+  {
+   "text": " start",
+   "startMs": 26080,
+   "endMs": 26320
+  },
+  {
+   "text": " flashing",
+   "startMs": 26320,
+   "endMs": 26840
+  },
+  {
+   "text": " and",
+   "startMs": 26840,
+   "endMs": 27400
+  },
+  {
+   "text": " cops",
+   "startMs": 27400,
+   "endMs": 27660
+  },
+  {
+   "text": " don't",
+   "startMs": 27660,
+   "endMs": 27880
+  },
+  {
+   "text": " even",
+   "startMs": 27880,
+   "endMs": 28040
+  },
+  {
+   "text": " show",
+   "startMs": 28040,
+   "endMs": 28320
+  },
+  {
+   "text": " on",
+   "startMs": 28320,
+   "endMs": 28460
+  },
+  {
+   "text": " the",
+   "startMs": 28460,
+   "endMs": 28540
+  },
+  {
+   "text": " minimap",
+   "startMs": 28540,
+   "endMs": 29020
+  },
+  {
+   "text": " anymore.",
+   "startMs": 29020,
+   "endMs": 29340
+  },
+  {
+   "text": " Hit",
+   "startMs": 29340,
+   "endMs": 29960
+  },
+  {
+   "text": " 6",
+   "startMs": 29960,
+   "endMs": 30300
+  },
+  {
+   "text": " stars",
+   "startMs": 30300,
+   "endMs": 30580
+  },
+  {
+   "text": " and",
+   "startMs": 30580,
+   "endMs": 31040
+  },
+  {
+   "text": " the",
+   "startMs": 31040,
+   "endMs": 31140
+  },
+  {
+   "text": " entire",
+   "startMs": 31140,
+   "endMs": 31580
+  },
+  {
+   "text": " map",
+   "startMs": 31580,
+   "endMs": 32060
+  },
+  {
+   "text": " is",
+   "startMs": 32060,
+   "endMs": 32240
+  },
+  {
+   "text": " hunting",
+   "startMs": 32240,
+   "endMs": 32479
+  },
+  {
+   "text": " you.",
+   "startMs": 32479,
+   "endMs": 32780
+  },
+  {
+   "text": " Follow",
+   "startMs": 33180,
+   "endMs": 33460
+  },
+  {
+   "text": " GTA",
+   "startMs": 33460,
+   "endMs": 33840
+  },
+  {
+   "text": " Highest",
+   "startMs": 33840,
+   "endMs": 34360
+  },
+  {
+   "text": " for",
+   "startMs": 34360,
+   "endMs": 34540
+  },
+  {
+   "text": " more",
+   "startMs": 34540,
+   "endMs": 34760
+  },
+  {
+   "text": " updates.",
+   "startMs": 34760,
+   "endMs": 35160
+  }
+ ],
+ "sfx": [
+  {
+   "at": 0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 0,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 2.2,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 2.6,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 2.8,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 2.92,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 3.04,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 3.2,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 4.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 5.45,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 5.7,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 6.0,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 8.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 9.05,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 10.1,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 10.6,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 12.0,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 13.35,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 13.6,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 14.5,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 15.3,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 15.96,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 16.68,
+   "file": "sfx/pop.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 17.8,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 17.8,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 19.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 19.3,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 21.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 22.4,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 24.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 25.0,
+   "file": "sfx/impact.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 27.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 27.6,
+   "file": "sfx/glitch.wav",
+   "volume": 0.08
+  },
+  {
+   "at": 29.1,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 29.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 29.4,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 29.7,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.82,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 29.94,
+   "file": "sfx/tick.wav",
+   "volume": 0.06
+  },
+  {
+   "at": 30.1,
+   "file": "sfx/ding.wav",
+   "volume": 0.14
+  },
+  {
+   "at": 32.6,
+   "file": "sfx/riser.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.2,
+   "file": "sfx/whoosh.wav",
+   "volume": 0.1
+  },
+  {
+   "at": 33.9,
+   "file": "sfx/bell.wav",
+   "volume": 0.16
+  }
+ ]
+}

@@ -1,0 +1,432 @@
+{
+  "language": "en",
+  "language_probability": 0.993,
+  "duration": 14.9,
+  "word_count": 39,
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "transcription_time_sec": 6.2,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.3,
+      "text": "Bro had no idea he'd just stop Lucia from GTA 6 on the street!",
+      "words": [
+        {
+          "word": "Bro",
+          "start": 0.0,
+          "end": 0.32
+        },
+        {
+          "word": "had",
+          "start": 0.32,
+          "end": 0.66
+        },
+        {
+          "word": "no",
+          "start": 0.66,
+          "end": 1.06
+        },
+        {
+          "word": "idea",
+          "start": 1.06,
+          "end": 1.56
+        },
+        {
+          "word": "he'd",
+          "start": 1.56,
+          "end": 1.82
+        },
+        {
+          "word": "just",
+          "start": 1.82,
+          "end": 1.96
+        },
+        {
+          "word": "stop",
+          "start": 1.96,
+          "end": 2.16
+        },
+        {
+          "word": "Lucia",
+          "start": 2.16,
+          "end": 2.58
+        },
+        {
+          "word": "from",
+          "start": 2.58,
+          "end": 2.76
+        },
+        {
+          "word": "GTA",
+          "start": 2.76,
+          "end": 3.1
+        },
+        {
+          "word": "6",
+          "start": 3.1,
+          "end": 3.6
+        },
+        {
+          "word": "on",
+          "start": 3.6,
+          "end": 3.82
+        },
+        {
+          "word": "the",
+          "start": 3.82,
+          "end": 3.94
+        },
+        {
+          "word": "street!",
+          "start": 3.94,
+          "end": 4.3
+        }
+      ]
+    },
+    {
+      "start": 5.1,
+      "end": 8.1,
+      "text": "That's Manny El Perez, the actress who plays Lucia Caminos!",
+      "words": [
+        {
+          "word": "That's",
+          "start": 5.1,
+          "end": 5.34
+        },
+        {
+          "word": "Manny",
+          "start": 5.34,
+          "end": 5.6
+        },
+        {
+          "word": "El",
+          "start": 5.6,
+          "end": 5.78
+        },
+        {
+          "word": "Perez,",
+          "start": 5.78,
+          "end": 6.08
+        },
+        {
+          "word": "the",
+          "start": 6.5,
+          "end": 6.58
+        },
+        {
+          "word": "actress",
+          "start": 6.58,
+          "end": 6.88
+        },
+        {
+          "word": "who",
+          "start": 6.88,
+          "end": 7.08
+        },
+        {
+          "word": "plays",
+          "start": 7.08,
+          "end": 7.26
+        },
+        {
+          "word": "Lucia",
+          "start": 7.26,
+          "end": 7.64
+        },
+        {
+          "word": "Caminos!",
+          "start": 7.64,
+          "end": 8.1
+        }
+      ]
+    },
+    {
+      "start": 8.89,
+      "end": 12.23,
+      "text": "She dodged that question like a five-star wanted level.",
+      "words": [
+        {
+          "word": "She",
+          "start": 8.89,
+          "end": 9.53
+        },
+        {
+          "word": "dodged",
+          "start": 9.53,
+          "end": 9.99
+        },
+        {
+          "word": "that",
+          "start": 9.99,
+          "end": 10.19
+        },
+        {
+          "word": "question",
+          "start": 10.19,
+          "end": 10.59
+        },
+        {
+          "word": "like",
+          "start": 10.59,
+          "end": 10.79
+        },
+        {
+          "word": "a",
+          "start": 10.79,
+          "end": 10.91
+        },
+        {
+          "word": "five",
+          "start": 10.91,
+          "end": 11.23
+        },
+        {
+          "word": "-star",
+          "start": 11.23,
+          "end": 11.53
+        },
+        {
+          "word": "wanted",
+          "start": 11.53,
+          "end": 11.91
+        },
+        {
+          "word": "level.",
+          "start": 11.91,
+          "end": 12.23
+        }
+      ]
+    },
+    {
+      "start": 12.65,
+      "end": 14.49,
+      "text": "Subscribe to Shadow GTA Place!",
+      "words": [
+        {
+          "word": "Subscribe",
+          "start": 12.65,
+          "end": 12.99
+        },
+        {
+          "word": "to",
+          "start": 12.99,
+          "end": 13.33
+        },
+        {
+          "word": "Shadow",
+          "start": 13.33,
+          "end": 13.65
+        },
+        {
+          "word": "GTA",
+          "start": 13.65,
+          "end": 14.11
+        },
+        {
+          "word": "Place!",
+          "start": 14.11,
+          "end": 14.49
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "text": " Bro",
+      "startMs": 0,
+      "endMs": 320
+    },
+    {
+      "text": " had",
+      "startMs": 320,
+      "endMs": 660
+    },
+    {
+      "text": " no",
+      "startMs": 660,
+      "endMs": 1060
+    },
+    {
+      "text": " idea",
+      "startMs": 1060,
+      "endMs": 1560
+    },
+    {
+      "text": " he'd",
+      "startMs": 1560,
+      "endMs": 1820
+    },
+    {
+      "text": " just",
+      "startMs": 1820,
+      "endMs": 1960
+    },
+    {
+      "text": " stop",
+      "startMs": 1960,
+      "endMs": 2160
+    },
+    {
+      "text": " Lucia",
+      "startMs": 2160,
+      "endMs": 2580
+    },
+    {
+      "text": " from",
+      "startMs": 2580,
+      "endMs": 2760
+    },
+    {
+      "text": " GTA",
+      "startMs": 2760,
+      "endMs": 3100
+    },
+    {
+      "text": " 6",
+      "startMs": 3100,
+      "endMs": 3600
+    },
+    {
+      "text": " on",
+      "startMs": 3600,
+      "endMs": 3820
+    },
+    {
+      "text": " the",
+      "startMs": 3820,
+      "endMs": 3940
+    },
+    {
+      "text": " street!",
+      "startMs": 3940,
+      "endMs": 4300
+    },
+    {
+      "text": " That's",
+      "startMs": 5100,
+      "endMs": 5340
+    },
+    {
+      "text": " Manny",
+      "startMs": 5340,
+      "endMs": 5600
+    },
+    {
+      "text": " El",
+      "startMs": 5600,
+      "endMs": 5780
+    },
+    {
+      "text": " Perez,",
+      "startMs": 5780,
+      "endMs": 6080
+    },
+    {
+      "text": " the",
+      "startMs": 6500,
+      "endMs": 6580
+    },
+    {
+      "text": " actress",
+      "startMs": 6580,
+      "endMs": 6880
+    },
+    {
+      "text": " who",
+      "startMs": 6880,
+      "endMs": 7080
+    },
+    {
+      "text": " plays",
+      "startMs": 7080,
+      "endMs": 7260
+    },
+    {
+      "text": " Lucia",
+      "startMs": 7260,
+      "endMs": 7640
+    },
+    {
+      "text": " Caminos!",
+      "startMs": 7640,
+      "endMs": 8100
+    },
+    {
+      "text": " She",
+      "startMs": 8890,
+      "endMs": 9530
+    },
+    {
+      "text": " dodged",
+      "startMs": 9530,
+      "endMs": 9990
+    },
+    {
+      "text": " that",
+      "startMs": 9990,
+      "endMs": 10190
+    },
+    {
+      "text": " question",
+      "startMs": 10190,
+      "endMs": 10590
+    },
+    {
+      "text": " like",
+      "startMs": 10590,
+      "endMs": 10790
+    },
+    {
+      "text": " a",
+      "startMs": 10790,
+      "endMs": 10910
+    },
+    {
+      "text": " five",
+      "startMs": 10910,
+      "endMs": 11230
+    },
+    {
+      "text": "-star",
+      "startMs": 11230,
+      "endMs": 11530
+    },
+    {
+      "text": " wanted",
+      "startMs": 11530,
+      "endMs": 11910
+    },
+    {
+      "text": " level.",
+      "startMs": 11910,
+      "endMs": 12230
+    },
+    {
+      "text": " Subscribe",
+      "startMs": 12650,
+      "endMs": 12990
+    },
+    {
+      "text": " to",
+      "startMs": 12990,
+      "endMs": 13330
+    },
+    {
+      "text": " Shadow",
+      "startMs": 13330,
+      "endMs": 13650
+    },
+    {
+      "text": " GTA",
+      "startMs": 13650,
+      "endMs": 14110
+    },
+    {
+      "text": " Place!",
+      "startMs": 14110,
+      "endMs": 14490
+    }
+  ]
+}

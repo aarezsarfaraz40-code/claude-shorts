@@ -1,0 +1,178 @@
+{
+  "language": "en",
+  "language_probability": 0.996,
+  "duration": 6.3,
+  "word_count": 15,
+  "model": "small",
+  "device": "cpu",
+  "compute_type": "int8",
+  "transcription_time_sec": 4.3,
+  "segments": [
+    {
+      "start": 0.09,
+      "end": 3.39,
+      "text": "She dodged that question like a five-star wanted level.",
+      "words": [
+        {
+          "word": "She",
+          "start": 0.09,
+          "end": 0.69
+        },
+        {
+          "word": "dodged",
+          "start": 0.69,
+          "end": 1.15
+        },
+        {
+          "word": "that",
+          "start": 1.15,
+          "end": 1.33
+        },
+        {
+          "word": "question",
+          "start": 1.33,
+          "end": 1.73
+        },
+        {
+          "word": "like",
+          "start": 1.73,
+          "end": 1.95
+        },
+        {
+          "word": "a",
+          "start": 1.95,
+          "end": 2.07
+        },
+        {
+          "word": "five",
+          "start": 2.07,
+          "end": 2.37
+        },
+        {
+          "word": "-star",
+          "start": 2.37,
+          "end": 2.65
+        },
+        {
+          "word": "wanted",
+          "start": 2.65,
+          "end": 3.05
+        },
+        {
+          "word": "level.",
+          "start": 3.05,
+          "end": 3.39
+        }
+      ]
+    },
+    {
+      "start": 3.65,
+      "end": 6.13,
+      "text": "Subscribe to Shadow GTA Plays.",
+      "words": [
+        {
+          "word": "Subscribe",
+          "start": 3.65,
+          "end": 4.31
+        },
+        {
+          "word": "to",
+          "start": 4.31,
+          "end": 4.63
+        },
+        {
+          "word": "Shadow",
+          "start": 4.63,
+          "end": 4.97
+        },
+        {
+          "word": "GTA",
+          "start": 4.97,
+          "end": 5.41
+        },
+        {
+          "word": "Plays.",
+          "start": 5.41,
+          "end": 6.13
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "text": " She",
+      "startMs": 90,
+      "endMs": 690
+    },
+    {
+      "text": " dodged",
+      "startMs": 690,
+      "endMs": 1150
+    },
+    {
+      "text": " that",
+      "startMs": 1150,
+      "endMs": 1330
+    },
+    {
+      "text": " question",
+      "startMs": 1330,
+      "endMs": 1730
+    },
+    {
+      "text": " like",
+      "startMs": 1730,
+      "endMs": 1950
+    },
+    {
+      "text": " a",
+      "startMs": 1950,
+      "endMs": 2070
+    },
+    {
+      "text": " five",
+      "startMs": 2070,
+      "endMs": 2370
+    },
+    {
+      "text": "-star",
+      "startMs": 2370,
+      "endMs": 2650
+    },
+    {
+      "text": " wanted",
+      "startMs": 2650,
+      "endMs": 3050
+    },
+    {
+      "text": " level.",
+      "startMs": 3050,
+      "endMs": 3390
+    },
+    {
+      "text": " Subscribe",
+      "startMs": 3650,
+      "endMs": 4310
+    },
+    {
+      "text": " to",
+      "startMs": 4310,
+      "endMs": 4630
+    },
+    {
+      "text": " Shadow",
+      "startMs": 4630,
+      "endMs": 4970
+    },
+    {
+      "text": " GTA",
+      "startMs": 4970,
+      "endMs": 5410
+    },
+    {
+      "text": " Plays.",
+      "startMs": 5410,
+      "endMs": 6130
+    }
+  ]
+}

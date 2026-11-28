@@ -21,6 +21,7 @@ const MUSIC_VOL = 0.05;
 // band where footage sits (blurred copy fills the rest)
 const BAND = { y: 250, h: 1150 };
 type ShotT = { at: number; file: "stream" | "actor"; src: number; fx: number };
+const LOGO_A0 = 2.8 + 37.6;
 const SHOTS: ShotT[] = [
   { at: 0, file: "stream", src: BITE.audio + PIC_LAG, fx: 0.45 },
   { at: r(0), file: "stream", src: 9.0, fx: 0.55 }, // Niko Bellic is back
@@ -36,8 +37,9 @@ const SHOTS: ShotT[] = [
   { at: r(27.6), file: "stream", src: 151.0, fx: 0.3 }, // the Niko we grew up with
   { at: r(29.6), file: "stream", src: 130.0, fx: 0.5 }, // why bring Niko back now?
   { at: r(32.4), file: "stream", src: 94.5, fx: 0.45 }, // GTA 4 remaster rumours
-  { at: r(36.5), file: "stream", src: 133.0, fx: 0.7 }, // Rockstar's first hint
-  { at: r(39.5), file: "stream", src: 156.0, fx: 0.5 }, // would you play it?
+  { at: r(36.5), file: "stream", src: 133.0, fx: 0.7 },
+  { at: LOGO_A0, file: "stream", src: 158.5, fx: 0.5 }, // empty room under the logo // Rockstar's first hint
+  { at: r(39.5), file: "stream", src: 155.0, fx: 0.5 }, // would you play it?
   { at: r(43.3), file: "stream", src: 158.0, fx: 0.5 }, // outro background
 ];
 export const NIKO_DURATION = 52.2;
